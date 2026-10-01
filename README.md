@@ -248,9 +248,9 @@ They differ from the build; captions say "Sample screen(s)." / "Sample data".
 
 ### Technical, before going public
 
-- [ ] Decide on indexing: `robots.txt` allows search engines. If the site goes
-      up before the blockers are cleared, password-protect it in Netlify or add
-      `<meta name="robots" content="noindex">` to `index.html` until launch.
+- [ ] **On launch day, remove the `X-Robots-Tag = "noindex, nofollow"` line**
+      from `netlify.toml`. It was added on 1 Oct 2026 so that the staging
+      deploy stays out of search engines while the blockers above are open.
 - [ ] Custom domain and HTTPS on Netlify. The HSTS header includes
       `includeSubDomains`: check no subdomain still needs plain HTTP.
 - [ ] Paste the URL into a link-preview checker (LinkedIn Post Inspector,

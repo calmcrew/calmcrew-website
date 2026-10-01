@@ -24,6 +24,9 @@
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()"
     Cross-Origin-Opener-Policy = "same-origin"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    # PRE-LAUNCH: keeps the staging site out of search engines while the README
+    # launch blockers are open. DELETE this line on launch day (README checklist).
+    X-Robots-Tag = "noindex, nofollow"
 
 # -----------------------------------------------------------------------------
 # Long cache for fonts, CSS, JS and images. The HTML links CSS and JS with a
