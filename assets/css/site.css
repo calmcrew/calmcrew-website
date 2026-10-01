@@ -1,0 +1,1117 @@
+/*
+ * SITE STYLES — Calm Crew one-page website
+ * =============================================================================
+ * Layout and components for index.html, thanks.html and 404.html.
+ * Every colour, space and type size comes from tokens.css; nothing here sets a
+ * colour of its own. A Night band is `class="band-night"`: tokens.css redefines
+ * the custom properties there, so the same rules below draw Day and Night.
+ *
+ * Breakpoints
+ *   1359px and below  header nav links tighten up
+ *   1279px and below  header collapses to the logo plus a Menu button
+ *   1080px and below  side-by-side sections stack (tablet)
+ *    760px and below  mobile tokens, single column (matches tokens.css)
+ */
+
+/* ---------------------------------------------------------------------------
+ * Derived spacing — names for the token steps used below, nothing new.
+ * (Only spacing is derived here. Colours are never aliased on :root, because
+ * an alias would freeze the Day value and break the Night bands.)
+ * ------------------------------------------------------------------------- */
+:root {
+  --gap-xs: calc(var(--text-stack) / 2);       /* 8 / 6   eyebrow to heading */
+  --gap-p: calc(var(--text-stack) * 0.75);     /* 12 / 9  between paragraphs */
+  --gap-s: var(--text-stack);                  /* 16 / 12 */
+  --gap-m: var(--card-gap);                    /* 24 / 16 heading to lead */
+  --gap-ml: calc(var(--text-stack) * 2);       /* 32 / 24 copy to buttons */
+  --gap-l: var(--section-stack);               /* 48 / 32 head to content */
+  --gap-xl: calc(var(--section-stack) * 2);    /* 96 / 64 */
+  --header-h: calc(var(--touch-min) + var(--text-stack) * 2); /* 88 / 80 */
+  /* Column gap: 96px at 1440, easing down to 48px on narrower desktops. */
+  --col-gap: clamp(var(--section-stack), 6.67vw, calc(var(--section-stack) * 2));
+  /* Reading measure for leads and long paragraphs, from the Figma frames. */
+  --measure: 690px;
+  color-scheme: light;
+}
+
+.band-night {
+  /* Native controls (select menus, autofill, scrollbars) follow the band. */
+  color-scheme: dark;
+}
+
+/* ---------------------------------------------------------------------------
+ * Base
+ * ------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Smooth scrolling only for people who have not asked for less motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, p, ul, ol, figure, blockquote {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* One focus style everywhere: a 2px ring, offset so it never sits on the fill. */
+:focus-visible {
+  outline: 2px solid var(--selection-ring);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------------------------------------------------------------------------
+ * Layout
+ * ------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: calc(var(--page-max-width) + var(--page-gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+
+.section {
+  background: var(--ground);
+  color: var(--ink-primary);
+  padding-block: var(--section-padding-y);
+}
+
+/* The browser keeps anchor targets and focused controls clear of the sticky
+   header (scroll-padding applies to every scroll into view, not only to
+   elements with an id). */
+html {
+  scroll-padding-top: var(--header-h);
+}
+
+/* A field scrolled into view (by focus or by the form's error check) keeps
+   its label visible too: the label line, the gap, and a little air. */
+.field .input {
+  scroll-margin-top: calc(var(--body-line) + var(--gap-xs) + var(--gap-s));
+}
+
+/* Two even columns (pilot, about): 552 | 96 | 552 at 1440. Contact adjusts it below. */
+.split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  row-gap: var(--gap-l);
+  align-items: start;
+}
+
+/* ---------------------------------------------------------------------------
+ * Type
+ * ------------------------------------------------------------------------- */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--label-size);
+  line-height: var(--label-line);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-secondary);
+}
+
+.display,
+.heading,
+.title,
+.wordmark {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  color: var(--ink-primary);
+  text-wrap: balance;
+}
+
+.display {
+  font-size: var(--display-size);
+  line-height: var(--display-line);
+}
+
+.heading {
+  font-size: var(--heading-size);
+  line-height: var(--heading-line);
+}
+
+.title {
+  font-size: var(--title-size);
+  line-height: var(--title-line);
+}
+
+.lead {
+  font-size: var(--lead-size);
+  line-height: var(--lead-line);
+  color: var(--ink-secondary);
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+.prose {
+  color: var(--ink-secondary);
+  max-width: var(--measure);
+}
+
+.prose p {
+  text-wrap: pretty;
+}
+
+.prose p + p,
+.prose p + .note,
+.prose .note + p {
+  margin-top: var(--gap-p);
+}
+
+/* Section head: eyebrow, heading, lead. */
+.section-head .heading,
+.section-head .display {
+  margin-top: var(--gap-xs);
+}
+
+.section-head .lead {
+  margin-top: var(--gap-m);
+}
+
+/* Content that follows a section head inside the same column. (Not a blanket
+   `.section-head + *`: in two-column grids the sibling is the other column.) */
+.at-sea__grid,
+.anchor__text .prose,
+.contact__after {
+  margin-top: var(--gap-l);
+}
+
+/* ---------------------------------------------------------------------------
+ * Buttons and links
+ * Primary: ink fill, ground-coloured label. Secondary: 2px ink outline.
+ * Both are 56px pills, the app's touch minimum.
+ * ------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-min);
+  padding-inline: calc(var(--text-stack) * 1.75);
+  border: 2px solid var(--ink-primary);
+  border-radius: var(--radius-control);
+  font-family: var(--font-sans);
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn--primary {
+  background: var(--ink-primary);
+  color: var(--on-primary);
+}
+
+.btn--primary:hover {
+  background: var(--ink-secondary);
+  border-color: var(--ink-secondary);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--ink-primary);
+}
+
+.btn--secondary:hover {
+  background: var(--selection-wash);
+}
+
+/* A text link that still meets the 56px target. */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  font-weight: 500;
+  color: var(--ink-primary);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn {
+    transition: background-color 150ms ease, border-color 150ms ease;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gap-s);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--gap-ml);
+  list-style: none;
+  padding: 0;
+}
+
+.links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  color: var(--ink-primary);
+}
+
+/* ---------------------------------------------------------------------------
+ * Skip link
+ * ------------------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: var(--gap-xs);
+  left: var(--page-gutter);
+  z-index: 100;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* ---------------------------------------------------------------------------
+ * Header
+ * ------------------------------------------------------------------------- */
+.site-header {
+  position: relative;
+  z-index: 20;
+  background: var(--ground);
+  border-bottom: 1px solid var(--hairline);
+}
+
+/* Sticky only with JS, where the mobile menu collapses; without JS the nav
+   wraps onto several lines and would cover too much of a small screen. */
+.js .site-header {
+  position: sticky;
+  top: 0;
+}
+
+/* A short viewport (a phone on its side, or 400% zoom) has no room for a
+   sticky header: let it scroll away with the page. */
+@media (max-height: 480px) {
+  .js .site-header {
+    position: relative;
+  }
+
+  html {
+    scroll-padding-top: 0;
+  }
+}
+
+.site-header__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: var(--gap-m);
+  min-height: var(--header-h);
+  padding-block: var(--text-stack);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--text-stack) * 0.75);
+  min-height: var(--touch-min);
+  color: var(--ink-primary);
+  text-decoration: none;
+}
+
+.brand__mark {
+  width: 44px;
+  height: 44px;
+  flex: none;
+}
+
+.wordmark {
+  font-size: var(--question-size);
+  line-height: var(--question-line);
+}
+
+.site-menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gap-m);
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: calc(var(--text-stack) * 1.25);
+  list-style: none;
+  padding: 0;
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  padding-inline: var(--gap-xs);
+  color: var(--ink-primary);
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  text-decoration: underline;
+}
+
+/* Narrower desktops: tighter links so the full header still fits on one line. */
+@media (max-width: 1359px) {
+  .site-nav ul {
+    column-gap: var(--gap-xs);
+  }
+}
+
+/* The Menu button only exists once site.js has run (it removes `hidden`). */
+.nav-toggle {
+  display: none;
+}
+
+@media (max-width: 1279px) {
+  .js .nav-toggle {
+    display: inline-flex;
+  }
+
+  .js .site-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: calc(100vh - var(--header-h));
+    /* The visible height, so the last item never hides under a phone's toolbar. */
+    max-height: calc(100dvh - var(--header-h));
+    overflow-y: auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--gap-s);
+    padding: var(--gap-xs) var(--page-gutter) var(--gap-m);
+    background: var(--ground);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .js .site-menu.is-open {
+    display: flex;
+  }
+
+  .js .site-nav ul {
+    flex-direction: column;
+  }
+
+  .js .site-nav a {
+    width: 100%;
+    padding-inline: 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .js .site-menu > .btn {
+    align-self: flex-start;
+  }
+}
+
+/* On a phone the menu's button runs the full width, like the other buttons. */
+@media (max-width: 760px) {
+  .js .site-menu > .btn {
+    align-self: stretch;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Phone mock-ups
+ * The frame is drawn in CSS: a 10px ink bezel, 64px outer radius, 54px inner
+ * radius and the token shadow, at the 413px design size. `.phone` is a size
+ * container, so smaller phones (tablet, mobile, pairs) scale every part of the
+ * frame with them instead of ending up with a thick bezel on a small screen.
+ * ------------------------------------------------------------------------- */
+.shot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-s);
+}
+
+.phone {
+  width: 413px;
+  max-width: 100%;
+  flex: none;
+  container-type: inline-size;
+}
+
+.phone__frame {
+  overflow: hidden;
+  background: var(--ink-primary);
+  border: 10px solid var(--ink-primary);
+  border-width: calc(100cqi * 10 / 413);
+  border-radius: var(--radius-phone);
+  border-radius: calc(100cqi * 64 / 413);
+  box-shadow: 0 24px 64px var(--glass-shadow);
+}
+
+.phone__frame img {
+  width: 100%;
+  border-radius: var(--radius-glass);
+  border-radius: calc(100cqi * 54 / 413);
+}
+
+/* Two phones overlapping by 96px: 413 + 413 - 96 = 730 at full size.
+   Percentages keep that proportion whatever width the pair gets. */
+.phone-pair {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 730px;
+}
+
+.phone-pair .phone {
+  width: calc(100% * 413 / 730);
+}
+
+.phone-pair .phone + .phone {
+  margin-left: calc(-100% * 96 / 730);
+}
+
+.caption {
+  text-align: center;
+}
+
+/* Side by side, Figma centres the text on the phone itself, not on phone plus
+   caption: the caption hangs into the section's bottom padding. (Not in the
+   course, where cards follow the pair, nor in History, where Figma counts it.) */
+@media (min-width: 1081px) {
+  .hero__grid .shot,
+  .app__grid .shot,
+  .at-sea__grid .shot {
+    margin-bottom: calc(-1 * (var(--gap-s) + var(--label-line)));
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Cards
+ * ------------------------------------------------------------------------- */
+.card {
+  background: var(--surface-raised);
+  border-radius: var(--radius-card);
+  padding: var(--card-padding);
+  color: var(--ink-secondary);
+}
+
+.card .title {
+  margin-bottom: var(--gap-s);
+}
+
+/* The one emphasised card title on the page (privacy, "What management sees."). */
+.title--bold {
+  font-weight: 700;
+}
+
+/* Inline emphasis uses the self-hosted Work Sans Bold and Italic faces. */
+strong {
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+em {
+  font-style: italic;
+}
+
+/* Course cards: an eyebrow over the title, as in the app's own cards. */
+.card .eyebrow + .title {
+  margin-top: var(--gap-xs);
+}
+
+.card p + p,
+.card p + ol {
+  margin-top: var(--gap-p);
+}
+
+.cards {
+  display: grid;
+  gap: var(--card-gap);
+  list-style: none;
+  padding: 0;
+}
+
+.cards--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cards--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.module-list {
+  padding-left: 1.5em;
+}
+
+/* ---------------------------------------------------------------------------
+ * Hero (#top)
+ * ------------------------------------------------------------------------- */
+.hero {
+  padding-block: var(--section-stack) var(--section-padding-y);
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: var(--col-gap);
+  align-items: center;
+}
+
+.hero__copy {
+  max-width: var(--measure);
+}
+
+.hero .actions {
+  margin-top: var(--gap-ml);
+}
+
+.hero__byline {
+  margin-top: var(--gap-s);
+}
+
+/* Single phones beside text shrink on narrower desktops (413px at 1440,
+   about 360px at 1280) so the text column keeps both buttons on one line. */
+.hero .phone,
+.app__grid .phone,
+.history__grid .phone {
+  width: min(413px, calc(33vw - 62px));
+}
+
+/* ---------------------------------------------------------------------------
+ * The app (#app) — phone on the left on desktop; text comes first in the
+ * source so it also comes first on a phone.
+ * ------------------------------------------------------------------------- */
+.app__grid {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--col-gap);
+  align-items: center;
+}
+
+.app__grid .shot {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.app__text {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.app__text .stack {
+  margin-top: var(--gap-l);
+}
+
+.stack {
+  display: grid;
+  gap: var(--card-gap);
+  list-style: none;
+  padding: 0;
+}
+
+/* ---------------------------------------------------------------------------
+ * The course (#course)
+ * ------------------------------------------------------------------------- */
+/* 390 | 80 | 730 at 1440, as in Figma: a 16px narrower gap than elsewhere. */
+.course__top {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(0, 730px);
+  column-gap: calc(var(--col-gap) - var(--text-stack));
+  align-items: center;
+}
+
+.course__top .prose {
+  margin-top: var(--gap-l);
+}
+
+.course .cards {
+  margin-top: var(--gap-l);
+}
+
+/* ---------------------------------------------------------------------------
+ * At sea (#at-sea)
+ * ------------------------------------------------------------------------- */
+/* 730 | 80 | 390 at 1440, mirroring the course. */
+.at-sea__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 730px) minmax(320px, 1fr);
+  column-gap: calc(var(--col-gap) - var(--text-stack));
+  align-items: center;
+}
+
+/* ---------------------------------------------------------------------------
+ * Privacy (#privacy)
+ * ------------------------------------------------------------------------- */
+.privacy__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 480fr) minmax(0, 624fr);
+  column-gap: var(--col-gap);
+  row-gap: var(--gap-l);
+  align-items: start;
+}
+
+/* The large line under the heading. The <br> before "By design." is Figma's. */
+.privacy__promise {
+  margin-top: var(--gap-l);
+}
+
+/* Two cards, then one across the full width (Figma, 1 Oct 2026). */
+.card--wide {
+  grid-column: 1 / -1;
+}
+
+/* ---------------------------------------------------------------------------
+ * Drop Anchor (#drop-anchor)
+ * ------------------------------------------------------------------------- */
+.anchor__grid {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 720px);
+  column-gap: var(--col-gap);
+  row-gap: var(--gap-l);
+  align-items: start;
+}
+
+/* The text column is already 720px at most; Figma's prose fills all of it. */
+.anchor__text .prose {
+  max-width: none;
+}
+
+.anchor-badge {
+  display: grid;
+  place-items: center;
+  width: 160px;
+  height: 160px;
+  border: 1.5px solid var(--ink-secondary);
+  border-radius: 50%;
+  color: var(--ink-primary);
+}
+
+.anchor-badge svg {
+  width: 64px;
+  height: 64px;
+}
+
+/* The not-a-crisis-service line: set apart by a border, never in red. */
+.note {
+  padding: var(--gap-s) var(--card-gap);
+  border: 1.5px solid var(--ink-secondary);
+  border-radius: var(--radius-card);
+  color: var(--ink-primary);
+}
+
+/* ---------------------------------------------------------------------------
+ * The pilot (#pilot)
+ * ------------------------------------------------------------------------- */
+/* The body column's first line lines up with the heading's, not the eyebrow. */
+.pilot__body {
+  padding-top: calc(var(--label-line) + var(--text-stack));
+}
+
+.pilot__who {
+  margin-top: var(--gap-l);
+}
+
+.pilot .cards {
+  margin-top: var(--gap-l);
+}
+
+.pilot .actions {
+  margin-top: var(--gap-l);
+}
+
+/* ---------------------------------------------------------------------------
+ * History (#history) — THE ONE CLAIM
+ * ------------------------------------------------------------------------- */
+.history__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: var(--col-gap);
+  align-items: center;
+}
+
+/* Figma leaves 56px between the heading and the claim. */
+.history__text .claim {
+  margin-top: calc(var(--gap-l) + var(--gap-xs));
+}
+
+.claim {
+  max-width: var(--measure);
+  font-size: var(--lead-size);
+  line-height: var(--lead-line);
+  color: var(--ink-primary);
+  text-wrap: pretty;
+}
+
+/* ---------------------------------------------------------------------------
+ * About (#about) and the partner placeholders
+ * ------------------------------------------------------------------------- */
+.about .links {
+  margin-top: var(--gap-xs);
+}
+
+/* The credit sits after the contact links, as in Figma. */
+.about__credit {
+  margin-top: var(--gap-l);
+  color: var(--ink-primary);
+}
+
+.rule {
+  height: 0;
+  margin: var(--gap-ml) 0 var(--gap-l);
+  border: 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.partners .cards {
+  margin-top: var(--gap-m);
+}
+
+.partner-tile {
+  display: grid;
+  place-items: center;
+  min-height: 104px;
+  padding: var(--card-gap);
+  border: 1.5px dashed var(--ink-secondary);
+  border-radius: var(--radius-card);
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* ---------------------------------------------------------------------------
+ * Contact (#contact) and the form
+ * ------------------------------------------------------------------------- */
+.contact__after {
+  color: var(--ink-secondary);
+}
+
+.form {
+  display: grid;
+  gap: var(--gap-m);
+  /* When a call to action brings the form itself to the top (stacked
+     layouts), leave a little air under the header. */
+  scroll-margin-top: var(--gap-m);
+}
+
+/* Form beside the heading: 544 | 96 | 560 at 1440, as in Figma. */
+.contact__split {
+  grid-template-columns: minmax(0, 544fr) minmax(0, 560fr);
+}
+
+/* Label to field: 4px, as in Figma. */
+.field {
+  display: grid;
+  gap: calc(var(--gap-xs) / 2);
+}
+
+.field label {
+  font-weight: 500;
+  color: var(--ink-primary);
+}
+
+.field .optional {
+  font-weight: 400;
+  color: var(--ink-secondary);
+}
+
+.input {
+  width: 100%;
+  min-height: var(--touch-min);
+  padding: 0 calc(var(--text-stack) * 1.25);
+  border: 1px solid var(--ink-secondary);
+  border-radius: var(--radius-control);
+  background: var(--surface-raised);
+  color: var(--ink-primary);
+  font: inherit;
+}
+
+textarea.input {
+  min-height: 144px;
+  padding-block: var(--gap-s);
+  border-radius: var(--radius-card);
+  resize: vertical;
+}
+
+/* The select draws its own chevron in CSS, so it can take the ink colour. */
+.select {
+  position: relative;
+}
+
+.select .input {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: var(--touch-min);
+  cursor: pointer;
+}
+
+/* Nothing chosen yet ("Choose one…", the empty required value) reads as a
+   prompt, not an answer. */
+.select .input:invalid {
+  color: var(--ink-secondary);
+}
+
+.select .input option {
+  color: var(--ink-primary);
+}
+
+/* A field with a problem (set by site.js): a heavier ink edge and the message
+   under it, in ink and medium weight. Never red, as everywhere on the page. */
+.input[aria-invalid='true'] {
+  border-color: var(--ink-primary);
+  box-shadow: inset 0 0 0 1px var(--ink-primary);
+}
+
+.field__error {
+  font-weight: 500;
+  color: var(--ink-primary);
+}
+
+.select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: calc(var(--text-stack) * 1.5);
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid var(--ink-primary);
+  border-bottom: 2px solid var(--ink-primary);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.form__help {
+  color: var(--ink-secondary);
+}
+
+.form .btn {
+  justify-self: start;
+}
+
+/* ---------------------------------------------------------------------------
+ * Footer
+ * ------------------------------------------------------------------------- */
+.site-footer {
+  background: var(--ground);
+  color: var(--ink-primary);
+  padding-block: var(--gap-xl) calc(var(--gap-ml) * 2);
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  column-gap: var(--gap-xl);
+  row-gap: var(--gap-l);
+  align-items: start;
+}
+
+.footer__brand .brand {
+  min-height: 0;
+}
+
+.footer__tagline {
+  margin-top: var(--gap-s);
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: var(--question-size);
+  line-height: var(--question-line);
+  color: var(--ink-secondary);
+}
+
+.footer__col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer__col a {
+  display: flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  color: var(--ink-primary);
+  text-decoration: none;
+}
+
+.footer__col a:hover {
+  text-decoration: underline;
+}
+
+.footer__bottom {
+  margin-top: var(--gap-l);
+  padding-top: var(--gap-l);
+  border-top: 1px solid var(--hairline);
+}
+
+.footer__disclaimer {
+  max-width: 840px;
+  color: var(--ink-secondary);
+  text-wrap: pretty;
+}
+
+/* The legal line keeps the eyebrow's size and weight but not its capitals:
+   it carries the email address and the Instagram handle, which must read
+   exactly as written. */
+.footer__legal {
+  margin-top: var(--gap-p);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+/* ---------------------------------------------------------------------------
+ * Simple pages (thanks, 404)
+ * ------------------------------------------------------------------------- */
+.simple {
+  min-height: 60vh;
+}
+
+.simple .section-head + * {
+  margin-top: var(--gap-ml);
+}
+
+/* ---------------------------------------------------------------------------
+ * Tablet — side-by-side sections stack; text first, visual centred below.
+ * ------------------------------------------------------------------------- */
+@media (max-width: 1080px) {
+  .hero__grid,
+  .app__grid,
+  .course__top,
+  .at-sea__grid,
+  .privacy__grid,
+  .history__grid,
+  .split,
+  .contact__split {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--gap-l);
+  }
+
+  .app__grid .shot,
+  .app__text {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .hero .phone,
+  .app__grid .phone,
+  .history__grid .phone {
+    width: 413px;
+  }
+
+  .shot {
+    justify-self: center;
+    width: 100%;
+  }
+
+  .pilot__body {
+    padding-top: 0;
+  }
+
+  .cards--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer__top {
+    grid-template-columns: repeat(2, max-content);
+  }
+
+  .footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Mobile — 760px and below. tokens.css swaps in the mobile sizes; here
+ * everything goes to one column, single phones ~300px, pairs ~200px each.
+ * ------------------------------------------------------------------------- */
+@media (max-width: 760px) {
+  .anchor__grid,
+  .cards--2,
+  .cards--4,
+  .footer__top {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .phone,
+  .hero .phone,
+  .app__grid .phone,
+  .history__grid .phone {
+    width: min(300px, 100%);
+  }
+
+  /* 354 = 730 * 200 / 413, so each phone in a pair is about 200px wide. */
+  .phone-pair {
+    max-width: 354px;
+  }
+
+  .anchor-badge {
+    width: 96px;
+    height: 96px;
+  }
+
+  .anchor-badge svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Buttons go full width; the text link keeps its own size. */
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actions .text-link {
+    align-self: flex-start;
+  }
+
+  .form .btn {
+    justify-self: stretch;
+  }
+}

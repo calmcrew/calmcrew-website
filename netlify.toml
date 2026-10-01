@@ -1,0 +1,57 @@
+# Netlify configuration for calmcrewcoaching.com
+# =============================================================================
+# Plain static site: no build step. The folder is published as it is.
+
+[build]
+  publish = "."
+  command = ""
+
+# -----------------------------------------------------------------------------
+# Security headers, on every response.
+# The CSP allows only this site's own origin: fonts are self-hosted, there are
+# no analytics, CDNs or inline scripts/styles. If something stops loading after
+# a change, it is almost certainly an outside request — keep it that way.
+# (Netlify deploy previews inject a feedback widget that this CSP blocks; that
+# only affects previews, not the live site.)
+# -----------------------------------------------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "same-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()"
+    Cross-Origin-Opener-Policy = "same-origin"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+# -----------------------------------------------------------------------------
+# Long cache for fonts, CSS, JS and images. The HTML links CSS and JS with a
+# ?v= query: bump it whenever one of those files changes. Images and fonts are
+# not versioned, so give a changed image a new file name.
+# -----------------------------------------------------------------------------
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# -----------------------------------------------------------------------------
+# Redirects. Order matters: the first matching rule wins.
+# -----------------------------------------------------------------------------
+
+# The repository's own notes are published with the folder; never serve them.
+[[redirects]]
+  from = "/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/netlify.toml"
+  to = "/404.html"
+  status = 404
+  force = true
+
+# 404: Netlify serves /404.html with a 404 status for any missing path
+# automatically; no rule needed (a catch-all here can intercept the contact
+# form POST).

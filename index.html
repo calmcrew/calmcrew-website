@@ -1,0 +1,587 @@
+<!doctype html>
+<!--
+  Calm Crew — calmcrewcoaching.com
+  One static page. Day sections sit on Sand; `band-night` sections invert
+  (see tokens.css). Editing rules for the copy: README.md.
+-->
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calm Crew — Steady at sea · calm within</title>
+  <meta name="description" content="An iPhone app for superyacht crew: a two-tap check-in, a course by Libby Pickett, and a tab for the hard moments. Pilot study from November 2026.">
+  <link rel="canonical" href="https://calmcrewcoaching.com/">
+
+  <!-- Browser chrome colours. Meta tags cannot read CSS, so these repeat the
+       Day ground and Night ground from tokens.css; change both together. -->
+  <meta name="theme-color" content="#EAE0CF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#213448" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+
+  <!-- Sharing cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Calm Crew">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="https://calmcrewcoaching.com/">
+  <meta property="og:title" content="Calm Crew — nervous-system training for superyacht crew">
+  <meta property="og:description" content="A daily check-in, a course in four chapters, and nothing your captain can see. Opens to crew after the November 2026 pilot study.">
+  <meta property="og:image" content="https://calmcrewcoaching.com/assets/brand/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Calm Crew logo mark and name, with the tagline “Steady at sea · calm within”, on a sand background.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Calm Crew — nervous-system training for superyacht crew">
+  <meta name="twitter:description" content="A daily check-in, a course in four chapters, and nothing your captain can see. Opens to crew after the November 2026 pilot study.">
+  <meta name="twitter:image" content="https://calmcrewcoaching.com/assets/brand/og-image.png">
+  <meta name="twitter:image:alt" content="The Calm Crew logo mark and name, with the tagline “Steady at sea · calm within”, on a sand background.">
+
+  <!-- Self-hosted fonts: no request leaves this domain. Preload the two faces
+       used above the fold so the headline does not reflow. -->
+  <link rel="preload" href="assets/fonts/newsreader-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/work-sans-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- /assets/* is cached for a year (netlify.toml): bump ?v= when a file changes. -->
+  <link rel="stylesheet" href="assets/fonts/fonts.css?v=2026-10-01b">
+  <link rel="stylesheet" href="assets/css/tokens.css?v=2026-10-01b">
+  <link rel="stylesheet" href="assets/css/site.css?v=2026-10-01b">
+  <!-- Not deferred on purpose: it only sets a class, then waits for the DOM. -->
+  <script src="assets/js/site.js?v=2026-10-01b"></script>
+</head>
+<body>
+  <a class="skip-link btn btn--primary" href="#main">Skip to content</a>
+
+  <!-- ===================================================================
+       Header: logo, six anchors, one primary button. Collapses to a Menu
+       button below 1280px (site.js); without JS the links simply wrap.
+       =================================================================== -->
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="brand" href="#top">
+        <svg class="brand__mark" viewBox="0 0 70 70" fill="none" aria-hidden="true" focusable="false">
+          <path d="M50.38 13.62C46.7444 9.9825 42.1116 7.50489 37.0678 6.50058C32.0239 5.49627 26.7955 6.01037 22.0438 7.97785C17.2921 9.94533 13.2307 13.2778 10.3732 17.5538C7.51566 21.8298 5.99045 26.8571 5.99045 32C5.99045 37.1429 7.51566 42.1703 10.3732 46.4462C13.2307 50.7222 17.2921 54.0547 22.0438 56.0222C26.7955 57.9897 32.0239 58.5037 37.0678 57.4994C42.1116 56.4951 46.7444 54.0175 50.38 50.38" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+          <path d="M44.73 19.27C42.2124 16.7533 39.0051 15.0395 35.5136 14.3454C32.0221 13.6514 28.4032 14.0082 25.1145 15.3707C21.8258 16.7333 19.0149 19.0404 17.0373 22.0004C15.0597 24.9603 14.0042 28.4402 14.0042 32C14.0042 35.5598 15.0597 39.0397 17.0373 41.9997C19.0149 44.9596 21.8258 47.2667 25.1145 48.6293C28.4032 49.9918 32.0221 50.3486 35.5136 49.6546C39.0051 48.9605 42.2124 47.2468 44.73 44.73" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M39.07 24.93C37.6716 23.5312 35.8898 22.5785 33.9499 22.1924C32.01 21.8063 29.9992 22.0041 28.1717 22.7609C26.3443 23.5177 24.7823 24.7994 23.6834 26.444C22.5844 28.0885 21.9979 30.0221 21.9979 32C21.9979 33.9779 22.5844 35.9115 23.6834 37.556C24.7823 39.2006 26.3443 40.4823 28.1717 41.2391C29.9992 41.9959 32.01 42.1937 33.9499 41.8076C35.8898 41.4215 37.6716 40.4688 39.07 39.07" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="wordmark">Calm Crew</span>
+      </a>
+
+      <button class="nav-toggle btn btn--secondary" type="button" aria-expanded="false" aria-controls="site-menu" hidden>Menu</button>
+
+      <div class="site-menu" id="site-menu">
+        <nav class="site-nav" aria-label="Main">
+          <ul>
+            <li><a href="#app">The app</a></li>
+            <li><a href="#course">The course</a></li>
+            <li><a href="#at-sea">At sea</a></li>
+            <li><a href="#privacy">Privacy</a></li>
+            <li><a href="#pilot">The pilot</a></li>
+            <li><a href="#about">About Libby</a></li>
+          </ul>
+        </nav>
+        <a class="btn btn--primary" href="#contact" data-interest="waitlist">Join the crew waiting list</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================================================================
+         #top — Hero (Day)
+         =================================================================== -->
+    <section id="top" class="section hero" aria-labelledby="top-title">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <div class="section-head">
+            <p class="eyebrow">Steady at sea · calm within</p>
+            <h1 class="display" id="top-title">Nervous-system training for superyacht crew.</h1>
+            <p class="lead">Calm Crew is an iPhone app for the people who keep the boats running: a check-in that takes two taps, a course by Libby Pickett, and a tab for the hard moments.</p>
+          </div>
+          <div class="actions">
+            <a class="btn btn--primary" href="#contact" data-interest="waitlist">Join the crew waiting list</a>
+            <a class="btn btn--secondary" href="#pilot">For vessels and management</a>
+          </div>
+          <p class="eyebrow hero__byline">Libby Pickett · Palma de Mallorca · Pilot study begins November 2026</p>
+        </div>
+
+        <figure class="shot">
+          <div class="phone">
+            <div class="phone__frame">
+              <picture>
+                <source type="image/webp" srcset="assets/img/today-checkin-786.webp 786w, assets/img/today-checkin-1179.webp 1179w" sizes="(max-width: 760px) 286px, (max-width: 1080px) 393px, (max-width: 1439px) calc(31.4vw - 59px), 393px">
+                <!-- The hero phone is the largest thing above the fold: load it first. -->
+                <img src="assets/img/today-checkin-786.png" width="786" height="1704" loading="eager" fetchpriority="high"
+                     alt="Calm Crew’s Today screen on an iPhone, in Day mode, with sample data. It asks “How are you now?” with Steady selected from Calm, Steady, Choppy, Rough and Storm, and the middle of five energy levels selected between Low and High. The header shows a 5 day streak. Below are the line “Last check-in 1 day ago. View history.”, an activity counter, a player for Day 20, The long exhale, and the Today, Learn and Drop Anchor tabs.">
+              </picture>
+            </div>
+          </div>
+          <figcaption class="eyebrow caption">Sample screen.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #history — View history (Day). THE ONE CLAIM on the page. Editing rules: README.md.
+         =================================================================== -->
+    <section id="history" class="section history" aria-labelledby="history-title">
+      <div class="container history__grid">
+        <div class="history__text">
+          <div class="section-head">
+            <p class="eyebrow">View history</p>
+            <h2 class="heading" id="history-title">Your mood and energy, over time.</h2>
+          </div>
+          <p class="claim">Every check-in adds to your own record of the mood and energy you rate. Tap View history on Today to see it as bars by day, week, month or year, with your averages. Your streak sits on the same screen, and Learn shows where you are in the course. Look across the three: anything that seems to move together is a pattern, not proof of a cause.</p>
+        </div>
+
+        <figure class="shot">
+          <div class="phone">
+            <div class="phone__frame">
+              <picture>
+                <source type="image/webp" srcset="assets/img/history-week-786.webp 786w, assets/img/history-week-1179.webp 1179w" sizes="(max-width: 760px) 286px, (max-width: 1080px) 393px, (max-width: 1439px) calc(31.4vw - 59px), 393px">
+                <img src="assets/img/history-week-786.png" width="786" height="1704" loading="lazy" decoding="async"
+                     alt="Calm Crew’s Check-in history screen in Day mode, set to Week, with sample data for 14 to 20 September 2026. Pairs of bars show self-rated energy and mood for each day on a scale of 1 to 5, with no check-in on Wednesday. The averages read Energy 2.8 and Mood 3.7, the header shows a 5 day streak, and a key reads “A score of 5 is best overall. Energy: High, Mood: Calm.” Energy and mood by day: Monday 3 and 4, Tuesday 2 and 2, Thursday 3 and 4, Friday 2 and 3, Saturday about 2.5 and 4, Sunday 4 and 5.">
+              </picture>
+            </div>
+          </div>
+          <figcaption class="eyebrow caption">Sample data</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #at-sea — At sea (Night)
+         =================================================================== -->
+    <section id="at-sea" class="section band-night" aria-labelledby="at-sea-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">The app for crew at sea.</p>
+          <h2 class="heading" id="at-sea-title">On board. Offline.</h2>
+        </div>
+
+        <div class="at-sea__grid">
+          <figure class="shot">
+            <!-- The same screen in Day and in Night, Night in front. -->
+            <div class="phone-pair">
+              <div class="phone">
+                <div class="phone__frame">
+                  <picture>
+                    <source type="image/webp" srcset="assets/img/today-saved-day-786.webp 786w, assets/img/today-saved-day-1179.webp 1179w" sizes="(max-width: 760px) 182px, 393px">
+                    <img src="assets/img/today-saved-day-786.png" width="786" height="1704" loading="lazy" decoding="async"
+                         alt="The Today screen in Day mode, sand with deep-navy type, with sample data: a check-in just saved, Steady and the middle energy level selected, a little confetti, and the line “Last check-in just now. View history.”">
+                  </picture>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="phone__frame">
+                  <picture>
+                    <source type="image/webp" srcset="assets/img/today-saved-night-786.webp 786w, assets/img/today-saved-night-1179.webp 1179w" sizes="(max-width: 760px) 182px, 393px">
+                    <img src="assets/img/today-saved-night-786.png" width="786" height="1704" loading="lazy" decoding="async"
+                         alt="The same Today screen in Night mode, deep navy with sand type, with the same sample data.">
+                  </picture>
+                </div>
+              </div>
+            </div>
+            <figcaption class="eyebrow caption">Sample screens.</figcaption>
+          </figure>
+
+          <ul class="stack" role="list">
+            <li class="card">
+              <h3 class="title">No signal needed</h3>
+              <p>For iCloud sync backup, Internet is required.</p>
+            </li>
+            <li class="card">
+              <h3 class="title">Sync to iCloud</h3>
+              <p>iCloud sync is optional.</p>
+            </li>
+            <li class="card">
+              <h3 class="title">Day and Night</h3>
+              <p>Easy on your eyes.</p>
+            </li>
+            <li class="card">
+              <h3 class="title">Reminders</h3>
+              <p>Only if and when you want them.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #course — The course (Day). Card titles are an eyebrow plus an h3,
+         so screen readers do not read out middle dots.
+         =================================================================== -->
+    <section id="course" class="section course" aria-labelledby="course-title">
+      <div class="container">
+        <div class="course__top">
+          <div class="course__text">
+            <div class="section-head">
+              <p class="eyebrow">The course</p>
+              <h2 class="heading" id="course-title">Four chapters.</h2>
+              <p class="lead">Teachings, practices and short guides by Libby Pickett.</p>
+            </div>
+            <div class="prose">
+              <p>At its centre is The Core Journey. In the pilot, the programme runs for eight weeks.</p>
+            </div>
+          </div>
+
+          <figure class="shot">
+            <!-- Two phones, the second about 96px over the first, as in Figma. -->
+            <div class="phone-pair">
+              <div class="phone">
+                <div class="phone__frame">
+                  <picture>
+                    <source type="image/webp" srcset="assets/img/learn-index-786.webp 786w, assets/img/learn-index-1179.webp 1179w" sizes="(max-width: 760px) 182px, 393px">
+                    <img src="assets/img/learn-index-786.png" width="786" height="1704" loading="lazy" decoding="async"
+                         alt="The Learn screen in Day mode, with sample data: overall progress at 35%, Chapter 1, Understand your nervous system, marked Done, and Chapter 2, The Core Journey, at 29%. A mini player for Chapter 2, Module 2, Your personal polyvagal map, sits above the tabs.">
+                  </picture>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="phone__frame">
+                  <picture>
+                    <source type="image/webp" srcset="assets/img/learn-chapter-2-786.webp 786w, assets/img/learn-chapter-2-1179.webp 1179w" sizes="(max-width: 760px) 182px, 393px">
+                    <img src="assets/img/learn-chapter-2-786.png" width="786" height="1704" loading="lazy" decoding="async"
+                         alt="Chapter 2, The Core Journey, open in Learn in Day mode, with sample data: 6 of 21 recordings, 29%. It lists Pre-boarding, 3 of 4 listened; Module 1, Welcome aboard, 2 of 2 listened; and Module 2, Meet your vagus nerve, 1 of 2 listened.">
+                  </picture>
+                </div>
+              </div>
+            </div>
+            <figcaption class="eyebrow caption">Sample screens. The recordings are still to be made.</figcaption>
+          </figure>
+        </div>
+
+        <ul class="cards cards--2" role="list">
+          <li class="card">
+            <p class="eyebrow">Chapter 1</p>
+            <h3 class="title">Understand your nervous system</h3>
+            <p>The three states your nervous system moves between, how it senses safety and danger (neuroception), and small cues of safety (glimmers). Two teachings to begin with.</p>
+          </li>
+          <li class="card">
+            <p class="eyebrow">Chapter 2</p>
+            <h3 class="title">The Core Journey</h3>
+            <p>Pre-boarding, then seven modules, each a teaching with its practice:</p>
+            <ol class="module-list">
+              <li>Welcome aboard</li>
+              <li>Meet your vagus nerve</li>
+              <li>Breathing below deck</li>
+              <li>Sleep in a world that never stops</li>
+              <li>Calm under pressure</li>
+              <li>Somatic tools for small spaces</li>
+              <li>Your long game</li>
+            </ol>
+          </li>
+          <li class="card">
+            <p class="eyebrow">Chapter 3</p>
+            <h3 class="title">The Leadership Track</h3>
+            <p>For heads of department and captains. Six lessons, each a teaching and a practice. How it opens is still being decided.</p>
+          </li>
+          <li class="card">
+            <p class="eyebrow">Chapter 4</p>
+            <h3 class="title">Practice library</h3>
+            <p>Short practices, planned in ten families, from orienting and breath to stillness. Opens when you finish The Core Journey.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #app — The app (Night)
+         =================================================================== -->
+    <section id="app" class="section band-night" aria-labelledby="app-title">
+      <div class="container app__grid">
+        <div class="app__text">
+          <div class="section-head">
+            <p class="eyebrow">The app</p>
+            <h2 class="heading" id="app-title">Three tabs. That is the whole app.</h2>
+            <p class="lead">Today, Learn and Drop Anchor sit along the bottom of the screen. Settings at your command with the three dots in the corner.</p>
+          </div>
+
+          <ul class="stack" role="list">
+            <li class="card">
+              <h3 class="title">Today</h3>
+              <p>One question: “How are you now?” Tap a sea state — Calm, Steady, Choppy, Rough or Storm — and an energy level from Low to High. Two taps, and it is saved. Check in as often as you like.</p>
+            </li>
+            <li class="card">
+              <h3 class="title">Learn</h3>
+              <p>The course, in four chapters. Each module of The Core Journey pairs a teaching with its practice. The recordings are still to be made.</p>
+            </li>
+            <li class="card">
+              <h3 class="title">Drop Anchor</h3>
+              <p>A separate tab for the hard moments. More about it below.</p>
+            </li>
+          </ul>
+        </div>
+
+        <figure class="shot">
+          <div class="phone">
+            <div class="phone__frame">
+              <picture>
+                <source type="image/webp" srcset="assets/img/today-saved-night-786.webp 786w, assets/img/today-saved-night-1179.webp 1179w" sizes="(max-width: 760px) 286px, (max-width: 1080px) 393px, (max-width: 1439px) calc(31.4vw - 59px), 393px">
+                <img src="assets/img/today-saved-night-786.png" width="786" height="1704" loading="lazy" decoding="async"
+                     alt="The Today screen in Night mode, with sample data, a moment after a check-in: a little confetti falls around the energy row, Steady and the middle energy level are selected, and the line below reads “Last check-in just now. View history.” The header shows a 5 day streak.">
+              </picture>
+            </div>
+          </div>
+          <figcaption class="eyebrow caption">Sample screen.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #drop-anchor — Drop Anchor (Night)
+         =================================================================== -->
+    <section id="drop-anchor" class="section band-night" aria-labelledby="drop-anchor-title">
+      <div class="container anchor__grid">
+        <div class="anchor-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+            <circle cx="12" cy="4.5" r="2.5"/>
+            <path d="M12 7v14"/>
+            <path d="M5.5 12H3a9 9 0 0 0 18 0h-2.5"/>
+          </svg>
+        </div>
+        <div class="anchor__text">
+          <div class="section-head">
+            <p class="eyebrow">Drop Anchor</p>
+            <h2 class="heading" id="drop-anchor-title">For the hard moments.</h2>
+            <p class="lead">The third tab is a quiet corner of the app. No streak, no settings, no alarm colours, nothing moving.</p>
+          </div>
+          <div class="prose">
+            <p>A few short practices for settling yourself, then routes to a person: someone on board, the bridge, and a seafarers’ helpline whose details are being confirmed before the pilot. There is a short page, too, for a crewmate helping someone else.</p>
+            <p class="note">Calm Crew is not a crisis or emergency service. In an emergency at sea, go to the bridge. Ashore, call the local emergency number.</p>
+            <p>The practices are still to be recorded.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #privacy — Privacy (Day)
+         =================================================================== -->
+    <section id="privacy" class="section" aria-labelledby="privacy-title">
+      <div class="container privacy__grid">
+        <div>
+          <div class="section-head">
+            <p class="eyebrow">Privacy</p>
+            <h2 class="heading" id="privacy-title">What management sees.</h2>
+          </div>
+          <p class="display privacy__promise">Anonymous. Now, and later.<br>By design.</p>
+        </div>
+
+        <!-- Copy is the client's own (manual Figma edit, 1 Oct 2026). Before launch it
+             must match what the app really does: see README, launch checklist. -->
+        <ul class="cards cards--2" role="list">
+          <li class="card">
+            <h3 class="title">Anonymous</h3>
+            <p>Your name and identifiable data is not shared.</p>
+          </li>
+          <li class="card">
+            <h3 class="title">Your Data. Your iCloud sync.</h3>
+            <p>You own your data. Always.</p>
+          </li>
+          <li class="card card--wide">
+            <h3 class="title title--bold">What management sees.</h3>
+            <p>Aggregated data from the whole crew to have a feel for how’s everyone doing in <strong>Energy levels + Mood</strong>, the more the crew utilizes the Calm Crew app. <em>This requires an additional Bluetooth connection authorization by the user.</em></p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #pilot — The pilot (Night). Each call to action preselects its interest
+         in the form.
+         =================================================================== -->
+    <section id="pilot" class="section pilot band-night" aria-labelledby="pilot-title">
+      <div class="container">
+        <div class="split">
+          <div class="section-head">
+            <p class="eyebrow">The pilot</p>
+            <h2 class="heading" id="pilot-title">A study, not a claim.</h2>
+            <p class="lead">We are not going to tell you what this does until we have measured it.</p>
+          </div>
+          <div class="prose pilot__body">
+            <p>From November 2026, around forty crew across six to ten vessels run the full eight-week programme as a formal pilot study: validated measures at four points, an independent clinical advisor, and results that will say what they say.</p>
+            <p>For the pilot, the app is iPhone only.</p>
+          </div>
+        </div>
+
+        <h3 class="title pilot__who" id="pilot-who">Who it’s for</h3>
+        <ul class="cards cards--4" role="list" aria-labelledby="pilot-who">
+          <li class="card">
+            <h4 class="title">Crew</h4>
+            <p>For the deckhand, stew, engineer or chief who intends to be good at this for a long time. Join the waiting list and you’ll hear first.</p>
+          </li>
+          <li class="card">
+            <h4 class="title">Captains and heads of department</h4>
+            <p>You carry the vessel’s load and your own, and you are the one everybody else reads for weather. The Leadership Track is being made for you. How it opens is still being decided. Join the waiting list to hear first.</p>
+          </li>
+          <li class="card">
+            <h4 class="title">Vessels and management</h4>
+            <p>We are looking for a handful of vessels to contribute crew to the November pilot. Founding partners get named founding status, the programme at no cost for their participating crew, and a first look at the study’s overall findings. No vessel or company sees any crew member’s own answers.</p>
+          </li>
+          <li class="card">
+            <h4 class="title">Industry advisors</h4>
+            <p>One or two senior voices — a management lead, an agency principal, a captain of standing — helping shape what this becomes.</p>
+          </li>
+        </ul>
+
+        <div class="actions" role="group" aria-label="Come in whichever way fits.">
+          <a class="btn btn--primary" href="#contact" data-interest="waitlist">Join the crew waiting list</a>
+          <a class="btn btn--secondary" href="#contact" data-interest="partner">Ask about founding partnership</a>
+          <a class="text-link" href="#contact" data-interest="advisor">Ask about the advisory board</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #about — About Libby (Day), in her own voice, plus the partner row.
+         =================================================================== -->
+    <section id="about" class="section about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="split">
+          <div class="section-head">
+            <p class="eyebrow">About Libby</p>
+            <h2 class="heading" id="about-title">Why this, and why me.</h2>
+            <p class="lead">Calm Crew comes out of five years of one-to-one practice, group work and retreats, with yacht crew and industry people among them.</p>
+          </div>
+          <div class="prose">
+            <p>I’m Libby Pickett. I teach nervous-system regulation, and I live in Palma de Mallorca.</p>
+            <p>What I kept hearing was not people asking for help. It was people asking how to keep going at this standard — how to still be sharp in month seven, and still be themselves at the end of a season.</p>
+            <ul class="links" role="list">
+              <li><a href="mailto:libby@calmcrewcoaching.com">libby@calmcrewcoaching.com</a></li>
+              <li><a href="https://www.instagram.com/calmcrewcoaching/">Instagram: @calmcrewcoaching</a></li>
+            </ul>
+            <p class="about__credit"><strong>I’m building the Calm Crew app with AI Product Leader, Pablo Rosero</strong><br>
+              <a href="https://pablorosero.me/ai" rel="noopener">Learn More <span aria-hidden="true">→</span></a></p>
+          </div>
+        </div>
+
+        <!-- LAUNCH: replace with real logos (alt = partner name) once Libby has written permission; remove this block entirely if none are confirmed -->
+        <div class="partners" data-placeholder="partners">
+          <hr class="rule">
+          <h3 class="eyebrow">Partners</h3>
+          <ul class="cards cards--4" role="list">
+            <li class="partner-tile eyebrow">Partner logo — to be supplied by Libby</li>
+            <li class="partner-tile eyebrow">Partner logo — to be supplied by Libby</li>
+            <li class="partner-tile eyebrow">Partner logo — to be supplied by Libby</li>
+            <li class="partner-tile eyebrow">Partner logo — to be supplied by Libby</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #contact — Get in touch (Night). Netlify form "contact". Every call to
+         action on the page lands here; its data-interest sets the select.
+         =================================================================== -->
+    <section id="contact" class="section band-night" aria-labelledby="contact-title">
+      <div class="container split contact__split">
+        <div>
+          <div class="section-head">
+            <p class="eyebrow">Get in touch</p>
+            <h2 class="heading" id="contact-title">Tell us a little about you.</h2>
+            <p class="lead">Whether you’re crew, a partner, or someone who wants to shape this — start here. I’ll reply myself.</p>
+          </div>
+          <p class="contact__after">I’ll come back to you myself, usually within a couple of days.</p>
+        </div>
+
+        <form class="form" name="contact" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact">
+          <!-- Honeypot for Netlify: hidden from everyone, so autofill cannot reach it. -->
+          <p hidden><label>Don't fill this in <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+          <div class="field">
+            <label for="name">Name</label>
+            <input class="input" id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input class="input" id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label for="role">Role, vessel or organisation <span class="optional">(optional)</span></label>
+            <input class="input" id="role" name="role" type="text">
+          </div>
+
+          <div class="field">
+            <label for="interest">I’m interested in</label>
+            <div class="select">
+              <select class="input" id="interest" name="interest" required>
+                <option value="">Choose one…</option>
+                <option value="waitlist">Joining the crew waiting list</option>
+                <option value="partner">Becoming a founding partner</option>
+                <option value="advisor">Joining the advisory board</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="words">A few words <span class="optional">(optional)</span></label>
+            <textarea class="input" id="words" name="words" rows="4"></textarea>
+          </div>
+
+          <!-- TODO(privacy-notice): link /privacy-notice here once Libby approves it -->
+          <p class="form__help" id="form-help">I’ll use your details only to reply to you and, if you join the waiting list, to tell you when Calm Crew opens to crew. Messages are kept by our website host, Netlify.</p>
+          <button class="btn btn--primary" type="submit" aria-describedby="form-help">Send</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================
+       Footer (Day): links that mirror the nav (no Drop Anchor, no History),
+       then the disclaimer and the legal line.
+       =================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <p class="brand">
+            <svg class="brand__mark" viewBox="0 0 70 70" fill="none" aria-hidden="true" focusable="false">
+              <path d="M50.38 13.62C46.7444 9.9825 42.1116 7.50489 37.0678 6.50058C32.0239 5.49627 26.7955 6.01037 22.0438 7.97785C17.2921 9.94533 13.2307 13.2778 10.3732 17.5538C7.51566 21.8298 5.99045 26.8571 5.99045 32C5.99045 37.1429 7.51566 42.1703 10.3732 46.4462C13.2307 50.7222 17.2921 54.0547 22.0438 56.0222C26.7955 57.9897 32.0239 58.5037 37.0678 57.4994C42.1116 56.4951 46.7444 54.0175 50.38 50.38" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+              <path d="M44.73 19.27C42.2124 16.7533 39.0051 15.0395 35.5136 14.3454C32.0221 13.6514 28.4032 14.0082 25.1145 15.3707C21.8258 16.7333 19.0149 19.0404 17.0373 22.0004C15.0597 24.9603 14.0042 28.4402 14.0042 32C14.0042 35.5598 15.0597 39.0397 17.0373 41.9997C19.0149 44.9596 21.8258 47.2667 25.1145 48.6293C28.4032 49.9918 32.0221 50.3486 35.5136 49.6546C39.0051 48.9605 42.2124 47.2468 44.73 44.73" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+              <path d="M39.07 24.93C37.6716 23.5312 35.8898 22.5785 33.9499 22.1924C32.01 21.8063 29.9992 22.0041 28.1717 22.7609C26.3443 23.5177 24.7823 24.7994 23.6834 26.444C22.5844 28.0885 21.9979 30.0221 21.9979 32C21.9979 33.9779 22.5844 35.9115 23.6834 37.556C24.7823 39.2006 26.3443 40.4823 28.1717 41.2391C29.9992 41.9959 32.01 42.1937 33.9499 41.8076C35.8898 41.4215 37.6716 40.4688 39.07 39.07" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span class="wordmark">Calm Crew</span>
+          </p>
+          <p class="footer__tagline">Steady at sea · calm within</p>
+        </div>
+
+        <nav class="footer__col" aria-labelledby="footer-page-title">
+          <h2 class="eyebrow" id="footer-page-title">On this page</h2>
+          <ul>
+            <li><a href="#app">The app</a></li>
+            <li><a href="#course">The course</a></li>
+            <li><a href="#at-sea">At sea</a></li>
+            <li><a href="#privacy">Privacy</a></li>
+            <li><a href="#pilot">The pilot</a></li>
+            <li><a href="#about">About Libby</a></li>
+            <li><a href="#contact">Get in touch</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__col">
+          <h2 class="eyebrow">Contact</h2>
+          <ul role="list">
+            <li><a href="mailto:libby@calmcrewcoaching.com">Email: libby@calmcrewcoaching.com</a></li>
+            <li><a href="https://www.instagram.com/calmcrewcoaching/">Instagram: @calmcrewcoaching</a></li>
+            <!-- Website privacy notice: hidden until Libby approves the notice. Then add
+                 <li><a href="/privacy-notice">Website privacy notice</a></li> -->
+            <li><a href="#top">Back to top <span aria-hidden="true">&nbsp;↑</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__disclaimer">Calm Crew is a wellbeing app and training programme. It is not a medical device or a medical, crisis or emergency service, and it does not diagnose or treat any condition. If you are struggling, talk to the medic on board or your doctor. In an emergency at sea, go to the bridge. Ashore, call the local emergency number.</p>
+        <p class="eyebrow footer__legal">© 2026 Calm Crew · Libby Pickett · Palma de Mallorca · libby@calmcrewcoaching.com · Instagram: @calmcrewcoaching</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

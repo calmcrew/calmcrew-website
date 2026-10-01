@@ -1,0 +1,84 @@
+/*
+ * DESIGN TOKENS — Calm Crew Brand v2.0, for the website
+ * =============================================================================
+ * Colours, radii and app type sizes are transcribed one-for-one from the app's
+ * src/theme/tokens.ts and the Figma file `Calm Crew — App Design V1`
+ * (key f0J6MJZNgvUgkXO1FzVUjd), collections `Brand v2.0` and `Shape options`
+ * (mode C · Capsule). Web-only sizes come from the Figma collection
+ * `Web layout` (modes Desktop / Mobile) and the `Web/*` text styles.
+ *
+ * Two modes only: Day and Night. Do not add a third mode.
+ * Steel (#547792) is never used for text. No gold, no pure white.
+ */
+
+:root {
+  /* DAY — warm sand ground, deep-water ink. ink on ground = 9.74:1. */
+  --ground: #EAE0CF;
+  --surface-raised: #F0E6D3;
+  --ink-primary: #213448;
+  --ink-secondary: #46667E; /* 4.64:1 on ground, 4.90:1 on surface-raised. Fails on selection-wash (4.22:1), so never use it as text on a hover wash. */
+  --hairline: #CFC3AE;
+  --selection-wash: #E1D6C2;
+  --selection-ring: #547792;
+  --selection-solid: #94B4C1;
+  --glass-shadow: rgb(33 52 72 / 0.14);
+  --on-primary: #EAE0CF; /* label on an ink-filled button */
+
+  /* Shape options · C · Capsule */
+  --radius-control: 999px;
+  --radius-card: 30px;
+  --radius-phone: 64px;
+  --radius-glass: 54px;
+
+  /* Touch target, above Apple's 44pt floor */
+  --touch-min: 56px;
+
+  /* Web layout · Desktop */
+  --page-gutter: 120px;
+  --page-max-width: 1200px;
+  --section-padding-y: 128px;
+  --section-stack: 48px;
+  --card-gap: 24px;
+  --card-padding: 32px;
+  --text-stack: 16px;
+
+  /* Type */
+  --font-serif: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+  --font-sans: 'Work Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --display-size: 64px;   --display-line: 72px;   /* Web/Display */
+  --heading-size: 44px;   --heading-line: 52px;   /* Web/Heading */
+  --title-size: 26px;     --title-line: 32px;     /* Web/Title */
+  --question-size: 22px;  --question-line: 28px;  /* v2/Question */
+  --lead-size: 20px;      --lead-line: 32px;      /* Web/Lead */
+  --body-size: 16px;      --body-line: 24px;      /* v2/Body — never smaller */
+  --label-size: 12px;     --label-line: 16px;     /* v2/Field label — the only text under 16 */
+}
+
+/* NIGHT — the same relationships inverted, so it keeps its character. */
+.band-night,
+:root[data-theme='night'] {
+  --ground: #213448;
+  --surface-raised: #2B4257;
+  --ink-primary: #EAE0CF;
+  --ink-secondary: #94B4C1; /* 5.79:1 on ground, 4.73:1 on surface-raised, 4.24:1 on selection-wash (fail) */
+  --hairline: #38536A;
+  --selection-wash: #2D4A5E;
+  --selection-ring: #94B4C1;
+  --selection-solid: #EAE0CF;
+  --glass-shadow: rgb(10 10 9 / 0.45);
+  --on-primary: #213448;
+}
+
+/* Web layout · Mobile */
+@media (max-width: 760px) {
+  :root {
+    --page-gutter: 20px;
+    --section-padding-y: 72px;
+    --section-stack: 32px;
+    --card-gap: 16px;
+    --card-padding: 24px;
+    --text-stack: 12px;
+    --display-size: 40px;   --display-line: 48px;
+    --heading-size: 32px;   --heading-line: 40px;
+  }
+}

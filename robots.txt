@@ -1,0 +1,4 @@
+# calmcrewcoaching.com — one public page. thanks.html and 404.html carry a
+# noindex meta tag, so they are left crawlable on purpose.
+User-agent: *
+Allow: /
