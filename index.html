@@ -44,11 +44,11 @@
   <link rel="preload" href="assets/fonts/work-sans-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- /assets/* is cached for a year (netlify.toml): bump ?v= when a file changes. -->
-  <link rel="stylesheet" href="assets/fonts/fonts.css?v=2026-10-03c">
-  <link rel="stylesheet" href="assets/css/tokens.css?v=2026-10-03c">
-  <link rel="stylesheet" href="assets/css/site.css?v=2026-10-03c">
+  <link rel="stylesheet" href="assets/fonts/fonts.css?v=2026-10-03d">
+  <link rel="stylesheet" href="assets/css/tokens.css?v=2026-10-03d">
+  <link rel="stylesheet" href="assets/css/site.css?v=2026-10-03d">
   <!-- Not deferred on purpose: it only sets a class, then waits for the DOM. -->
-  <script src="assets/js/site.js?v=2026-10-03c"></script>
+  <script src="assets/js/site.js?v=2026-10-03d"></script>
 </head>
 <body>
   <a class="skip-link btn btn--primary" href="#main">Skip to content</a>
@@ -209,6 +209,77 @@
     </section>
 
     <!-- ===================================================================
+         #app — The app (Night)
+         =================================================================== -->
+    <section id="app" class="section band-night" aria-labelledby="app-title">
+      <div class="container app__grid">
+        <div class="app__text">
+          <div class="section-head">
+            <p class="eyebrow">The app</p>
+            <h2 class="heading" id="app-title">Three tabs. That is the whole app.</h2>
+            <p class="lead">Today, Learn and S.O.S. sit along the bottom of the screen. Settings at your command with the three dots in the corner.</p>
+          </div>
+
+          <ul class="stack" role="list">
+            <li class="card">
+              <h3 class="title">Today</h3>
+              <p>One question: “How are you now?” Tap a sea state — Calm, Steady, Choppy, Rough or Storm — and an energy level from Low to High. Two taps, and it is saved. Check in as often as you like.</p>
+            </li>
+            <li class="card">
+              <h3 class="title">Learn</h3>
+              <p>The course, in four chapters. Each module of The Core Journey pairs a teaching with its practice. The recordings are still to be made.</p>
+            </li>
+            <li class="card">
+              <h3 class="title">S.O.S.</h3>
+              <p>A separate tab for the hard moments. More about it below.</p>
+            </li>
+          </ul>
+        </div>
+
+        <figure class="shot">
+          <div class="phone">
+            <div class="phone__frame">
+              <picture>
+                <source type="image/webp" srcset="assets/img/today-saved-night-v3-786.webp 786w, assets/img/today-saved-night-v3-1179.webp 1179w" sizes="(max-width: 760px) 286px, (max-width: 1080px) 393px, (max-width: 1439px) calc(31.4vw - 59px), 393px">
+                <img src="assets/img/today-saved-night-v3-786.png" width="786" height="1704" loading="lazy" decoding="async"
+                     alt="The Today screen in Night mode, with sample data, a moment after a check-in: a little confetti falls around the buttons, the Steady face and the three-dot energy level are selected, and the line below reads “Last check-in 1 day ago. View history.” The header shows a 5 day streak.">
+              </picture>
+            </div>
+          </div>
+          <figcaption class="eyebrow caption">Sample screen.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #drop-anchor — S.O.S. (Night). The tab was called Drop Anchor until the
+         app's 3 Oct 2026 design; the anchor id is kept so old links still work.
+         =================================================================== -->
+    <section id="drop-anchor" class="section band-night" aria-labelledby="drop-anchor-title">
+      <div class="container anchor__grid">
+        <div class="anchor-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+            <circle cx="12" cy="4.5" r="2.5"/>
+            <path d="M12 7v14"/>
+            <path d="M5.5 12H3a9 9 0 0 0 18 0h-2.5"/>
+          </svg>
+        </div>
+        <div class="anchor__text">
+          <div class="section-head">
+            <p class="eyebrow">S.O.S.</p>
+            <h2 class="heading" id="drop-anchor-title">For the hard moments.</h2>
+            <p class="lead">The third tab is a quiet corner of the app. No streak, no settings, no alarm colours, nothing moving.</p>
+          </div>
+          <div class="prose">
+            <p>A few short practices for settling yourself, then routes to a person: someone on board, the bridge, and a seafarers’ helpline whose details are being confirmed before the pilot. There is a short page, too, for a crewmate helping someone else.</p>
+            <p class="note">Calm Crew is not a crisis or emergency service. In an emergency at sea, go to the bridge. Ashore, call the local emergency number.</p>
+            <p>The practices are still to be recorded.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
          #course — The course (Day). Card titles are an eyebrow plus an h3,
          so screen readers do not read out middle dots.
          =================================================================== -->
@@ -287,77 +358,6 @@
     </section>
 
     <!-- ===================================================================
-         #app — The app (Night)
-         =================================================================== -->
-    <section id="app" class="section band-night" aria-labelledby="app-title">
-      <div class="container app__grid">
-        <div class="app__text">
-          <div class="section-head">
-            <p class="eyebrow">The app</p>
-            <h2 class="heading" id="app-title">Three tabs. That is the whole app.</h2>
-            <p class="lead">Today, Learn and S.O.S. sit along the bottom of the screen. Settings at your command with the three dots in the corner.</p>
-          </div>
-
-          <ul class="stack" role="list">
-            <li class="card">
-              <h3 class="title">Today</h3>
-              <p>One question: “How are you now?” Tap a sea state — Calm, Steady, Choppy, Rough or Storm — and an energy level from Low to High. Two taps, and it is saved. Check in as often as you like.</p>
-            </li>
-            <li class="card">
-              <h3 class="title">Learn</h3>
-              <p>The course, in four chapters. Each module of The Core Journey pairs a teaching with its practice. The recordings are still to be made.</p>
-            </li>
-            <li class="card">
-              <h3 class="title">S.O.S.</h3>
-              <p>A separate tab for the hard moments. More about it below.</p>
-            </li>
-          </ul>
-        </div>
-
-        <figure class="shot">
-          <div class="phone">
-            <div class="phone__frame">
-              <picture>
-                <source type="image/webp" srcset="assets/img/today-saved-night-v3-786.webp 786w, assets/img/today-saved-night-v3-1179.webp 1179w" sizes="(max-width: 760px) 286px, (max-width: 1080px) 393px, (max-width: 1439px) calc(31.4vw - 59px), 393px">
-                <img src="assets/img/today-saved-night-v3-786.png" width="786" height="1704" loading="lazy" decoding="async"
-                     alt="The Today screen in Night mode, with sample data, a moment after a check-in: a little confetti falls around the buttons, the Steady face and the three-dot energy level are selected, and the line below reads “Last check-in 1 day ago. View history.” The header shows a 5 day streak.">
-              </picture>
-            </div>
-          </div>
-          <figcaption class="eyebrow caption">Sample screen.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         #drop-anchor — S.O.S. (Night). The tab was called Drop Anchor until the
-         app's 3 Oct 2026 design; the anchor id is kept so old links still work.
-         =================================================================== -->
-    <section id="drop-anchor" class="section band-night" aria-labelledby="drop-anchor-title">
-      <div class="container anchor__grid">
-        <div class="anchor-badge" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
-            <circle cx="12" cy="4.5" r="2.5"/>
-            <path d="M12 7v14"/>
-            <path d="M5.5 12H3a9 9 0 0 0 18 0h-2.5"/>
-          </svg>
-        </div>
-        <div class="anchor__text">
-          <div class="section-head">
-            <p class="eyebrow">S.O.S.</p>
-            <h2 class="heading" id="drop-anchor-title">For the hard moments.</h2>
-            <p class="lead">The third tab is a quiet corner of the app. No streak, no settings, no alarm colours, nothing moving.</p>
-          </div>
-          <div class="prose">
-            <p>A few short practices for settling yourself, then routes to a person: someone on board, the bridge, and a seafarers’ helpline whose details are being confirmed before the pilot. There is a short page, too, for a crewmate helping someone else.</p>
-            <p class="note">Calm Crew is not a crisis or emergency service. In an emergency at sea, go to the bridge. Ashore, call the local emergency number.</p>
-            <p>The practices are still to be recorded.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================================================================
          #privacy — Privacy (Day)
          =================================================================== -->
     <section id="privacy" class="section" aria-labelledby="privacy-title">
@@ -399,15 +399,13 @@
           <div class="section-head">
             <p class="eyebrow">The pilot</p>
             <h2 class="heading" id="pilot-title">A study, not a claim.</h2>
-            <p class="lead">We are not going to tell you what this does until we have measured it.</p>
           </div>
           <div class="prose pilot__body">
-            <p>From November 2026, around forty crew across six to ten vessels run the full eight-week programme as a formal pilot study: validated measures at four points, an independent clinical advisor, and results that will say what they say.</p>
             <p>For the pilot, the app is iPhone only.</p>
           </div>
         </div>
 
-        <h3 class="title pilot__who" id="pilot-who">Who it’s for</h3>
+        <h3 class="title pilot__who" id="pilot-who">Who the Calm Crew app is for</h3>
         <ul class="cards cards--4" role="list" aria-labelledby="pilot-who">
           <li class="card">
             <h4 class="title">Crew</h4>
@@ -422,8 +420,8 @@
             <p>We are looking for a handful of vessels to contribute crew to the November pilot. Founding partners get named founding status, the programme at no cost for their participating crew, and a first look at the study’s overall findings. No vessel or company sees any crew member’s own answers.</p>
           </li>
           <li class="card">
-            <h4 class="title">Industry advisors</h4>
-            <p>One or two senior voices — a management lead, an agency principal, a captain of standing — helping shape what this becomes.</p>
+            <h4 class="title">Boat Industry Leaders</h4>
+            <p>Get your crew the calm they deserve with the Calm Crew app and track their energy and mood.</p>
           </li>
         </ul>
 

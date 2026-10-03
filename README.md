@@ -42,8 +42,11 @@ assets/img/             app screens: WebP 786w/1179w + PNG 786w fallback
 ```
 
 Section anchors, in page order: `#top` (Day), `#history` (Day, THE ONE
-CLAIM), `#at-sea` (Night), `#course` (Day), `#app` (Night), `#drop-anchor`
-(Night), `#privacy` (Day), `#pilot` (Night), `#about` (Day), `#contact` (Night).
+CLAIM), `#at-sea` (Night), `#app` (Night), `#drop-anchor` (Night, the S.O.S.
+tab), `#course` (Day), `#privacy` (Day), `#pilot` (Night), `#about` (Day),
+`#contact` (Night). Order and `#pilot` copy follow the hand edits on Figma
+page 10 (3 Oct 2026); "for easier days at sea" was left out of the Boat
+Industry Leaders card under the one-claim rule.
 The nav shows six of them (The app · The course · At sea · Privacy · The pilot
 · About Libby). Drop Anchor and History are deliberately not in the nav or the
 footer.
@@ -131,7 +134,7 @@ build step: `npx vercel deploy --prod` from this folder publishes it as is.
    `README.md` and `netlify.toml` are blocked from being served.
 
 **Caching.** Everything under `/assets/` is cached for a year. The HTML links
-CSS and JS with `?v=2026-10-03c`: when you change `site.css`, `tokens.css`,
+CSS and JS with `?v=2026-10-03d`: when you change `site.css`, `tokens.css`,
 `fonts.css` or `site.js`, bump that value in `index.html` and `404.html`. Images and fonts are not versioned, so give a changed image a new
 file name.
 
@@ -265,7 +268,7 @@ They differ from the build; captions say "Sample screen(s)." / "Sample data".
       Content-Security-Policy, X-Content-Type-Options: nosniff,
       Referrer-Policy, Permissions-Policy, X-Frame-Options and
       Strict-Transport-Security;
-      `curl -sI "https://calmcrew.app/assets/css/site.css?v=2026-10-03c"`
+      `curl -sI "https://calmcrew.app/assets/css/site.css?v=2026-10-03d"`
       shows `Cache-Control: public, max-age=31536000, immutable`; the HTML
       does NOT have that header.
 - [ ] `curl -sI https://calmcrew.app/README.md`, `/netlify.toml` and
