@@ -51,7 +51,9 @@ footer.
 How the page is put together:
 
 - A Night band is `class="band-night"` on a section. tokens.css redefines the
-  colour custom properties there, so the same CSS draws Day and Night.
+  colour custom properties there, so the same CSS draws Day and Night. All
+  small text on a Night band (eyebrows, leads, body, card text, captions,
+  links) is white (`--black`, the app's Night maximum-contrast ink).
 - Phone mock-ups are drawn in CSS (10px bezel, 64/54px radii, token shadow at
   the 413px design size). They scale with their container, so pairs and
   mobile phones keep the same proportions.
@@ -129,7 +131,7 @@ build step: `npx vercel deploy --prod` from this folder publishes it as is.
    `README.md` and `netlify.toml` are blocked from being served.
 
 **Caching.** Everything under `/assets/` is cached for a year. The HTML links
-CSS and JS with `?v=2026-10-03b`: when you change `site.css`, `tokens.css`,
+CSS and JS with `?v=2026-10-03c`: when you change `site.css`, `tokens.css`,
 `fonts.css` or `site.js`, bump that value in `index.html` and `404.html`. Images and fonts are not versioned, so give a changed image a new
 file name.
 
@@ -200,12 +202,8 @@ They differ from the build; captions say "Sample screen(s)." / "Sample data".
 
 ### Copy to confirm with Libby
 
-- [ ] **Tab name: Drop Anchor or S.O.S.?** Since the 3 Oct 2026 design the app
-      labels the third tab and its screen "S.O.S." (lifebuoy icon), and the
-      screenshots show it. The copy still says "Drop Anchor" (the `#app` lead
-      and card, and the whole `#drop-anchor` section). "S.O.S." reads as an
-      emergency service, so if the copy changes, the not-a-crisis-service line
-      matters even more. Decide the name, then align copy and anchors.
+- [x] **Tab name: S.O.S.** (decided 3 Oct 2026). The `#app` card, its lead and the
+      section eyebrow say S.O.S.; the section keeps the `#drop-anchor` id.
 
 - [ ] History: the claim is correlation, not cause ("a pattern, not proof of a
       cause"), and History does not overlay listening — "Look across the
@@ -267,7 +265,7 @@ They differ from the build; captions say "Sample screen(s)." / "Sample data".
       Content-Security-Policy, X-Content-Type-Options: nosniff,
       Referrer-Policy, Permissions-Policy, X-Frame-Options and
       Strict-Transport-Security;
-      `curl -sI "https://calmcrew.app/assets/css/site.css?v=2026-10-03b"`
+      `curl -sI "https://calmcrew.app/assets/css/site.css?v=2026-10-03c"`
       shows `Cache-Control: public, max-age=31536000, immutable`; the HTML
       does NOT have that header.
 - [ ] `curl -sI https://calmcrew.app/README.md`, `/netlify.toml` and
