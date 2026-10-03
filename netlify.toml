@@ -1,4 +1,5 @@
-# Netlify configuration for calmcrewcoaching.com
+# Netlify configuration (optional host). The live site, calmcrew.app, is published
+# with Figma Sites; this keeps the code version deployable on Netlify too.
 # =============================================================================
 # Plain static site: no build step. The folder is published as it is.
 

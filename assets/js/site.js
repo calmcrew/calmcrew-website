@@ -1,12 +1,10 @@
 /*
  * SITE SCRIPT — Calm Crew one-page website
  * =============================================================================
- * Three small jobs, all progressive: the page works without this file.
- *   1. The Menu button that the header collapses to on smaller screens.
- *   2. Calls to action carrying `data-interest` preselect the form's
- *      "I'm interested in" option and put focus on the Name field.
- *   3. Form problems are written under each field and stay there until fixed,
- *      instead of the browser's short-lived bubbles.
+ * One small job, progressive: the page works without this file.
+ *   The Menu button that the header collapses to on smaller screens.
+ * (The contact form and its helpers were removed on 3 Oct 2026: calmcrew.app is
+ * published with Figma Sites, which has no forms, so the page links to email.)
  *
  * Loaded in <head> without `defer`, so the `js` class is on <html> before the
  * first paint and the collapsed menu never flashes open. The rest waits for
@@ -18,8 +16,7 @@
   document.documentElement.classList.add('js');
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  // Mirror the breakpoints in site.css: the full header nav from 1280px, and
-  // two-column sections (the contact form beside its heading) above 1080px.
+  // Mirror the breakpoint in site.css: the full header nav from 1280px.
   var wideHeader = window.matchMedia('(min-width: 1280px)');
   var stacked = window.matchMedia('(max-width: 1080px)');
 
@@ -109,142 +106,8 @@
     });
   }
 
-  /* ---------------------------------------------------------------------------
-   * 2. Calls to action that preselect the form
-   * The interest comes from the clicked link's data attribute, never from the
-   * URL, so a shared link cannot arrive with a choice already made.
-   * ------------------------------------------------------------------------- */
-  function initInterestLinks() {
-    var select = document.getElementById('interest');
-    var nameField = document.getElementById('name');
-    var contact = document.getElementById('contact');
-    if (!select || !nameField || !contact) return;
-
-    document.addEventListener('click', function (event) {
-      var link = event.target.closest('a[data-interest]');
-      if (!link) return;
-
-      // Leave modified clicks (new tab, new window) to the browser.
-      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-
-      event.preventDefault();
-      select.value = link.getAttribute('data-interest');
-      // Let the form's own listeners (the error messages) see the new value.
-      select.dispatchEvent(new Event('change', { bubbles: true }));
-
-      // Side by side, the section's top shows the heading and the Name field
-      // together. Stacked, the heading pushes the form down, so bring the form
-      // itself to the top (the html scroll-padding keeps it below the header).
-      var target = stacked.matches ? select.form : contact;
-      target.scrollIntoView({
-        behavior: reduceMotion.matches ? 'auto' : 'smooth',
-        block: 'start'
-      });
-
-      // Keep the address bar and the Back button honest about where we are.
-      if (window.location.hash !== '#contact' && window.history.pushState) {
-        window.history.pushState(null, '', '#contact');
-      }
-
-      // Focus without a second jump; the scroll above brings the field into view.
-      nameField.focus({ preventScroll: true });
-    });
-  }
-
-  /* ---------------------------------------------------------------------------
-   * 3. Form problems that stay on the page
-   * Without this script the browser checks `required` and `type=email` itself.
-   * With it, the browser's own check still decides what is wrong, and its own
-   * message (validationMessage) is written under the field, so the page adds
-   * no wording of its own. The message stays until the field is fixed.
-   * ------------------------------------------------------------------------- */
-  function initFormErrors() {
-    var form = document.querySelector('form[name="contact"]');
-    if (!form) return;
-
-    form.setAttribute('novalidate', '');
-
-    function errorFor(field) {
-      return document.getElementById(field.id + '-error');
-    }
-
-    function describedBy(field, id, add) {
-      var ids = (field.getAttribute('aria-describedby') || '').split(/\s+/).filter(function (value) {
-        return value && value !== id;
-      });
-      if (add) ids.push(id);
-      if (ids.length) {
-        field.setAttribute('aria-describedby', ids.join(' '));
-      } else {
-        field.removeAttribute('aria-describedby');
-      }
-    }
-
-    function showError(field) {
-      var error = errorFor(field);
-      if (!error) {
-        error = document.createElement('p');
-        error.className = 'field__error';
-        error.id = field.id + '-error';
-        field.closest('.field').appendChild(error);
-        describedBy(field, error.id, true);
-      }
-      error.textContent = field.validationMessage;
-      field.setAttribute('aria-invalid', 'true');
-    }
-
-    function clearError(field) {
-      var error = errorFor(field);
-      if (error) {
-        describedBy(field, error.id, false);
-        error.parentNode.removeChild(error);
-      }
-      field.removeAttribute('aria-invalid');
-    }
-
-    // The visible fields the browser would check (the honeypot has no id).
-    function checkedFields() {
-      return Array.prototype.filter.call(form.elements, function (element) {
-        return element.willValidate && element.id && element.closest('.field');
-      });
-    }
-
-    form.addEventListener('submit', function (event) {
-      var firstInvalid = null;
-      checkedFields().forEach(function (field) {
-        if (field.checkValidity()) {
-          clearError(field);
-        } else {
-          showError(field);
-          if (!firstInvalid) firstInvalid = field;
-        }
-      });
-      if (firstInvalid) {
-        event.preventDefault();
-        firstInvalid.focus();
-      }
-    });
-
-    // Once a field has been flagged, keep its message current as it changes,
-    // and remove it as soon as the field is fine.
-    function recheck(event) {
-      var field = event.target;
-      if (!field.id || field.getAttribute('aria-invalid') !== 'true') return;
-      if (field.checkValidity()) {
-        clearError(field);
-      } else {
-        showError(field);
-      }
-    }
-
-    form.addEventListener('input', recheck);
-    form.addEventListener('change', recheck);
-  }
-
   function init() {
     initMenu();
-    initInterestLinks();
-    initFormErrors();
   }
 
   if (document.readyState === 'loading') {

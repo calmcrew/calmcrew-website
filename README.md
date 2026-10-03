@@ -1,6 +1,6 @@
-# calmcrewcoaching.com
+# calmcrew.app
 
-The one-page website for **Calm Crew**, Libby Pickett's iPhone app and course
+The one-page website for **Calm Crew** (calmcrew.app), Libby Pickett's iPhone app and course
 for superyacht crew. Plain static HTML, CSS and a little vanilla JavaScript:
 no build step, no framework, and no requests to any other domain (fonts are
 self-hosted; there are no analytics, CDNs or embeds).
@@ -13,7 +13,7 @@ self-hosted; there are no analytics, CDNs or embeds).
 - **3 Oct 2026 design update** (Figma page "09 · Prototype — design changes"):
   the phone screens are the new app screens (face and dot check-in buttons,
   the S.O.S. tab), titles are Newsreader ExtraBold in `--black`, secondary
-  buttons and form fields are the app's white chip with a 1.5px slate outline,
+  buttons are the app's white chip with a 1.5px slate outline,
   inline links take the app's slate underline, and `--selection-solid` is
   #6E97AA. Screen images carry a `-v3` suffix so the year-long asset cache
   cannot serve the old ones.
@@ -24,7 +24,6 @@ self-hosted; there are no analytics, CDNs or embeds).
 
 ```
 index.html              the page
-thanks.html             shown after the contact form is sent (/thanks)
 404.html                not-found page (root-absolute paths on purpose)
 netlify.toml            headers (CSP, security, caching); keeps README.md and
                         netlify.toml from being served
@@ -32,7 +31,7 @@ robots.txt
 favicon.ico             16/32/48px, for older browsers and link-preview crawlers
 assets/css/tokens.css   design tokens: every colour, space and type size
 assets/css/site.css     layout and components (no colours of its own)
-assets/js/site.js       Menu button, form preselect, form error messages;
+assets/js/site.js       the Menu button only;
                         the page works without it
 assets/fonts/           Newsreader (one variable file, 200–800: Light 300 text,
                         ExtraBold 800 titles), Work Sans
@@ -56,17 +55,15 @@ How the page is put together:
 - Phone mock-ups are drawn in CSS (10px bezel, 64/54px radii, token shadow at
   the 413px design size). They scale with their container, so pairs and
   mobile phones keep the same proportions.
-- Every call to action that should preselect the form has
-  `data-interest="waitlist|partner|advisor"`. site.js sets the select and moves
-  focus to Name. The choice never goes in the URL.
+- **No form (3 Oct 2026).** calmcrew.app is published with Figma Sites, which
+  has no forms, so `#contact` is an "Email Libby" button and the address as a
+  `mailto:` link (subject "Calm Crew"). Every call to action scrolls there.
+  Nothing is collected or stored by the site. The old Netlify form, its
+  thank-you page and its JavaScript are in the git history (commit a5d1bf5)
+  if a form host is ever chosen.
 - Breakpoints: 1359px (header links tighten), 1279px (header collapses to a
   Menu button), 1080px (side-by-side sections stack), 760px (mobile tokens,
-  single column). site.js repeats the 1280px and 1080px values; change them
-  together.
-- With JavaScript, the form shows each problem under its field and keeps it
-  there until it is fixed. The wording is the browser's own (its
-  `validationMessage`), so the page adds no copy of its own; without
-  JavaScript the browser's usual bubbles appear instead.
+  single column). site.js repeats the 1280px value; change them together.
 - Editing notes that used to sit in the page source: Drop Anchor has no screen
   because the Figma render does not match the build; At sea describes offline
   audio as design intent, because no recording exists yet; the Drop Anchor
@@ -78,7 +75,7 @@ How the page is put together:
 
 ### Deliberate differences from Figma
 
-- Form fields and secondary buttons use the app's 3 Oct 2026 chip: a `--white`
+- Secondary buttons use the app's 3 Oct 2026 chip: a `--white`
   surface with a 1.5px `--ink-secondary` outline (4.64:1 Day / 5.79:1 Night
   against the ground, above the 3:1 WCAG asks for control boundaries).
 - The header keeps a 1px hairline along its bottom edge (Figma has none),
@@ -99,32 +96,33 @@ python3 -m http.server 8000
 # open http://localhost:8000/
 ```
 
-The form cannot be sent locally: `python3 -m http.server` does not accept POST.
-Open `http://localhost:8000/thanks.html` to see the thank-you page.
-
 The local server does not apply netlify.toml, so the CSP and other headers are
 only enforced on Netlify. Check the browser console on the first deploy
 preview.
 
-## Deploy on Netlify
+## Where it is published
+
+**calmcrew.app is published with Figma Sites** (decided 3 Oct 2026), from the
+Figma file *Calm Crew — App Design V1*, page "10 · Figma Sites — calmcrew.app",
+which mirrors this code: the email link instead of a form, no partner row, and
+the phone screens as images. The step-by-step (Sites settings, alt text, DNS
+records) is on that page's checklist card. This repository is the code version
+of the same page, and can still be hosted on Netlify as below.
+
+## Deploy on Netlify (optional)
 
 1. Create a site from this folder (drag-and-drop the folder in the Netlify UI,
    or connect the Git repository). There is no build command; the publish
    directory is the repository root (`netlify.toml` already says so).
-2. **Forms:** in *Site configuration → Forms*, make sure form detection is on.
-   After the first deploy a form called `contact` should be listed. Set up an
-   email notification for it so Libby gets each message.
-3. **Domain:** add `calmcrewcoaching.com` (and `www`) under *Domain management*
-   and let Netlify issue the HTTPS certificate.
-4. Netlify serves `/thanks` from `thanks.html` and uses `404.html` for anything
-   missing (it does that by itself; there is deliberately no catch-all rule,
-   which could catch the form's POST). `README.md` and `netlify.toml` are
-   blocked from being served.
+2. **Domain:** add the domain (and `www`) under *Domain management* and let
+   Netlify issue the HTTPS certificate. calmcrew.app is on Figma Sites, so use
+   Netlify only for a staging or alternative copy.
+3. Netlify uses `404.html` for anything missing (it does that by itself).
+   `README.md` and `netlify.toml` are blocked from being served.
 
 **Caching.** Everything under `/assets/` is cached for a year. The HTML links
-CSS and JS with `?v=2026-10-03`: when you change `site.css`, `tokens.css`,
-`fonts.css` or `site.js`, bump that value in `index.html`, `thanks.html` and
-`404.html`. Images and fonts are not versioned, so give a changed image a new
+CSS and JS with `?v=2026-10-03b`: when you change `site.css`, `tokens.css`,
+`fonts.css` or `site.js`, bump that value in `index.html` and `404.html`. Images and fonts are not versioned, so give a changed image a new
 file name.
 
 **CSP.** The Content-Security-Policy allows only this site's own origin. Inline
@@ -138,15 +136,11 @@ the site goes public.
 
 ### Blockers
 
-- [ ] **BLOCKER — Website privacy notice (GDPR Art. 13).** The contact form
-      must not go live without it: who Libby is, the purpose, the legal basis,
-      how long details are kept, processors and transfers out of the EU
-      (Netlify is US-based; name Kit/ConvertKit too if the waiting list moves
-      there). Then:
-      - link it in the form help text (search `TODO(privacy-notice)` in
-        `index.html`);
-      - un-comment the "Website privacy notice" link in the footer;
-      - confirm the help text above Send is accurate.
+- [ ] **BLOCKER — Website privacy notice.** There is no form any more, but
+      calmcrew.app on Figma Sites is hosted in the US (AWS, Cloudflare) and
+      sets a Cloudflare cookie, so the site still needs a short privacy page:
+      who Libby is, what the host processes, and how email to her is handled.
+      Then un-comment the "Website privacy notice" link in the footer.
 - [ ] **BLOCKER — The History section (the one claim).** The deck ships this
       section only once Pablo's fix to `app/history.tsx` is in the build: Week
       buckets are keyed by weekday letter, so Tuesday/Thursday and
@@ -169,16 +163,12 @@ the site goes public.
       iCloud sync backup, Internet is required." and "Sync to iCloud — iCloud
       sync is optional."). iCloud sync is not built yet; ship it or change the
       cards.
-- [ ] **BLOCKER — Partner logos.** The four tiles in `#about` are placeholders
-      (`data-placeholder="partners"`). Replace them with real logos only with
-      each partner's written permission (alt text = the partner's name, without
-      the word "logo"), or delete the whole block, rule included. Hiding it
-      with CSS is not enough.
-- [ ] **BLOCKER — Form check on the live site.** After deploy, confirm Netlify
-      lists the `contact` form, then send one test from Chrome with a saved
-      address profile autofilled (the honeypot is now `bot-field`, hidden with
-      the `hidden` attribute, replacing the old `company` field that autofill
-      could fill). Check it arrives and lands on /thanks.
+- [ ] **Partner logos.** The placeholder row was removed on 3 Oct 2026. Add
+      real logos to `#about` (see the comment there) only with each partner's
+      written permission; alt text = the partner's name, without "logo".
+- [ ] **Email link check.** On the live site, tap "Email Libby" on an iPhone
+      and on a desktop: the mail app opens to libby@calmcrewcoaching.com with
+      the subject "Calm Crew".
 
 ### Screens (flagged to the developer separately)
 
@@ -240,13 +230,6 @@ They differ from the build; captions say "Sample screen(s)." / "Sample data".
 - [ ] All industry statistics and the "What gets better" list were removed
       under the one-claim rule. Should the commercial case live in a separate
       document for vessels and management?
-- [ ] Form error messages. Today they are the browser's own wording ("Please
-      fill out this field." and so on, in the visitor's browser language). If
-      Libby wants house wording, suggested: "Please add your name.", "Please
-      add an email address, like name@example.com." and "Please choose one."
-      Optionally, a hidden status line could tell screen-reader users which
-      option a button chose ("I'm interested in" is set silently today).
-      Both are new copy and need her approval.
 - [ ] History caption: the build overrides say "Sample data" (no full stop,
       as in Figma); the deck and the other captions use a full stop ("Sample
       data."). Pick one.
@@ -272,23 +255,20 @@ They differ from the build; captions say "Sample screen(s)." / "Sample data".
       WhatsApp, iMessage) to confirm `og-image.png` and the texts show.
 - [ ] Final accessibility pass on the live site: keyboard only, VoiceOver on
       iPhone, 200% zoom, and an automated check (axe or Lighthouse).
-- [ ] Headers on the live site: `curl -sI https://calmcrewcoaching.com/` shows
+- [ ] Headers on the live site: `curl -sI https://calmcrew.app/` shows
       Content-Security-Policy, X-Content-Type-Options: nosniff,
       Referrer-Policy, Permissions-Policy, X-Frame-Options and
       Strict-Transport-Security;
-      `curl -sI "https://calmcrewcoaching.com/assets/css/site.css?v=2026-10-03"`
+      `curl -sI "https://calmcrew.app/assets/css/site.css?v=2026-10-03b"`
       shows `Cache-Control: public, max-age=31536000, immutable`; the HTML
       does NOT have that header.
-- [ ] `curl -sI https://calmcrewcoaching.com/README.md`, `/netlify.toml` and
+- [ ] `curl -sI https://calmcrew.app/README.md`, `/netlify.toml` and
       `/no-such-page` each return HTTP 404 and the custom not-found page.
 - [ ] Open the live page with DevTools: the Console shows no
       Content-Security-Policy errors, and the Network panel shows no request
       to any other domain.
-- [ ] Make the apex `calmcrewcoaching.com` the primary domain in Netlify so
+- [ ] Make the apex `calmcrew.app` the primary domain in Netlify so
       that `www` 301s to it (canonical and og:url use the apex).
 - [ ] Lighthouse (mobile) on the live URL: LCP under 2.5 s, CLS 0.
-- [ ] After the test form send, check Netlify → Forms → Spam submissions as
-      well as Verified, and check the plan's monthly form-submission
-      allowance.
 - [x] An `apple-touch-icon` PNG (180×180) for iPhone home screens, and a
       root `favicon.ico`, next to the SVG favicon.

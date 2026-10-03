@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Calm Crew — calmcrewcoaching.com
+  Calm Crew — calmcrew.app
   One static page. Day sections sit on Sand; `band-night` sections invert
   (see tokens.css). Editing rules for the copy: README.md.
 -->
@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Calm Crew — Steady at sea · calm within</title>
   <meta name="description" content="An iPhone app for superyacht crew: a two-tap check-in, a course by Libby Pickett, and a tab for the hard moments. Pilot study from November 2026.">
-  <link rel="canonical" href="https://calmcrewcoaching.com/">
+  <link rel="canonical" href="https://calmcrew.app/">
 
   <!-- Browser chrome colours. Meta tags cannot read CSS, so these repeat the
        Day ground and Night ground from tokens.css; change both together. -->
@@ -24,10 +24,10 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Calm Crew">
   <meta property="og:locale" content="en_GB">
-  <meta property="og:url" content="https://calmcrewcoaching.com/">
+  <meta property="og:url" content="https://calmcrew.app/">
   <meta property="og:title" content="Calm Crew — nervous-system training for superyacht crew">
   <meta property="og:description" content="A daily check-in, a course in four chapters, and nothing your captain can see. Opens to crew after the November 2026 pilot study.">
-  <meta property="og:image" content="https://calmcrewcoaching.com/assets/brand/og-image.png">
+  <meta property="og:image" content="https://calmcrew.app/assets/brand/og-image.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -35,7 +35,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Calm Crew — nervous-system training for superyacht crew">
   <meta name="twitter:description" content="A daily check-in, a course in four chapters, and nothing your captain can see. Opens to crew after the November 2026 pilot study.">
-  <meta name="twitter:image" content="https://calmcrewcoaching.com/assets/brand/og-image.png">
+  <meta name="twitter:image" content="https://calmcrew.app/assets/brand/og-image.png">
   <meta name="twitter:image:alt" content="The Calm Crew logo mark and name, with the tagline “Steady at sea · calm within”, on a sand background.">
 
   <!-- Self-hosted fonts: no request leaves this domain. Preload the two faces
@@ -44,11 +44,11 @@
   <link rel="preload" href="assets/fonts/work-sans-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- /assets/* is cached for a year (netlify.toml): bump ?v= when a file changes. -->
-  <link rel="stylesheet" href="assets/fonts/fonts.css?v=2026-10-03">
-  <link rel="stylesheet" href="assets/css/tokens.css?v=2026-10-03">
-  <link rel="stylesheet" href="assets/css/site.css?v=2026-10-03">
+  <link rel="stylesheet" href="assets/fonts/fonts.css?v=2026-10-03b">
+  <link rel="stylesheet" href="assets/css/tokens.css?v=2026-10-03b">
+  <link rel="stylesheet" href="assets/css/site.css?v=2026-10-03b">
   <!-- Not deferred on purpose: it only sets a class, then waits for the DOM. -->
-  <script src="assets/js/site.js?v=2026-10-03"></script>
+  <script src="assets/js/site.js?v=2026-10-03b"></script>
 </head>
 <body>
   <a class="skip-link btn btn--primary" href="#main">Skip to content</a>
@@ -81,7 +81,7 @@
             <li><a href="#about">About Libby</a></li>
           </ul>
         </nav>
-        <a class="btn btn--primary" href="#contact" data-interest="waitlist">Join the crew waiting list</a>
+        <a class="btn btn--primary" href="#contact">Join the crew waiting list</a>
       </div>
     </div>
   </header>
@@ -100,7 +100,7 @@
             <p class="lead">Calm Crew is an iPhone app for the people who keep the boats running: a check-in that takes two taps, a course by Libby Pickett, and a tab for the hard moments.</p>
           </div>
           <div class="actions">
-            <a class="btn btn--primary" href="#contact" data-interest="waitlist">Join the crew waiting list</a>
+            <a class="btn btn--primary" href="#contact">Join the crew waiting list</a>
             <a class="btn btn--secondary" href="#pilot">For vessels and management</a>
           </div>
           <p class="eyebrow hero__byline">Libby Pickett · Palma de Mallorca · Pilot study begins November 2026</p>
@@ -427,15 +427,15 @@
         </ul>
 
         <div class="actions" role="group" aria-label="Come in whichever way fits.">
-          <a class="btn btn--primary" href="#contact" data-interest="waitlist">Join the crew waiting list</a>
-          <a class="btn btn--secondary" href="#contact" data-interest="partner">Ask about founding partnership</a>
-          <a class="text-link" href="#contact" data-interest="advisor">Ask about the advisory board</a>
+          <a class="btn btn--primary" href="#contact">Join the crew waiting list</a>
+          <a class="btn btn--secondary" href="#contact">Ask about founding partnership</a>
+          <a class="text-link" href="#contact">Ask about the advisory board</a>
         </div>
       </div>
     </section>
 
     <!-- ===================================================================
-         #about — About Libby (Day), in her own voice, plus the partner row.
+         #about — About Libby (Day), in her own voice.
          =================================================================== -->
     <section id="about" class="section about" aria-labelledby="about-title">
       <div class="container">
@@ -457,23 +457,14 @@
           </div>
         </div>
 
-        <!-- LAUNCH: replace with real logos (alt = partner name) once Libby has written permission; remove this block entirely if none are confirmed -->
-        <div class="partners" data-placeholder="partners">
-          <hr class="rule">
-          <h3 class="eyebrow">Partners</h3>
-          <ul class="cards cards--4" role="list">
-            <li class="partner-tile eyebrow">Partner logo — to be supplied by Libby</li>
-            <li class="partner-tile eyebrow">Partner logo — to be supplied by Libby</li>
-            <li class="partner-tile eyebrow">Partner logo — to be supplied by Libby</li>
-            <li class="partner-tile eyebrow">Partner logo — to be supplied by Libby</li>
-          </ul>
-        </div>
+        <!-- Partner logos go here once Libby has each partner’s written permission
+             (alt text = the partner’s name). Removed until then, as on calmcrew.app. -->
       </div>
     </section>
 
     <!-- ===================================================================
-         #contact — Get in touch (Night). Netlify form "contact". Every call to
-         action on the page lands here; its data-interest sets the select.
+         #contact — Get in touch (Night). An email link, as on calmcrew.app
+         (Figma Sites has no forms). Every call to action on the page lands here.
          =================================================================== -->
     <section id="contact" class="section band-night" aria-labelledby="contact-title">
       <div class="container split contact__split">
@@ -486,48 +477,12 @@
           <p class="contact__after">I’ll come back to you myself, usually within a couple of days.</p>
         </div>
 
-        <form class="form" name="contact" method="POST" action="/thanks" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="contact">
-          <!-- Honeypot for Netlify: hidden from everyone, so autofill cannot reach it. -->
-          <p hidden><label>Don't fill this in <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-
-          <div class="field">
-            <label for="name">Name</label>
-            <input class="input" id="name" name="name" type="text" autocomplete="name" required>
-          </div>
-
-          <div class="field">
-            <label for="email">Email</label>
-            <input class="input" id="email" name="email" type="email" autocomplete="email" required>
-          </div>
-
-          <div class="field">
-            <label for="role">Role, vessel or organisation <span class="optional">(optional)</span></label>
-            <input class="input" id="role" name="role" type="text">
-          </div>
-
-          <div class="field">
-            <label for="interest">I’m interested in</label>
-            <div class="select">
-              <select class="input" id="interest" name="interest" required>
-                <option value="">Choose one…</option>
-                <option value="waitlist">Joining the crew waiting list</option>
-                <option value="partner">Becoming a founding partner</option>
-                <option value="advisor">Joining the advisory board</option>
-                <option value="other">Something else</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="words">A few words <span class="optional">(optional)</span></label>
-            <textarea class="input" id="words" name="words" rows="4"></textarea>
-          </div>
-
-          <!-- TODO(privacy-notice): link /privacy-notice here once Libby approves it -->
-          <p class="form__help" id="form-help">I’ll use your details only to reply to you and, if you join the waiting list, to tell you when Calm Crew opens to crew. Messages are kept by our website host, Netlify.</p>
-          <button class="btn btn--primary" type="submit" aria-describedby="form-help">Send</button>
-        </form>
+        <!-- Figma Sites has no forms (calmcrew.app, 3 Oct 2026), so the site sends
+             people to Libby's inbox instead. Nothing is collected or stored here. -->
+        <div class="contact__email">
+          <a class="btn btn--primary" href="mailto:libby@calmcrewcoaching.com?subject=Calm%20Crew">Email Libby</a>
+          <p><a class="text-link" href="mailto:libby@calmcrewcoaching.com?subject=Calm%20Crew">libby@calmcrewcoaching.com</a></p>
+        </div>
       </div>
     </section>
 

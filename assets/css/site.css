@@ -133,12 +133,6 @@ html {
   scroll-padding-top: var(--header-h);
 }
 
-/* A field scrolled into view (by focus or by the form's error check) keeps
-   its label visible too: the label line, the gap, and a little air. */
-.field .input {
-  scroll-margin-top: calc(var(--body-line) + var(--gap-xs) + var(--gap-s));
-}
-
 /* Two even columns (pilot, about): 552 | 96 | 552 at 1440. Contact adjusts it below. */
 .split {
   display: grid;
@@ -820,7 +814,7 @@ em {
 }
 
 /* ---------------------------------------------------------------------------
- * About (#about) and the partner placeholders
+ * About (#about)
  * ------------------------------------------------------------------------- */
 .about .links {
   margin-top: var(--gap-xs);
@@ -837,135 +831,24 @@ em {
   color: var(--ink-secondary);
 }
 
-.rule {
-  height: 0;
-  margin: var(--gap-ml) 0 var(--gap-l);
-  border: 0;
-  border-top: 1px solid var(--hairline);
-}
-
-.partners .cards {
-  margin-top: var(--gap-m);
-}
-
-.partner-tile {
-  display: grid;
-  place-items: center;
-  min-height: 104px;
-  padding: var(--card-gap);
-  border: 1.5px dashed var(--ink-secondary);
-  border-radius: var(--radius-card);
-  text-align: center;
-  text-wrap: balance;
-}
-
 /* ---------------------------------------------------------------------------
- * Contact (#contact) and the form
+ * Contact (#contact): an email link (calmcrew.app is on Figma Sites, no forms)
  * ------------------------------------------------------------------------- */
 .contact__after {
   color: var(--ink-secondary);
 }
 
-.form {
+/* Email instead of a form: the button, then the address as a plain link. */
+.contact__email {
   display: grid;
-  gap: var(--gap-m);
-  /* When a call to action brings the form itself to the top (stacked
-     layouts), leave a little air under the header. */
-  scroll-margin-top: var(--gap-m);
+  justify-items: start;
+  align-content: start;
+  gap: var(--gap-s);
 }
 
-/* Form beside the heading: 544 | 96 | 560 at 1440, as in Figma. */
+/* Text beside the email box: 544 | 96 | 560 at 1440, as in Figma. */
 .contact__split {
   grid-template-columns: minmax(0, 544fr) minmax(0, 560fr);
-}
-
-/* Label to field: 4px, as in Figma. */
-.field {
-  display: grid;
-  gap: calc(var(--gap-xs) / 2);
-}
-
-.field label {
-  font-weight: 500;
-  color: var(--ink-primary);
-}
-
-.field .optional {
-  font-weight: 400;
-  color: var(--ink-secondary);
-}
-
-.input {
-  width: 100%;
-  min-height: var(--touch-min);
-  padding: 0 calc(var(--text-stack) * 1.25);
-  border: 1.5px solid var(--ink-secondary); /* the app's unselected chip */
-  border-radius: var(--radius-control);
-  background: var(--white);
-  color: var(--ink-primary);
-  font: inherit;
-}
-
-textarea.input {
-  min-height: 144px;
-  padding-block: var(--gap-s);
-  border-radius: var(--radius-card);
-  resize: vertical;
-}
-
-/* The select draws its own chevron in CSS, so it can take the ink colour. */
-.select {
-  position: relative;
-}
-
-.select .input {
-  appearance: none;
-  -webkit-appearance: none;
-  padding-right: var(--touch-min);
-  cursor: pointer;
-}
-
-/* Nothing chosen yet ("Choose one…", the empty required value) reads as a
-   prompt, not an answer. */
-.select .input:invalid {
-  color: var(--ink-secondary);
-}
-
-.select .input option {
-  color: var(--ink-primary);
-}
-
-/* A field with a problem (set by site.js): a heavier ink edge and the message
-   under it, in ink and medium weight. Never red, as everywhere on the page. */
-.input[aria-invalid='true'] {
-  border-color: var(--ink-primary);
-  box-shadow: inset 0 0 0 1px var(--ink-primary);
-}
-
-.field__error {
-  font-weight: 500;
-  color: var(--ink-primary);
-}
-
-.select::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: calc(var(--text-stack) * 1.5);
-  width: 9px;
-  height: 9px;
-  border-right: 2px solid var(--ink-primary);
-  border-bottom: 2px solid var(--ink-primary);
-  transform: translateY(-70%) rotate(45deg);
-  pointer-events: none;
-}
-
-.form__help {
-  color: var(--ink-secondary);
-}
-
-.form .btn {
-  justify-self: start;
 }
 
 /* ---------------------------------------------------------------------------
