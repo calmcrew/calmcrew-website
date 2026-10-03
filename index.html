@@ -44,11 +44,11 @@
   <link rel="preload" href="assets/fonts/work-sans-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- /assets/* is cached for a year (netlify.toml): bump ?v= when a file changes. -->
-  <link rel="stylesheet" href="assets/fonts/fonts.css?v=2026-10-03f">
-  <link rel="stylesheet" href="assets/css/tokens.css?v=2026-10-03f">
-  <link rel="stylesheet" href="assets/css/site.css?v=2026-10-03f">
+  <link rel="stylesheet" href="assets/fonts/fonts.css?v=2026-10-03g">
+  <link rel="stylesheet" href="assets/css/tokens.css?v=2026-10-03g">
+  <link rel="stylesheet" href="assets/css/site.css?v=2026-10-03g">
   <!-- Not deferred on purpose: it only sets a class, then waits for the DOM. -->
-  <script src="assets/js/site.js?v=2026-10-03f"></script>
+  <script src="assets/js/site.js?v=2026-10-03g"></script>
 </head>
 <body>
   <a class="skip-link btn btn--primary" href="#main">Skip to content</a>
@@ -258,10 +258,14 @@
     <section id="drop-anchor" class="section band-night" aria-labelledby="drop-anchor-title">
       <div class="container anchor__grid">
         <div class="anchor-badge" aria-hidden="true">
+          <!-- The app's S.O.S. tab icon, the life ring (calm-crew assets/icons/life-ring.svg). -->
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
-            <circle cx="12" cy="4.5" r="2.5"/>
-            <path d="M12 7v14"/>
-            <path d="M5.5 12H3a9 9 0 0 0 18 0h-2.5"/>
+            <path d="M12 23C18.0751 23 23 18.0751 23 12C23 5.92487 18.0751 1 12 1C5.92487 1 1 5.92487 1 12C1 18.0751 5.92487 23 12 23Z"/>
+            <path d="M12 16.6C14.5405 16.6 16.6 14.5405 16.6 12C16.6 9.45949 14.5405 7.4 12 7.4C9.45949 7.4 7.4 9.45949 7.4 12C7.4 14.5405 9.45949 16.6 12 16.6Z"/>
+            <path d="M4.2 4.2L8.75 8.75"/>
+            <path d="M15.25 15.25L19.8 19.8"/>
+            <path d="M15.25 8.75L19.8 4.2"/>
+            <path d="M4.2 19.8L8.75 15.25"/>
           </svg>
         </div>
         <div class="anchor__text">

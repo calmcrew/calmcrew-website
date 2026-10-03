@@ -770,9 +770,10 @@ em {
   color: var(--ink-primary);
 }
 
+/* The app's life ring at 60px, as in Figma: a 55px ring with a 5px stroke. */
 .anchor-badge svg {
-  width: 64px;
-  height: 64px;
+  width: 60px;
+  height: 60px;
 }
 
 /* The not-a-crisis-service line: set apart by a border, never in red. */
