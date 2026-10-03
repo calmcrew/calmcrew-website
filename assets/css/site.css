@@ -39,11 +39,13 @@
   color-scheme: dark;
 }
 
-/* Small text on the dark-blue bands is white, for contrast (3 Oct 2026):
-   eyebrows, leads, body copy, card text, captions and links. Titles keep their
-   own colours. --black is the app's maximum-contrast ink, which is white in
-   Night: 12.7:1 on the band, 10.4:1 on a card. */
-.band-night :is(p, li, figcaption, label, .eyebrow, .lead, .caption, .text-link, .links a) {
+/* Small text takes --black, the app's maximum-contrast ink (3 Oct 2026): pure
+   black on Sand, white on the dark-blue bands. That covers eyebrows, leads,
+   body copy, card text, captions, links, and the header and footer links.
+   Titles keep their own colours, and so does the logo (p.brand in the footer).
+   Day: 16.1:1 on Sand, 17.0:1 on a card. Night: 12.7:1 on the band, 10.4:1 on
+   a card. `body` lifts this above the single-class link rules further down. */
+body :is(p:not(.brand), li, figcaption, label, strong, .eyebrow, .lead, .caption, .text-link, .links a, .about__credit a, .site-nav a, .footer__col a) {
   color: var(--black);
 }
 
