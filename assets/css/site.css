@@ -42,7 +42,8 @@
 /* Small text takes --black, the app's maximum-contrast ink (3 Oct 2026): pure
    black on Sand, white on the dark-blue bands. That covers eyebrows, leads,
    body copy, card text, captions, links, and the header and footer links.
-   Titles keep their own colours, and so does the logo (p.brand in the footer).
+   Titles are --black too (rules below); the logo keeps its own colour (p.brand
+   in the footer).
    Day: 16.1:1 on Sand, 17.0:1 on a card. Night: 12.7:1 on the band, 10.4:1 on
    a card. `body` lifts this above the single-class link rules further down. */
 body :is(p:not(.brand), li, figcaption, label, strong, .eyebrow, .lead, .caption, .text-link, .links a, .about__credit a, .site-nav a, .footer__col a) {
@@ -186,7 +187,8 @@ html {
 }
 
 /* Titles take the app's 3 Oct 2026 screen-title style: Newsreader ExtraBold in
-   pure black (white in Night). Card titles stay Light, as the app's list titles do. */
+   pure black (white in Night). Card titles stay Light, as the app's list titles do,
+   but share the colour. */
 .display,
 .heading {
   font-weight: 800;
@@ -196,6 +198,7 @@ html {
 .title {
   font-size: var(--title-size);
   line-height: var(--title-line);
+  color: var(--black);
 }
 
 .lead {
