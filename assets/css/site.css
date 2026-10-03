@@ -181,6 +181,14 @@ html {
   line-height: var(--heading-line);
 }
 
+/* Titles take the app's 3 Oct 2026 screen-title style: Newsreader ExtraBold in
+   pure black (white in Night). Card titles stay Light, as the app's list titles do. */
+.display,
+.heading {
+  font-weight: 800;
+  color: var(--black);
+}
+
 .title {
   font-size: var(--title-size);
   line-height: var(--title-line);
@@ -229,7 +237,8 @@ html {
 
 /* ---------------------------------------------------------------------------
  * Buttons and links
- * Primary: ink fill, ground-coloured label. Secondary: 2px ink outline.
+ * Primary: ink fill, ground-coloured label. Secondary: the app's unselected
+ * chip (3 Oct 2026) — white surface, 1.5px slate outline.
  * Both are 56px pills, the app's touch minimum.
  * ------------------------------------------------------------------------- */
 .btn {
@@ -260,12 +269,16 @@ html {
 }
 
 .btn--secondary {
-  background: transparent;
+  background: var(--white);
+  border: 1.5px solid var(--ink-secondary);
   color: var(--ink-primary);
 }
 
+/* The border darkens too: in Night the wash is almost the --white chip colour,
+   so the stroke carries the hover (ink/primary, the app's selected-chip stroke). */
 .btn--secondary:hover {
   background: var(--selection-wash);
+  border-color: var(--ink-primary);
 }
 
 /* A text link that still meets the 56px target. */
@@ -274,7 +287,7 @@ html {
   align-items: center;
   min-height: var(--touch-min);
   font-weight: 500;
-  color: var(--ink-primary);
+  color: var(--ink-secondary); /* the app's inline link colour ("View history.") */
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -302,7 +315,7 @@ html {
   display: inline-flex;
   align-items: center;
   min-height: var(--touch-min);
-  color: var(--ink-primary);
+  color: var(--ink-secondary);
 }
 
 /* ---------------------------------------------------------------------------
@@ -707,6 +720,18 @@ em {
   margin-top: var(--gap-l);
 }
 
+/* At ExtraBold, Display is too wide for the 480fr column below 1440: "Anonymous."
+   (403px) overflows it up to about 1250px, and "Now, and later." (473px) splits
+   up to about 1420px. Step down to the Heading size there; from 1440 (the Figma
+   desktop frame) the column is 480px and Display fits. At 1080 and below the
+   grid stacks and the line has the full width, so it keeps Display. */
+@media (min-width: 1081px) and (max-width: 1439px) {
+  .privacy__promise {
+    font-size: var(--heading-size);
+    line-height: var(--heading-line);
+  }
+}
+
 /* Two cards, then one across the full width (Figma, 1 Oct 2026). */
 .card--wide {
   grid-column: 1 / -1;
@@ -807,6 +832,11 @@ em {
   color: var(--ink-primary);
 }
 
+/* Links are ink/secondary, as .links a and .text-link (3 Oct 2026 spec). */
+.about__credit a {
+  color: var(--ink-secondary);
+}
+
 .rule {
   height: 0;
   margin: var(--gap-ml) 0 var(--gap-l);
@@ -869,9 +899,9 @@ em {
   width: 100%;
   min-height: var(--touch-min);
   padding: 0 calc(var(--text-stack) * 1.25);
-  border: 1px solid var(--ink-secondary);
+  border: 1.5px solid var(--ink-secondary); /* the app's unselected chip */
   border-radius: var(--radius-control);
-  background: var(--surface-raised);
+  background: var(--white);
   color: var(--ink-primary);
   font: inherit;
 }

@@ -8,7 +8,12 @@
  * `Web layout` (modes Desktop / Mobile) and the `Web/*` text styles.
  *
  * Two modes only: Day and Night. Do not add a third mode.
- * Steel (#547792) is never used for text. No gold, no pure white.
+ * Steel (#547792) is never used for text. No gold.
+ *
+ * 3 Oct 2026 design changes (Figma page "09 · Prototype — design changes"):
+ * the app added `white` and `black` tokens (pure white chips and pure black
+ * screen titles in Day) and darkened selection/solid in Day to #6E97AA.
+ * Pure white is allowed ONLY through --white; pure black only through --black.
  */
 
 :root {
@@ -20,9 +25,12 @@
   --hairline: #CFC3AE;
   --selection-wash: #E1D6C2;
   --selection-ring: #547792;
-  --selection-solid: #94B4C1;
+  --selection-solid: #6E97AA; /* darkened 3 Oct 2026 (was #94B4C1). 2.41:1 on ground; ink on it 4.04:1 and white 3.15:1,
+                                 so NEVER a background for body text on the web. The app gives selected chips a 2px ink ring. */
   --glass-shadow: rgb(33 52 72 / 0.14);
   --on-primary: #EAE0CF; /* label on an ink-filled button */
+  --white: #FFFFFF; /* chip surface: secondary buttons and form fields */
+  --black: #000000; /* screen titles: the display line and section headings */
 
   /* Shape options · C · Capsule */
   --radius-control: 999px;
@@ -67,6 +75,8 @@
   --selection-solid: #EAE0CF;
   --glass-shadow: rgb(10 10 9 / 0.45);
   --on-primary: #213448;
+  --white: #2B4257; /* the chip surface in Night, as in the app */
+  --black: #FFFFFF; /* titles in Night resolve to white, as in the app */
 }
 
 /* Web layout · Mobile */

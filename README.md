@@ -10,6 +10,13 @@ self-hosted; there are no analytics, CDNs or embeds).
   Figma web frames are the source of truth for section order and wording.
 - Design: Figma *Calm Crew — App Design V1* (`f0J6MJZNgvUgkXO1FzVUjd`), web
   frames at 1440px. Brand v2.0: Day and Night only.
+- **3 Oct 2026 design update** (Figma page "09 · Prototype — design changes"):
+  the phone screens are the new app screens (face and dot check-in buttons,
+  the S.O.S. tab), titles are Newsreader ExtraBold in `--black`, secondary
+  buttons and form fields are the app's white chip with a 1.5px slate outline,
+  inline links take the app's slate underline, and `--selection-solid` is
+  #6E97AA. Screen images carry a `-v3` suffix so the year-long asset cache
+  cannot serve the old ones.
 - The page makes **exactly one claim**, in the `#history` section. Do not add
   outcome or benefit language, statistics or "what gets better" anywhere else.
 
@@ -27,7 +34,8 @@ assets/css/tokens.css   design tokens: every colour, space and type size
 assets/css/site.css     layout and components (no colours of its own)
 assets/js/site.js       Menu button, form preselect, form error messages;
                         the page works without it
-assets/fonts/           Newsreader (variable: Light 300 + Bold 700), Work Sans
+assets/fonts/           Newsreader (one variable file, 200–800: Light 300 text,
+                        ExtraBold 800 titles), Work Sans
                         (variable 400–700) and Work Sans Italic, self-hosted woff2
 assets/brand/           mark.svg, favicon.svg, og-image.png (1200×630),
                         apple-touch-icon.png (180×180)
@@ -70,9 +78,9 @@ How the page is put together:
 
 ### Deliberate differences from Figma
 
-- Form fields have a 1px `--ink-secondary` outline, not Figma's `--hairline`:
-  hairline against the ground is about 1.6:1, below the 3:1 WCAG asks for
-  field boundaries.
+- Form fields and secondary buttons use the app's 3 Oct 2026 chip: a `--white`
+  surface with a 1.5px `--ink-secondary` outline (4.64:1 Day / 5.79:1 Night
+  against the ground, above the 3:1 WCAG asks for control boundaries).
 - The header keeps a 1px hairline along its bottom edge (Figma has none),
   because it is sticky and would otherwise merge into the Day bands it
   scrolls over.
@@ -114,7 +122,7 @@ preview.
    blocked from being served.
 
 **Caching.** Everything under `/assets/` is cached for a year. The HTML links
-CSS and JS with `?v=2026-10-01b`: when you change `site.css`, `tokens.css`,
+CSS and JS with `?v=2026-10-03`: when you change `site.css`, `tokens.css`,
 `fonts.css` or `site.js`, bump that value in `index.html`, `thanks.html` and
 `404.html`. Images and fonts are not versioned, so give a changed image a new
 file name.
@@ -194,6 +202,13 @@ They differ from the build; captions say "Sample screen(s)." / "Sample data".
 
 ### Copy to confirm with Libby
 
+- [ ] **Tab name: Drop Anchor or S.O.S.?** Since the 3 Oct 2026 design the app
+      labels the third tab and its screen "S.O.S." (lifebuoy icon), and the
+      screenshots show it. The copy still says "Drop Anchor" (the `#app` lead
+      and card, and the whole `#drop-anchor` section). "S.O.S." reads as an
+      emergency service, so if the copy changes, the not-a-crisis-service line
+      matters even more. Decide the name, then align copy and anchors.
+
 - [ ] History: the claim is correlation, not cause ("a pattern, not proof of a
       cause"), and History does not overlay listening — "Look across the
       three" asks the reader to compare screens. OK?
@@ -261,7 +276,7 @@ They differ from the build; captions say "Sample screen(s)." / "Sample data".
       Content-Security-Policy, X-Content-Type-Options: nosniff,
       Referrer-Policy, Permissions-Policy, X-Frame-Options and
       Strict-Transport-Security;
-      `curl -sI "https://calmcrewcoaching.com/assets/css/site.css?v=2026-10-01b"`
+      `curl -sI "https://calmcrewcoaching.com/assets/css/site.css?v=2026-10-03"`
       shows `Cache-Control: public, max-age=31536000, immutable`; the HTML
       does NOT have that header.
 - [ ] `curl -sI https://calmcrewcoaching.com/README.md`, `/netlify.toml` and
