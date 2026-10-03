@@ -109,6 +109,14 @@ the phone screens as images. The step-by-step (Sites settings, alt text, DNS
 records) is on that page's checklist card. This repository is the code version
 of the same page, and can still be hosted on Netlify as below.
 
+## Public test deploy on Vercel
+
+`vercel.json` mirrors the Netlify headers (CSP, security, one-year asset cache)
+and adds `X-Robots-Tag: noindex, nofollow` so the test site stays out of search
+engines; `.vercelignore` keeps README.md and netlify.toml off the deploy. No
+build step: `npx vercel deploy --prod` from this folder publishes it as is.
+**Remove the X-Robots-Tag line on launch day**, as for Netlify.
+
 ## Deploy on Netlify (optional)
 
 1. Create a site from this folder (drag-and-drop the folder in the Netlify UI,
