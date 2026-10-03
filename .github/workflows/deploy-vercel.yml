@@ -1,0 +1,69 @@
+# Deploy to Vercel on every push to main (and on demand from the Actions tab).
+#
+# Why GitHub Actions and not Vercel's Git integration: the repo is owned by the
+# GitHub organisation "calmcrew" (public since 3 Oct 2026) and the Vercel project
+# lives in a personal Hobby scope. This route needs no Vercel app installed on
+# the organisation and no GitHub login connection on the Vercel account.
+#
+# Needs, in Settings → Secrets and variables → Actions:
+#   - secret   VERCEL_TOKEN       a Vercel access token (create it at
+#                                 vercel.com/account/tokens; never commit it)
+#   - variable VERCEL_ORG_ID      team_o1DtYpOw1ZEvI0ewOkLfzbhg (set)
+#   - variable VERCEL_PROJECT_ID  prj_qd8wISpPmKffDWEpJcYm0sSoRJzv (set)
+#
+# It deploys the folder as it is (no build step), exactly like running
+# `npx vercel deploy --prod` locally: vercel.json supplies the headers and
+# .vercelignore keeps README.md and netlify.toml off the site.
+
+name: Deploy to Vercel
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# One deploy at a time; a newer push replaces a queued one.
+concurrency:
+  group: vercel-production
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
+      VERCEL_TELEMETRY_DISABLED: "1"
+    steps:
+      - name: Check the token is set
+        id: token
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "::warning::VERCEL_TOKEN is not set, so nothing was deployed. Add it under Settings → Secrets and variables → Actions."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.token.outputs.ready == 'true'
+
+      - uses: actions/setup-node@v4
+        if: steps.token.outputs.ready == 'true'
+        with:
+          node-version: 22
+
+      - name: Deploy to production
+        if: steps.token.outputs.ready == 'true'
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          url=$(npx --yes vercel@latest deploy --prod --yes --token="$VERCEL_TOKEN")
+          echo "Deployed: $url"
+          echo "### Deployed to production" >> "$GITHUB_STEP_SUMMARY"
+          echo "$url → https://calmcrew-website.vercel.app" >> "$GITHUB_STEP_SUMMARY"

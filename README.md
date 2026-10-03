@@ -119,7 +119,16 @@ of the same page, and can still be hosted on Netlify as below.
 `vercel.json` mirrors the Netlify headers (CSP, security, one-year asset cache)
 and adds `X-Robots-Tag: noindex, nofollow` so the test site stays out of search
 engines; `.vercelignore` keeps README.md and netlify.toml off the deploy. No
-build step: `npx vercel deploy --prod` from this folder publishes it as is.
+build step.
+
+**Every push to `main` deploys to https://calmcrew-website.vercel.app** through
+`.github/workflows/deploy-vercel.yml` (GitHub Actions + Vercel CLI). It needs
+the repository secret `VERCEL_TOKEN` (a Vercel access token); the variables
+`VERCEL_ORG_ID` and `VERCEL_PROJECT_ID` are already set. Without the secret
+the run only logs a warning. A manual deploy still works too:
+`npx vercel deploy --prod` from this folder. Vercel's Hobby plan cannot deploy
+a *private* organisation repo, which is why this repo is public; Hobby is also
+non-commercial only, so move the project to a Pro team before launch.
 **Remove the X-Robots-Tag line on launch day**, as for Netlify.
 
 ## Deploy on Netlify (optional)
