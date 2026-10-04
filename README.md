@@ -15,8 +15,18 @@ self-hosted; there are no analytics, CDNs or embeds).
   the S.O.S. tab), titles are Newsreader ExtraBold in `--black`, secondary
   buttons are the app's white chip with a 1.5px slate outline,
   inline links take the app's slate underline, and `--selection-solid` is
-  #6E97AA. Screen images carry a `-v3` suffix so the year-long asset cache
-  cannot serve the old ones.
+  #6E97AA. Screen images carry a version suffix (now `-v4`, below) so the
+  year-long asset cache cannot serve the old ones.
+- **4 Oct 2026 screens.** The six phone images were rendered again from the
+  current frames on Figma page "09 · Prototype — design changes": `2735:335`,
+  `2735:123`, `2735:229`, `2735:517`, `2735:713` and `2735:798`. Each frame is
+  copied at the 852pt iPhone viewport into the section beside the Mobile frame
+  on page 10 (`3048:183`), exported at 3× (1179×2556) and saved as `-v4`
+  WebP and PNG. In those copies the dock, player and scroll edge are pinned to
+  the bottom. The scroll edge is a pure blur (fill at 1%), except on History.
+  History keeps the design's solid band, so its streak strip does not show
+  through under the dock. Page 10's phone mockups (with the bezel) are made
+  from the same copies.
 - The page makes **exactly one claim**, in the `#history` section. Do not add
   outcome or benefit language, statistics or "what gets better" anywhere else.
 - **4 Oct 2026 copy rewrite** (client request: much more concise, relaxed
@@ -171,15 +181,19 @@ the site goes public.
       sets a Cloudflare cookie, so the site still needs a short privacy page:
       who Libby is, what the host processes, and how email to her is handled.
       Then un-comment the "Website privacy notice" link in the footer.
-- [ ] **BLOCKER — The History section (the one claim).** The deck ships this
-      section only once Pablo's fix to `app/history.tsx` is in the build: Week
-      buckets are keyed by weekday letter, so Tuesday/Thursday and
-      Saturday/Sunday merge into one bar (Year merges months the same way).
-      Key Week by date and Year by year-month, add a test, then decide whether
-      to keep the current Figma render (`history-week`) or replace it with a
-      screenshot of the fixed build. The Figma render shows a "5 day streak",
-      a "14–20 SEP 2026" label, an empty W column and 1–5 axis numbers that the
-      current build does not show.
+- [ ] **BLOCKER — The History section (the one claim).** Since 4 Oct 2026,
+      History is a line chart of energy or mood. One line is check-ins
+      without a practice; the other is check-ins made straight after a
+      practice (spec: `calm-crew-pending/before-after-scoring-2026-10-04.md`).
+      The image (`history-week`) and the claim paragraph both describe that
+      design. Ship the section only once the build draws it. On 4 Oct the
+      tagging work was in progress and uncommitted in the app. Then decide
+      whether to keep the Figma render or use a screenshot of the build.
+      In the render's sample data, the after-practice line sits above the
+      other on every day it appears. That is fine for a demo, but it is the
+      strongest implied outcome on the page. So the wording stays "with a
+      practice", never "because of", and the paragraph keeps "a pattern, not
+      proof of a cause".
 - [ ] **BLOCKER — Privacy copy must match the app.** The client's Figma edits
       say management sees *aggregated* crew mood and energy over a Bluetooth
       connection the crew member authorises, that identifiable data is not
@@ -206,11 +220,13 @@ The images are the current Figma renders, unedited, by decision of 1 Oct 2026.
 They differ from the build; captions say "Sample screen(s)." / "Sample data".
 
 - [ ] Today renders (`today-checkin`, `today-saved-day`, `today-saved-night`)
-      show a "DAY 20 · The long exhale" player that is not in the build, keep
-      Steady and the middle energy level selected after saving (the build
-      clears both), and pair "5 day streak" with "1 day ago" / "just now"
-      wording the build does not produce.
-- [ ] Learn renders (`learn-index`, `learn-chapter-2`) show "Free to everyone."
+      show a Settings gear and a "Tap to setup iCloud sync." link (iCloud
+      sync is not built), and a "DAY 20 · The long exhale" player that is not
+      in the build. They keep Steady and the middle energy level selected
+      after saving (the build clears both), and pair "5 day streak" with
+      "1 day ago" / "just now" wording the build does not produce.
+- [ ] Learn renders (`learn-index`, `learn-chapter-2`; sample progress 39% and
+      33%, 7 of 21 recordings) show "Free to everyone."
       on Chapter 1 (unconfirmed, CC-51) and a playing mini player, although no
       recording exists yet. The `learn-index` alt text leaves "Free to
       everyone." out, so only sighted readers get that unconfirmed line.
@@ -225,9 +241,10 @@ They differ from the build; captions say "Sample screen(s)." / "Sample data".
 - [x] **Tab name: S.O.S.** (decided 3 Oct 2026). The `#app` card, its lead and the
       section eyebrow say S.O.S.; the section keeps the `#drop-anchor` id.
 
-- [ ] History: the claim is correlation, not cause ("a pattern, not proof of a
-      cause"), and History does not overlay listening — "Look across the
-      three" asks the reader to compare screens. OK?
+- [ ] History: the claim is correlation, not cause. Since 4 Oct the chart itself
+      gives check-ins made straight after a practice a line of their own, so
+      the paragraph says that and ends "If the lines part ways, that’s a
+      pattern, not proof of a cause." OK?
 - [ ] Eight weeks: "In the pilot, the programme runs for eight weeks." What do
       the eight weeks contain? (The code has no week or day schedule.)
 - [ ] Recordings: "still to be made" (Learn card). Is there a date?
