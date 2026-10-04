@@ -19,14 +19,14 @@
  * an alias would freeze the Day value and break the Night bands.)
  * ------------------------------------------------------------------------- */
 :root {
-  --gap-xs: calc(var(--text-stack) / 2);       /* 8 / 6   eyebrow to heading */
-  --gap-p: calc(var(--text-stack) * 0.75);     /* 12 / 9  between paragraphs */
+  --gap-xs: calc(var(--text-stack) / 2);       /* 8 / 6 */
+  --gap-p: var(--paragraph-gap);               /* 12      between paragraphs */
   --gap-s: var(--text-stack);                  /* 16 / 12 */
   --gap-m: var(--card-gap);                    /* 24 / 16 heading to lead */
   --gap-ml: calc(var(--text-stack) * 2);       /* 32 / 24 copy to buttons */
   --gap-l: var(--section-stack);               /* 48 / 32 head to content */
   --gap-xl: calc(var(--section-stack) * 2);    /* 96 / 64 */
-  --header-h: calc(var(--touch-min) + var(--text-stack) * 2); /* 88 / 80 */
+  --header-h: calc(var(--touch-min) + var(--header-padding-y) * 2); /* 88 */
   /* Column gap: 96px at 1440, easing down to 48px on narrower desktops. */
   --col-gap: clamp(var(--section-stack), 6.67vw, calc(var(--section-stack) * 2));
   /* Reading measure for leads and long paragraphs, from the Figma frames. */
@@ -224,14 +224,15 @@ html {
   margin-top: var(--gap-p);
 }
 
-/* Section head: eyebrow, heading, lead. */
+/* Section head: eyebrow, heading, lead, 16 apart (12 on a phone), as in
+   Figma's Web / Section head. */
 .section-head .heading,
 .section-head .display {
-  margin-top: var(--gap-xs);
+  margin-top: var(--gap-s);
 }
 
 .section-head .lead {
-  margin-top: var(--gap-m);
+  margin-top: var(--gap-s);
 }
 
 /* Content that follows a section head inside the same column. (Not a blanket
@@ -252,7 +253,7 @@ html {
   align-items: center;
   justify-content: center;
   min-height: var(--touch-min);
-  padding-inline: calc(var(--text-stack) * 1.75);
+  padding-inline: calc(var(--button-padding-x) - 2px); /* less the 2px border */
   border: 2px solid var(--ink-primary);
   border-radius: var(--radius-control);
   font-family: var(--font-sans);
@@ -275,6 +276,7 @@ html {
 }
 
 .btn--secondary {
+  padding-inline: var(--button-padding-x); /* text 29.5px in, as in Figma */
   background: var(--white);
   border: 1.5px solid var(--ink-secondary);
   color: var(--ink-primary);
@@ -321,6 +323,7 @@ html {
   display: inline-flex;
   align-items: center;
   min-height: var(--touch-min);
+  font-weight: 500; /* Figma: Work Sans Medium, as on buttons */
   color: var(--ink-secondary);
 }
 
@@ -375,13 +378,13 @@ html {
   justify-content: space-between;
   column-gap: var(--gap-m);
   min-height: var(--header-h);
-  padding-block: var(--text-stack);
+  padding-block: var(--header-padding-y);
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: calc(var(--text-stack) * 0.75);
+  gap: var(--brand-gap);
   min-height: var(--touch-min);
   color: var(--ink-primary);
   text-decoration: none;
@@ -480,13 +483,6 @@ html {
   }
 }
 
-/* On a phone the menu's button runs the full width, like the other buttons. */
-@media (max-width: 760px) {
-  .js .site-menu > .btn {
-    align-self: stretch;
-  }
-}
-
 /* ---------------------------------------------------------------------------
  * Phone mock-ups
  * The frame is drawn in CSS: a 10px ink bezel, 64px outer radius, 54px inner
@@ -498,7 +494,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--gap-s);
+  gap: var(--caption-gap);
 }
 
 .phone {
@@ -545,17 +541,6 @@ html {
   text-align: center;
 }
 
-/* Side by side, Figma centres the text on the phone itself, not on phone plus
-   caption: the caption hangs into the section's bottom padding. (Not in the
-   course, where cards follow the pair, nor in History, where Figma counts it.) */
-@media (min-width: 1081px) {
-  .hero__grid .shot,
-  .app__grid .shot,
-  .at-sea__grid .shot {
-    margin-bottom: calc(-1 * (var(--gap-s) + var(--label-line)));
-  }
-}
-
 /* ---------------------------------------------------------------------------
  * Cards
  * ------------------------------------------------------------------------- */
@@ -568,6 +553,11 @@ html {
 
 .card .title {
   margin-bottom: var(--gap-s);
+}
+
+/* A card with only a title (Learn, in the app section) ends at the title. */
+.card .title:last-child {
+  margin-bottom: 0;
 }
 
 /* The one emphasised card title on the page (privacy, "What management sees."). */
@@ -585,13 +575,7 @@ em {
   font-style: italic;
 }
 
-/* Course cards: an eyebrow over the title, as in the app's own cards. */
-.card .eyebrow + .title {
-  margin-top: var(--gap-xs);
-}
-
-.card p + p,
-.card p + ol {
+.card p + p {
   margin-top: var(--gap-p);
 }
 
@@ -610,15 +594,24 @@ em {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.module-list {
-  padding-left: 1.5em;
+/* Chapter 2's modules: one run of text with middle dots, as in Figma, and a
+   list for screen readers. The dots and the full stop are silent (the text
+   after the slash is what assistive technology reads). */
+.module-list > :not(:last-child)::after {
+  content: " ·";
+  content: " ·" / "";
+}
+
+.module-list > :last-child::after {
+  content: ".";
+  content: "." / "";
 }
 
 /* ---------------------------------------------------------------------------
  * Hero (#top)
  * ------------------------------------------------------------------------- */
 .hero {
-  padding-block: var(--section-stack) var(--section-padding-y);
+  padding-block: var(--hero-padding-top) var(--section-padding-y);
 }
 
 .hero__grid {
@@ -633,7 +626,7 @@ em {
 }
 
 .hero .actions {
-  margin-top: var(--gap-ml);
+  margin-top: calc(var(--gap-s) + var(--cta-padding-top)); /* 32 / 28 */
 }
 
 .hero__byline {
@@ -649,8 +642,8 @@ em {
 }
 
 /* ---------------------------------------------------------------------------
- * The app (#app) — phone on the left on desktop; text comes first in the
- * source so it also comes first on a phone.
+ * The app (#app) — phone on the left on desktop and above the text once the
+ * columns stack, as in Figma's mobile frame. Text stays first in the source.
  * ------------------------------------------------------------------------- */
 .app__grid {
   display: grid;
@@ -772,20 +765,12 @@ em {
   height: 60px;
 }
 
-/* The not-a-crisis-service line: set apart by a border, never in red. */
-.note {
-  padding: var(--gap-s) var(--card-gap);
-  border: 1.5px solid var(--ink-secondary);
-  border-radius: var(--radius-card);
-  color: var(--ink-primary);
-}
-
 /* ---------------------------------------------------------------------------
  * The pilot (#pilot)
  * ------------------------------------------------------------------------- */
-/* The body column's first line lines up with the heading's, not the eyebrow. */
+/* The body column sits level with the bottom of the heading, as in Figma. */
 .pilot__body {
-  padding-top: calc(var(--label-line) + var(--text-stack));
+  align-self: end;
 }
 
 .pilot__who {
@@ -812,7 +797,7 @@ em {
 
 /* Figma leaves 56px between the heading and the claim. */
 .history__text .claim {
-  margin-top: calc(var(--gap-l) + var(--gap-xs));
+  margin-top: var(--gap-l);
 }
 
 .claim {
@@ -830,9 +815,9 @@ em {
   margin-top: var(--gap-xs);
 }
 
-/* The credit sits after the contact links, as in Figma. */
+/* The credit sits straight under the contact links, as in Figma. */
 .about__credit {
-  margin-top: var(--gap-l);
+  margin-top: var(--gap-s);
   color: var(--ink-primary);
 }
 
@@ -844,12 +829,12 @@ em {
 /* ---------------------------------------------------------------------------
  * Contact (#contact): an email link (calmcrew.app is on Figma Sites, no forms)
  * ------------------------------------------------------------------------- */
-/* Email instead of a form: the button, then the address as a plain link. */
+/* Email instead of a form: the button, then the address as a plain link.
+   No gap: the link's 56px target puts its text 16px under the button, as in Figma. */
 .contact__email {
   display: grid;
   justify-items: start;
   align-content: start;
-  gap: var(--gap-s);
 }
 
 /* Text beside the email box: 544 | 96 | 560 at 1440, as in Figma. */
@@ -863,7 +848,7 @@ em {
 .site-footer {
   background: var(--ground);
   color: var(--ink-primary);
-  padding-block: var(--gap-xl) calc(var(--gap-ml) * 2);
+  padding-block: var(--footer-padding-top) var(--footer-padding-bottom);
 }
 
 .footer__top {
@@ -874,12 +859,14 @@ em {
   align-items: start;
 }
 
+/* A block, not inline-flex, so no line box adds space under the logo. */
 .footer__brand .brand {
+  display: flex;
   min-height: 0;
 }
 
 .footer__tagline {
-  margin-top: var(--gap-s);
+  margin-top: var(--footer-tagline-gap);
   font-family: var(--font-serif);
   font-weight: 300;
   font-size: var(--question-size);
@@ -896,6 +883,7 @@ em {
   display: flex;
   align-items: center;
   min-height: var(--touch-min);
+  padding-inline: var(--footer-link-inset);
   color: var(--ink-primary);
   text-decoration: none;
 }
@@ -916,13 +904,9 @@ em {
   text-wrap: pretty;
 }
 
-/* The legal line keeps the eyebrow's size and weight but not its capitals:
-   it carries the email address and the Instagram handle, which must read
-   exactly as written. */
+/* The legal line is an eyebrow, in capitals, as in Figma. */
 .footer__legal {
   margin-top: var(--gap-p);
-  text-transform: none;
-  letter-spacing: 0.02em;
 }
 
 /* ---------------------------------------------------------------------------
@@ -937,7 +921,8 @@ em {
 }
 
 /* ---------------------------------------------------------------------------
- * Tablet — side-by-side sections stack; text first, visual centred below.
+ * Tablet — side-by-side sections stack: text first and the visual centred
+ * below it, except in the app section, where the phone goes above.
  * ------------------------------------------------------------------------- */
 @media (max-width: 1080px) {
   .hero__grid,
@@ -958,6 +943,10 @@ em {
     grid-row: auto;
   }
 
+  .app__grid .shot {
+    order: -1;
+  }
+
   .hero .phone,
   .app__grid .phone,
   .history__grid .phone {
@@ -967,10 +956,6 @@ em {
   .shot {
     justify-self: center;
     width: 100%;
-  }
-
-  .pilot__body {
-    padding-top: 0;
   }
 
   .cards--4 {
@@ -1020,17 +1005,28 @@ em {
     height: 40px;
   }
 
-  /* Buttons go full width; the text link keeps its own size. */
-  .actions {
-    flex-direction: column;
-    align-items: stretch;
+  /* Phones sit on the left, as in Figma, with a caption centred under its
+     phone. A pair already fills the column. */
+  .shot {
+    justify-self: start;
+    width: min(300px, 100%);
   }
 
-  .actions .text-link {
-    align-self: flex-start;
+  .at-sea__grid .shot,
+  .course__top .shot {
+    width: 100%;
   }
 
-  .form .btn {
-    justify-self: stretch;
+  /* The stacked links are taller than Figma's (56px targets), so the credit
+     needs no gap to land where Figma has it. */
+  .about__credit {
+    margin-top: 0;
+  }
+
+  /* A link that ends a block keeps its 56px target, but the empty half under
+     its text adds no height: Figma ends these sections at the text. */
+  .pilot .actions .text-link,
+  .contact__email .text-link {
+    margin-bottom: calc((var(--body-line) - var(--touch-min)) / 2);
   }
 }

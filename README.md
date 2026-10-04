@@ -89,8 +89,8 @@ How the page is put together:
   single column). site.js repeats the 1280px value; change them together.
 - Editing notes that used to sit in the page source: Drop Anchor has no screen
   because the Figma render does not match the build; At sea describes offline
-  audio as design intent, because no recording exists yet; the Drop Anchor
-  disclaimer is a bordered note, never red. The At sea, Privacy and About copy
+  audio as design intent, because no recording exists yet; the S.O.S.
+  disclaimer is plain body text, as in Figma, never red. The At sea, Privacy and About copy
   is the client's own (manual Figma edits) and is kept word for word.
 - `assets/brand/apple-touch-icon.png` and `favicon.ico` were drawn with
   Pillow from the mark's geometry and the Day colours in tokens.css, like
@@ -98,18 +98,26 @@ How the page is put together:
 
 ### Deliberate differences from Figma
 
-- Secondary buttons use the app's 3 Oct 2026 chip: a `--white`
-  surface with a 1.5px `--ink-secondary` outline (4.64:1 Day / 5.79:1 Night
-  against the ground, above the 3:1 WCAG asks for control boundaries).
+On 4 Oct 2026 the site was matched to Figma page 10 ("10 · Website —
+calmcrew.app"), measured at 1440 and 390. Every section height matches
+except those listed here. What is left on purpose:
+
 - The header keeps a 1px hairline along its bottom edge (Figma has none),
   because it is sticky and would otherwise merge into the Day bands it
   scrolls over.
 - Headings and card titles use balanced line breaks,
-  so a few lines break differently from Figma (for example "A check-in is /
-  three things"), without Figma's single orphan words.
-- Captions and the footer's legal line keep Figma's 12px label style. The
-  legal line is not set in capitals, because it carries the email address and
-  the Instagram handle.
+  so a few lines break differently from Figma, without Figma's single orphan
+  words.
+- Links keep 56px tap targets, where Figma draws 20px text. On a phone,
+  stacked links sit a little lower than in Figma: the About links, and the
+  pilot's advisory link (that section is about 20px taller). A link that ends
+  a block drops the empty space under its text, so the contact section ends
+  where Figma's does.
+- Course card titles show "Chapter 1 · …" as in Figma. The dot is hidden from
+  screen readers, which hear "Chapter 1: …". Chapter 2's modules are one run
+  of text with dots on screen and a list for assistive technology.
+- Tablet widths (761–1080px) have no Figma frame. They stack like the phone
+  layout but centre the phones.
 
 ## Run it locally
 
@@ -217,7 +225,9 @@ the site goes public.
 ### Screens (flagged to the developer separately)
 
 The images are the current Figma renders, unedited, by decision of 1 Oct 2026.
-They differ from the build; captions say "Sample screen(s)." / "Sample data".
+They differ from the build. Only the History phone has a caption ("Sample
+data"), as in Figma; the others lost theirs when the site was matched to
+Figma on 4 Oct 2026.
 
 - [ ] Today renders (`today-checkin`, `today-saved-day`, `today-saved-night`)
       show a Settings gear and a "Tap to setup iCloud sync." link (iCloud
@@ -247,7 +257,10 @@ They differ from the build; captions say "Sample screen(s)." / "Sample data".
       pattern, not proof of a cause." OK?
 - [ ] Eight weeks: "In the pilot, the programme runs for eight weeks." What do
       the eight weeks contain? (The code has no week or day schedule.)
-- [ ] Recordings: "still to be made" (Learn card). Is there a date?
+- [ ] Not-yet-recorded notes: to match Figma (4 Oct 2026), the site no longer
+      says that the course recordings and the S.O.S. practices are still to
+      be made. The phone screens show a player mid-recording. Confirm that is
+      fine before launch, or add a line in Figma and the site together.
 - [ ] Chapter 1 glosses: "neuroception" and "glimmers" as defined. OK?
 - [ ] Leadership Track: "being made for you … How it opens is still being
       decided." The app says "Ask to join" with no way to ask.
@@ -273,9 +286,8 @@ They differ from the build; captions say "Sample screen(s)." / "Sample data".
 - [ ] All industry statistics and the "What gets better" list were removed
       under the one-claim rule. Should the commercial case live in a separate
       document for vessels and management?
-- [ ] History caption: the build overrides say "Sample data" (no full stop,
-      as in Figma); the deck and the other captions use a full stop ("Sample
-      data."). Pick one.
+- [x] History caption: "Sample data", without a full stop, as in Figma. It is
+      now the only caption.
 
 ### Related app issues (not blocking the site)
 

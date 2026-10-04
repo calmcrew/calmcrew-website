@@ -50,6 +50,19 @@
   --card-padding: 32px;
   --text-stack: 16px;
 
+  /* Web layout · values the Figma frames keep the same at both sizes */
+  --header-padding-y: 16px;     /* above and below the header row: 88 tall */
+  --hero-padding-top: 48px;
+  --footer-padding-top: 96px;
+  --footer-padding-bottom: 64px;
+  --footer-tagline-gap: 16px;   /* logo to tagline */
+  --footer-link-inset: 4px;     /* the footer links' side padding */
+  --paragraph-gap: 12px;
+  --cta-padding-top: 16px;      /* the hero's button row: extra space above it */
+  --button-padding-x: 28px;     /* text inset inside a button, border included */
+  --brand-gap: 12px;            /* logo mark to wordmark */
+  --caption-gap: 16px;          /* phone to its caption */
+
   /* Type */
   --font-serif: 'Newsreader', 'Iowan Old Style', Georgia, serif;
   --font-sans: 'Work Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;

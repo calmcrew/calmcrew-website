@@ -44,11 +44,11 @@
   <link rel="preload" href="assets/fonts/work-sans-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- /assets/* is cached for a year (netlify.toml): bump ?v= when a file changes. -->
-  <link rel="stylesheet" href="assets/fonts/fonts.css?v=2026-10-04c">
-  <link rel="stylesheet" href="assets/css/tokens.css?v=2026-10-04c">
-  <link rel="stylesheet" href="assets/css/site.css?v=2026-10-04c">
+  <link rel="stylesheet" href="assets/fonts/fonts.css?v=2026-10-04d">
+  <link rel="stylesheet" href="assets/css/tokens.css?v=2026-10-04d">
+  <link rel="stylesheet" href="assets/css/site.css?v=2026-10-04d">
   <!-- Not deferred on purpose: it only sets a class, then waits for the DOM. -->
-  <script src="assets/js/site.js?v=2026-10-04c"></script>
+  <script src="assets/js/site.js?v=2026-10-04d"></script>
 </head>
 <body>
   <a class="skip-link btn btn--primary" href="#main">Skip to content</a>
@@ -68,7 +68,7 @@
         <span class="wordmark">Calm Crew</span>
       </a>
 
-      <button class="nav-toggle btn btn--secondary" type="button" aria-expanded="false" aria-controls="site-menu" hidden>Menu</button>
+      <button class="nav-toggle btn btn--primary" type="button" aria-expanded="false" aria-controls="site-menu" hidden>Menu</button>
 
       <div class="site-menu" id="site-menu">
         <nav class="site-nav" aria-label="Main">
@@ -117,7 +117,6 @@
               </picture>
             </div>
           </div>
-          <figcaption class="eyebrow caption">Sample screen.</figcaption>
         </figure>
       </div>
     </section>
@@ -183,7 +182,6 @@
                 </div>
               </div>
             </div>
-            <figcaption class="eyebrow caption">Sample screens.</figcaption>
           </figure>
 
           <ul class="stack" role="list">
@@ -227,7 +225,6 @@
             </li>
             <li class="card">
               <h3 class="title">Learn</h3>
-              <p>The four-chapter course.</p>
             </li>
             <li class="card">
               <h3 class="title">S.O.S.</h3>
@@ -246,7 +243,6 @@
               </picture>
             </div>
           </div>
-          <figcaption class="eyebrow caption">Sample screen.</figcaption>
         </figure>
       </div>
     </section>
@@ -277,15 +273,14 @@
           <div class="prose">
             <p>A few short practices for settling yourself, then routes to a person: someone on board, the bridge, a seafarers’ helpline (details being confirmed before the pilot).</p>
             <p class="note">Calm Crew is not a crisis or emergency service. In an emergency at sea, go to the bridge. Ashore, call the local emergency number.</p>
-            <p>The practices aren’t recorded yet.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ===================================================================
-         #course — The course (Day). Card titles are an eyebrow plus an h3,
-         so screen readers do not read out middle dots.
+         #course — The course (Day). Card titles read "Chapter 1 · …" as in
+         Figma; the dot is hidden from screen readers, which hear "Chapter 1:".
          =================================================================== -->
     <section id="course" class="section course" aria-labelledby="course-title">
       <div class="container">
@@ -323,38 +318,25 @@
                 </div>
               </div>
             </div>
-            <figcaption class="eyebrow caption">Sample screens. Recordings not yet made.</figcaption>
           </figure>
         </div>
 
         <ul class="cards cards--2" role="list">
           <li class="card">
-            <p class="eyebrow">Chapter 1</p>
-            <h3 class="title">Understand your nervous system</h3>
+            <h3 class="title">Chapter 1<span aria-hidden="true"> · </span><span class="visually-hidden">: </span>Understand your nervous system</h3>
             <p>The three-state model: how your nervous system moves between states and senses safety and danger.</p>
           </li>
           <li class="card">
-            <p class="eyebrow">Chapter 2</p>
-            <h3 class="title">The Core Journey</h3>
-            <p>Pre-boarding, then seven modules:</p>
-            <ol class="module-list">
-              <li>Welcome aboard</li>
-              <li>Meet your vagus nerve</li>
-              <li>Breathing below deck</li>
-              <li>Sleep in a world that never stops</li>
-              <li>Calm under pressure</li>
-              <li>Somatic tools for small spaces</li>
-              <li>Your long game</li>
-            </ol>
+            <h3 class="title">Chapter 2<span aria-hidden="true"> · </span><span class="visually-hidden">: </span>The Core Journey</h3>
+            <!-- One run of text on screen, as in Figma; still a list for screen readers. -->
+            <p>Pre-boarding, then seven modules: <span class="module-list" role="list"><span role="listitem">Welcome aboard</span> <span role="listitem">Meet your vagus nerve</span> <span role="listitem">Breathing below deck</span> <span role="listitem">Sleep in a world that never stops</span> <span role="listitem">Calm under pressure</span> <span role="listitem">Somatic tools for small spaces</span> <span role="listitem">Your long game</span></span></p>
           </li>
           <li class="card">
-            <p class="eyebrow">Chapter 3</p>
-            <h3 class="title">The Leadership Track</h3>
+            <h3 class="title">Chapter 3<span aria-hidden="true"> · </span><span class="visually-hidden">: </span>The Leadership Track</h3>
             <p>For captains and heads of department. How it opens is undecided.</p>
           </li>
           <li class="card">
-            <p class="eyebrow">Chapter 4</p>
-            <h3 class="title">Practice library</h3>
+            <h3 class="title">Chapter 4<span aria-hidden="true"> · </span><span class="visually-hidden">: </span>Practice library</h3>
             <p>Planned: short practices. Opens once you finish The Core Journey.</p>
           </li>
         </ul>
@@ -526,7 +508,7 @@
         <div class="footer__col">
           <h2 class="eyebrow">Contact</h2>
           <ul role="list">
-            <li><a href="mailto:libby@calmcrewcoaching.com">Email: libby@calmcrewcoaching.com</a></li>
+            <li><a href="mailto:libby@calmcrewcoaching.com">libby@calmcrewcoaching.com</a></li>
             <li><a href="https://www.instagram.com/calmcrewcoaching/">Instagram: @calmcrewcoaching</a></li>
             <!-- Website privacy notice: hidden until Libby approves the notice. Then add
                  <li><a href="/privacy-notice">Website privacy notice</a></li> -->
@@ -537,7 +519,7 @@
 
       <div class="footer__bottom">
         <p class="footer__disclaimer">Calm Crew is a wellbeing app and training programme. It is not a medical device or a medical, crisis or emergency service, and it does not diagnose or treat any condition. If you are struggling, talk to the medic on board or your doctor. In an emergency at sea, go to the bridge. Ashore, call the local emergency number.</p>
-        <p class="eyebrow footer__legal">© 2026 Calm Crew · Libby Pickett · Palma de Mallorca · libby@calmcrewcoaching.com · Instagram: @calmcrewcoaching</p>
+        <p class="eyebrow footer__legal">© 2026 Calm Crew · Libby Pickett · Palma de Mallorca</p>
       </div>
     </div>
   </footer>
