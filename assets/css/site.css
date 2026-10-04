@@ -237,8 +237,7 @@ html {
 /* Content that follows a section head inside the same column. (Not a blanket
    `.section-head + *`: in two-column grids the sibling is the other column.) */
 .at-sea__grid,
-.anchor__text .prose,
-.contact__after {
+.anchor__text .prose {
   margin-top: var(--gap-l);
 }
 
@@ -845,10 +844,6 @@ em {
 /* ---------------------------------------------------------------------------
  * Contact (#contact): an email link (calmcrew.app is on Figma Sites, no forms)
  * ------------------------------------------------------------------------- */
-.contact__after {
-  color: var(--ink-secondary);
-}
-
 /* Email instead of a form: the button, then the address as a plain link. */
 .contact__email {
   display: grid;
