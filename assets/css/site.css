@@ -722,10 +722,7 @@ em {
   align-items: start;
 }
 
-/* The large line under the heading. The <br> before "By design." is Figma's. */
-.privacy__promise {
-  margin-top: var(--gap-l);
-}
+/* The section's heading, in Display. The <br> before "By design." is Figma's. */
 
 /* At ExtraBold, Display is too wide for the 480fr column below 1440: "Anonymous."
    (403px) overflows it up to about 1250px, and "Now, and later." (473px) splits
