@@ -19,6 +19,14 @@ self-hosted; there are no analytics, CDNs or embeds).
   cannot serve the old ones.
 - The page makes **exactly one claim**, in the `#history` section. Do not add
   outcome or benefit language, statistics or "what gets better" anywhere else.
+- **4 Oct 2026 copy rewrite** (client request: much more concise, relaxed
+  and playful). The visible copy is about 40% shorter. Kept verbatim: the
+  safety note, the footer disclaimer, the tagline, tab and course names, and
+  the meaning of every privacy line. Some detail was cut: the eight-week
+  length, neuroception and glimmers, Settings behind the three dots, and the
+  crewmate page in S.O.S. The "Boat Industry Leaders" card no longer promises
+  "the calm they deserve" or says leaders "track" their crew's mood. Some
+  items in the checklist below quote the earlier wording.
 
 ## Files
 
