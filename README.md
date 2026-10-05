@@ -15,18 +15,26 @@ self-hosted; there are no analytics, CDNs or embeds).
   the S.O.S. tab), titles are Newsreader ExtraBold in `--black`, secondary
   buttons are the app's white chip with a 1.5px slate outline,
   inline links take the app's slate underline, and `--selection-solid` is
-  #6E97AA. Screen images carry a version suffix (now `-v5`, below) so the
+  #6E97AA. Screen images carry a version suffix (now `-v6`, below) so the
   year-long asset cache cannot serve the old ones.
-- **Phone screens (4 Oct 2026; rendered again 5 Oct as `-v5`).** The six phone images are rendered from the
-  current frames on Figma page "09 · Prototype — design changes": `2735:335`,
-  `2735:123`, `2735:229`, `2735:517`, `2735:713` and `2735:798`. Each frame is
-  copied at the 852pt iPhone viewport into the section beside the Mobile frame
-  on page 10 (`3271:767` since 5 Oct), exported at 3× (1179×2556) and saved
-  as versioned WebP and PNG. In those copies the dock, player and scroll edge are pinned to
-  the bottom. The scroll edge is a pure blur (fill at 1%), except on History.
-  History keeps the design's solid band, so its streak strip does not show
-  through under the dock. Page 10's phone mockups (with the bezel) are made
-  from the same copies.
+- **Phone screens (`-v6`).** The six phone images come from Figma page
+  "10 · Prototype — Final Design Tweaks" (`3336:2581`), which replaced
+  "09 · Prototype — design changes" as the source:
+  - today-checkin `3336:2901`
+  - today-saved-day `3336:2693`
+  - today-saved-night `3336:2797`
+  - history-week `3336:3267`
+  - learn-index `3336:3513`
+  - learn-chapter-2 `3336:3677`
+
+  Each frame is copied at the 852pt iPhone viewport into the section beside
+  the Mobile frame on the website page (`3412:3227`). In those copies the
+  dock, player and scroll edge are pinned to the bottom, and the scroll edge
+  is a pure blur (fill at 1%) on all six screens. History used to keep a
+  solid band, but its streak row now sits higher and the band cut it in
+  half. The copies are exported at 3× (1179×2556) and saved as versioned WebP
+  and PNG. Page 10's phone mockups (with the bezel) are made from the same
+  copies.
 - The page makes **exactly one claim**, in the `#history` section. Do not add
   outcome or benefit language, statistics or "what gets better" anywhere else.
 - **5 Oct 2026 copy: Libby's review PDF** ("Calm Crew Website - for
