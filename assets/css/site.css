@@ -46,7 +46,7 @@
    in the footer).
    Day: 16.1:1 on Sand, 17.0:1 on a card. Night: 12.7:1 on the band, 10.4:1 on
    a card. `body` lifts this above the single-class link rules further down. */
-body :is(p:not(.brand), li, figcaption, label, strong, .eyebrow, .lead, .caption, .text-link, .links a, .about__credit a, .site-nav a, .footer__col a) {
+body :is(p:not(.brand), li, figcaption, label, strong, .eyebrow, .lead, .caption, .text-link, .links a, .site-nav a, .footer__col a) {
   color: var(--black);
 }
 
@@ -541,6 +541,17 @@ html {
   text-align: center;
 }
 
+/* Side by side, the text centres on the phone itself, as in Figma: the
+   caption hangs into the section's bottom padding. (Not in the course, where
+   cards follow the pair, nor in History, where Figma counts it.) */
+@media (min-width: 1081px) {
+  .hero__grid .shot,
+  .app__grid .shot,
+  .at-sea__grid .shot {
+    margin-bottom: calc(-1 * (var(--caption-gap) + var(--label-line)));
+  }
+}
+
 /* ---------------------------------------------------------------------------
  * Cards
  * ------------------------------------------------------------------------- */
@@ -590,8 +601,8 @@ em {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.cards--4 {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+.cards--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 /* Chapter 2's modules: one run of text with middle dots, as in Figma, and a
@@ -627,6 +638,10 @@ em {
 
 .hero .actions {
   margin-top: calc(var(--gap-s) + var(--cta-padding-top)); /* 32 / 28 */
+}
+
+.hero__facts {
+  margin-top: var(--gap-s);
 }
 
 .hero__byline {
@@ -714,18 +729,14 @@ em {
   align-items: start;
 }
 
-/* The section's heading, in Display. The <br> before "By design." is Figma's. */
+/* Under the heading: the promise at heading size, then "Anonymous. Now, and
+   later. By design." as a lead (5 Oct 2026 copy). */
+.privacy__promise {
+  margin-top: var(--gap-l);
+}
 
-/* At ExtraBold, Display is too wide for the 480fr column below 1440: "Anonymous."
-   (403px) overflows it up to about 1250px, and "Now, and later." (473px) splits
-   up to about 1420px. Step down to the Heading size there; from 1440 (the Figma
-   desktop frame) the column is 480px and Display fits. At 1080 and below the
-   grid stacks and the line has the full width, so it keeps Display. */
-@media (min-width: 1081px) and (max-width: 1439px) {
-  .privacy__promise {
-    font-size: var(--heading-size);
-    line-height: var(--heading-line);
-  }
+.privacy__design {
+  margin-top: var(--gap-s);
 }
 
 /* Two cards, then one across the full width (Figma, 1 Oct 2026). */
@@ -809,21 +820,42 @@ em {
 }
 
 /* ---------------------------------------------------------------------------
- * About (#about)
+ * About (#about): Libby's photo (4:5) on the left, 480 | 96 | 624 at 1440 as in
+ * the privacy section. The heading and the text sit beside it as one block,
+ * centred on the photo, so neither column is left half empty.
  * ------------------------------------------------------------------------- */
+.about__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 480fr) minmax(0, 624fr);
+  grid-template-rows: 1fr auto auto 1fr;
+  grid-template-areas:
+    "photo ."
+    "photo head"
+    "photo body"
+    "photo .";
+  column-gap: var(--col-gap);
+}
+
+.about__head {
+  grid-area: head;
+}
+
+.about__photo {
+  grid-area: photo;
+}
+
+.about__photo img {
+  width: 100%;
+  border-radius: var(--radius-card);
+}
+
+.about__body {
+  grid-area: body;
+  margin-top: var(--gap-l);
+}
+
 .about .links {
   margin-top: var(--gap-xs);
-}
-
-/* The credit sits straight under the contact links, as in Figma. */
-.about__credit {
-  margin-top: var(--gap-s);
-  color: var(--ink-primary);
-}
-
-/* Links are ink/secondary, as .links a and .text-link (3 Oct 2026 spec). */
-.about__credit a {
-  color: var(--ink-secondary);
 }
 
 /* ---------------------------------------------------------------------------
@@ -958,8 +990,27 @@ em {
     width: 100%;
   }
 
-  .cards--4 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .cards--3 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Stacked: heading, photo, text. */
+  .about__grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-template-areas:
+      "head"
+      "photo"
+      "body";
+    row-gap: var(--gap-l);
+  }
+
+  .about__photo {
+    max-width: 480px;
+  }
+
+  .about__body {
+    margin-top: 0;
   }
 
   .footer__top {
@@ -978,7 +1029,6 @@ em {
 @media (max-width: 760px) {
   .anchor__grid,
   .cards--2,
-  .cards--4,
   .footer__top {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -1015,12 +1065,6 @@ em {
   .at-sea__grid .shot,
   .course__top .shot {
     width: 100%;
-  }
-
-  /* The stacked links are taller than Figma's (56px targets), so the credit
-     needs no gap to land where Figma has it. */
-  .about__credit {
-    margin-top: 0;
   }
 
   /* A link that ends a block keeps its 56px target, but the empty half under

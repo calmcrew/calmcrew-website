@@ -15,22 +15,37 @@ self-hosted; there are no analytics, CDNs or embeds).
   the S.O.S. tab), titles are Newsreader ExtraBold in `--black`, secondary
   buttons are the app's white chip with a 1.5px slate outline,
   inline links take the app's slate underline, and `--selection-solid` is
-  #6E97AA. Screen images carry a version suffix (now `-v4`, below) so the
+  #6E97AA. Screen images carry a version suffix (now `-v5`, below) so the
   year-long asset cache cannot serve the old ones.
-- **4 Oct 2026 screens.** The six phone images were rendered again from the
+- **Phone screens (4 Oct 2026; rendered again 5 Oct as `-v5`).** The six phone images are rendered from the
   current frames on Figma page "09 · Prototype — design changes": `2735:335`,
   `2735:123`, `2735:229`, `2735:517`, `2735:713` and `2735:798`. Each frame is
   copied at the 852pt iPhone viewport into the section beside the Mobile frame
-  on page 10 (`3048:183`), exported at 3× (1179×2556) and saved as `-v4`
-  WebP and PNG. In those copies the dock, player and scroll edge are pinned to
+  on page 10 (`3271:767` since 5 Oct), exported at 3× (1179×2556) and saved
+  as versioned WebP and PNG. In those copies the dock, player and scroll edge are pinned to
   the bottom. The scroll edge is a pure blur (fill at 1%), except on History.
   History keeps the design's solid band, so its streak strip does not show
   through under the dock. Page 10's phone mockups (with the bezel) are made
   from the same copies.
 - The page makes **exactly one claim**, in the `#history` section. Do not add
   outcome or benefit language, statistics or "what gets better" anywhere else.
+- **5 Oct 2026 copy: Libby's review PDF** ("Calm Crew Website - for
+  review", printed 4 Oct). Every visible line on the page comes from it, with
+  these exceptions:
+  - The slogan stays "Steady at sea · calm within" everywhere (the PDF says
+    "sharp all season").
+  - Two lines are corrected to match the current screens. History: "see it
+    by day, week, month or year, with check-ins made straight after a practice
+    on a line of their own", and the streak "at the top of Today". The app:
+    settings "under the gear".
+  - Contact keeps one reply line, not the PDF's two, and no sign-up form.
+  - The About credit to Pablo is gone, as in the PDF.
+  - Course and module names follow the PDF ("What pressure does to your
+    body", "Toolkit", "Your body's built-in brake" and others). The phone
+    screens and the app still show the old names.
+  - About has Libby's photo (`libby-pickett-v1-*`, from the PDF, 960×1200).
 - **4 Oct 2026 copy rewrite** (client request: much more concise, relaxed
-  and playful). The visible copy is about 40% shorter. Kept verbatim: the
+  and playful; replaced on 5 Oct by the review PDF). The visible copy is about 40% shorter. Kept verbatim: the
   safety note, the footer disclaimer, the tagline, tab and course names, and
   the meaning of every privacy line. Some detail was cut: the eight-week
   length, neuroception and glimmers, Settings behind the three dots, and the
@@ -99,8 +114,11 @@ How the page is put together:
 ### Deliberate differences from Figma
 
 On 4 Oct 2026 the site was matched to Figma page 10 ("10 · Website —
-calmcrew.app"), measured at 1440 and 390. Every section height matches
-except those listed here. What is left on purpose:
+calmcrew.app"), measured at 1440 and 390. Since 5 Oct, the copy comes from
+Libby's review PDF instead (see above). Figma page 10 still has the 4 Oct
+copy and layout. It has no About photo, privacy heading or phone captions,
+and it has four pilot cards. Spacing and styles still follow Figma, apart
+from what is left on purpose:
 
 - The header keeps a 1px hairline along its bottom edge (Figma has none),
   because it is sticky and would otherwise merge into the Day bands it
@@ -225,9 +243,10 @@ the site goes public.
 ### Screens (flagged to the developer separately)
 
 The images are the current Figma renders, unedited, by decision of 1 Oct 2026.
-They differ from the build. Only the History phone has a caption ("Sample
-data"), as in Figma; the others lost theirs when the site was matched to
-Figma on 4 Oct 2026.
+They differ from the build; captions say "Sample screen(s)." / "Sample data",
+as in the review PDF. Since 5 Oct, the renders show the Night chrome in
+black (`surface/chrome`), a red S.O.S. tab, and Learn with an "Up next"
+card and "2 of 8 done".
 
 - [ ] Today renders (`today-checkin`, `today-saved-day`, `today-saved-night`)
       show a Settings gear and a "Tap to setup iCloud sync." link (iCloud
@@ -257,10 +276,10 @@ Figma on 4 Oct 2026.
       pattern, not proof of a cause." OK?
 - [ ] Eight weeks: "In the pilot, the programme runs for eight weeks." What do
       the eight weeks contain? (The code has no week or day schedule.)
-- [ ] Not-yet-recorded notes: to match Figma (4 Oct 2026), the site no longer
-      says that the course recordings and the S.O.S. practices are still to
-      be made. The phone screens show a player mid-recording. Confirm that is
-      fine before launch, or add a line in Figma and the site together.
+- [x] Not-yet-recorded notes: back on 5 Oct, in the review PDF's words ("The
+      recordings are in production." / "The practices are being recorded now.").
+- [ ] "5 to 10 minute sessions" and "seven years of one-to-one practice"
+      (hero and About, review PDF): confirm before launch.
 - [ ] Chapter 1 glosses: "neuroception" and "glimmers" as defined. OK?
 - [ ] Leadership Track: "being made for you … How it opens is still being
       decided." The app says "Ask to join" with no way to ask.
