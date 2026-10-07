@@ -17,24 +17,29 @@ self-hosted; there are no analytics, CDNs or embeds).
   inline links take the app's slate underline, and `--selection-solid` is
   #6E97AA. Screen images carry a version suffix (now `-v6`, below) so the
   year-long asset cache cannot serve the old ones.
-- **Phone screens (`-v6`).** The six phone images come from Figma page
-  "10 · Prototype — Final Design Tweaks" (`3336:2581`), which replaced
-  "09 · Prototype — design changes" as the source:
-  - today-checkin `3336:2901`
-  - today-saved-day `3336:2693`
-  - today-saved-night `3336:2797`
-  - history-week `3336:3267`
-  - learn-index `3336:3513`
-  - learn-chapter-2 `3336:3677`
+- **Phone screens (`-v7`, 7 Oct 2026).** The six phone images come from the Figma
+  page "Final Design C" (`3741:7182`), the same page as the palette. The
+  frames are drawn in Brand v2.0's "Day · A" and "Night · A" modes:
+  - today-checkin `3741:7514`
+  - today-saved-day `3741:7300`
+  - today-saved-night `3741:7407`
+  - history-week `3741:7891`
+  - learn-index `3741:8088`
+  - learn-chapter-2 `3741:8252`
 
   Each frame is copied at the 852pt iPhone viewport into the section beside
-  the Mobile frame on the website page (`3412:3227`). In those copies the
-  dock, player and scroll edge are pinned to the bottom, and the scroll edge
-  is a pure blur (fill at 1%) on all six screens. History used to keep a
-  solid band, but its streak row now sits higher and the band cut it in
-  half. The copies are exported at 3× (1179×2556) and saved as versioned WebP
-  and PNG. Page 10's phone mockups (with the bezel) are made from the same
+  the Mobile frame on the website page (`3771:765`). The copies keep the
+  frame's "Day · A" or "Night · A" mode explicitly, so they cannot fall back
+  to the old palette. The dock, player and scroll edge are pinned to the
+  bottom, and the scroll edge is a pure blur (fill at 1%). The copies are
+  exported at 3× (1179×2556) and saved as versioned WebP and PNG. The
+  website page's phone mockups (with the bezel) are made from the same
   copies.
+  - Final Design C's Today has Watch and Duty On/Off rows. Its History is a
+    bar chart with averages ("Without practice 2.3 / With practice 2.7" in
+    the sample data) and a Watch row. The History paragraph again says "as
+    bars … with your averages", as in Libby's review copy, plus "check-ins
+    made straight after a practice kept apart from the rest".
 - **Palette: Figma page "Final Design C" (7 Oct 2026).** This is `Brand v2.0`
   in modes "Day · A" and "Night · A".
   - Day: tan ground #E3CDA6 and deep-navy ink #162738.
