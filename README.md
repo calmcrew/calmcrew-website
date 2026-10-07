@@ -35,6 +35,15 @@ self-hosted; there are no analytics, CDNs or embeds).
   half. The copies are exported at 3× (1179×2556) and saved as versioned WebP
   and PNG. Page 10's phone mockups (with the bezel) are made from the same
   copies.
+- **Palette: Figma page "Final Design C" (7 Oct 2026).** This is `Brand v2.0`
+  in modes "Day · A" and "Night · A".
+  - Day: tan ground #E3CDA6 and deep-navy ink #162738.
+  - Night: navy ground #203448 and sand ink #EADBC1.
+  - Cards use the app's `surface/chrome`: cream #F9F0E1 in Day, #162738 in
+    Night.
+  - `black` (titles and small text) is deep navy in Day and sand in Night.
+    There is no pure black or white any more.
+  - See tokens.css for the contrast ratios. All text is at least 5.5:1.
 - The page makes **exactly one claim**, in the `#history` section. Do not add
   outcome or benefit language, statistics or "what gets better" anywhere else.
 - **5 Oct 2026 copy: Libby's review PDF** ("Calm Crew Website - for
@@ -77,8 +86,8 @@ assets/js/site.js       the Menu button only;
 assets/fonts/           Newsreader (one variable file, 200–800: Light 300 text,
                         ExtraBold 800 titles), Work Sans
                         (variable 400–700) and Work Sans Italic, self-hosted woff2
-assets/brand/           mark.svg, favicon.svg, og-image.png (1200×630),
-                        apple-touch-icon.png (180×180)
+assets/brand/           mark.svg, favicon-v2.svg, og-image-v2.png (1200×630),
+                        apple-touch-icon-v2.png (180×180)
 assets/img/             app screens: WebP 786w/1179w + PNG 786w fallback
 ```
 
@@ -115,9 +124,11 @@ How the page is put together:
   audio as design intent, because no recording exists yet; the S.O.S.
   disclaimer is plain body text, as in Figma, never red. The At sea, Privacy and About copy
   is the client's own (manual Figma edits) and is kept word for word.
-- `assets/brand/apple-touch-icon.png` and `favicon.ico` were drawn with
-  Pillow from the mark's geometry and the Day colours in tokens.css, like
-  `og-image.png`. Redraw them if the mark or the colours change.
+- `assets/brand/apple-touch-icon-v2.png`, `og-image-v2.png`, `favicon-v2.svg`
+  and `favicon.ico` were recoloured to the Final Design C palette on 7 Oct
+  2026 (ground #E3CDA6, ink #162738). Each file is versioned, because
+  /assets is cached for a year. Redraw them if the mark or the colours
+  change, and bump the version.
 
 ### Deliberate differences from Figma
 
@@ -334,7 +345,7 @@ card and "2 of 8 done".
 - [ ] Custom domain and HTTPS on Netlify. The HSTS header includes
       `includeSubDomains`: check no subdomain still needs plain HTTP.
 - [ ] Paste the URL into a link-preview checker (LinkedIn Post Inspector,
-      WhatsApp, iMessage) to confirm `og-image.png` and the texts show.
+      WhatsApp, iMessage) to confirm `og-image-v2.png` and the texts show.
 - [ ] Final accessibility pass on the live site: keyboard only, VoiceOver on
       iPhone, 200% zoom, and an automated check (axe or Lighthouse).
 - [ ] Headers on the live site: `curl -sI https://calmcrew.app/` shows

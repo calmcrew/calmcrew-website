@@ -1,36 +1,36 @@
 /*
  * DESIGN TOKENS — Calm Crew Brand v2.0, for the website
  * =============================================================================
- * Colours, radii and app type sizes are transcribed one-for-one from the app's
- * src/theme/tokens.ts and the Figma file `Calm Crew — App Design V1`
- * (key f0J6MJZNgvUgkXO1FzVUjd), collections `Brand v2.0` and `Shape options`
- * (mode C · Capsule). Web-only sizes come from the Figma collection
- * `Web layout` (modes Desktop / Mobile) and the `Web/*` text styles.
+ * Colours, radii and app type sizes are transcribed one-for-one from the Figma
+ * file `Calm Crew — App Design V1` (key f0J6MJZNgvUgkXO1FzVUjd), collections
+ * `Brand v2.0` and `Shape options` (mode C · Capsule). Web-only sizes come
+ * from the Figma collection `Web layout` (modes Desktop / Mobile) and the
+ * `Web/*` text styles.
  *
- * Two modes only: Day and Night. Do not add a third mode.
- * Steel (#547792) is never used for text. No gold.
+ * Colours: the palette of the Figma page "Final Design C" (7 Oct 2026), which
+ * is `Brand v2.0` in modes "Day · A" and "Night · A". Two modes only: Day and
+ * Night. Do not add a third mode. Steel is never used for text. No gold.
  *
- * 3 Oct 2026 design changes (Figma page "09 · Prototype — design changes"):
- * the app added `white` and `black` tokens (pure white chips and pure black
- * screen titles in Day) and darkened selection/solid in Day to #6E97AA.
- * Pure white is allowed ONLY through --white; pure black only through --black.
+ * In Final Design C, `white` is a cream (#F9F0E1) and `black` a deep navy
+ * (#162738): there is no pure white or pure black any more. Cards use the
+ * app's `surface/chrome`, the cream of its active cards. Its `surface/raised`
+ * (#D4BA8E) marks locked cards, so the site does not use it.
  */
 
 :root {
-  /* DAY — warm sand ground, deep-water ink. ink on ground = 9.74:1. */
-  --ground: #EAE0CF;
-  --surface-raised: #F0E6D3;
-  --ink-primary: #213448;
-  --ink-secondary: #46667E; /* 4.64:1 on ground, 4.90:1 on surface-raised. Fails on selection-wash (4.22:1), so never use it as text on a hover wash. */
-  --hairline: #CFC3AE;
-  --selection-wash: #E1D6C2;
-  --selection-ring: #547792;
-  --selection-solid: #6E97AA; /* darkened 3 Oct 2026 (was #94B4C1). 2.41:1 on ground; ink on it 4.04:1 and white 3.15:1,
-                                 so NEVER a background for body text on the web. The app gives selected chips a 2px ink ring. */
-  --glass-shadow: rgb(33 52 72 / 0.14);
-  --on-primary: #EAE0CF; /* label on an ink-filled button */
-  --white: #FFFFFF; /* chip surface: secondary buttons and form fields */
-  --black: #000000; /* screen titles: the display line and section headings */
+  /* DAY · A — warm tan ground, deep-navy ink. ink on ground = 9.81:1. */
+  --ground: #E3CDA6;
+  --surface-card: #F9F0E1; /* surface/chrome: the app's card surface. ink on it 13.45:1 */
+  --ink-primary: #162738;
+  --ink-secondary: #2F4A60; /* 5.97:1 on ground, 8.19:1 on a card, 5.51:1 on selection-wash */
+  --hairline: #C4A678;
+  --selection-wash: #DCC59C;
+  --selection-ring: #537792; /* the focus ring: 3.06:1 on ground, above the 3:1 an outline needs */
+  --selection-solid: #537792; /* 3.06:1 on ground: never a background for body text on the web */
+  --glass-shadow: rgb(22 39 56 / 0.14);
+  --on-primary: #E3CDA6; /* label on an ink-filled button (the ground, as in the app) */
+  --white: #F9F0E1; /* chip surface: secondary buttons */
+  --black: #162738; /* titles and small text: the app's maximum-contrast ink */
 
   /* Shape options · C · Capsule */
   --radius-control: 999px;
@@ -75,21 +75,21 @@
   --label-size: 12px;     --label-line: 16px;     /* v2/Field label — the only text under 16 */
 }
 
-/* NIGHT — the same relationships inverted, so it keeps its character. */
+/* NIGHT · A — the same relationships inverted, so it keeps its character. */
 .band-night,
 :root[data-theme='night'] {
-  --ground: #213448;
-  --surface-raised: #2B4257;
-  --ink-primary: #EAE0CF;
-  --ink-secondary: #94B4C1; /* 5.79:1 on ground, 4.73:1 on surface-raised, 4.24:1 on selection-wash (fail) */
-  --hairline: #38536A;
-  --selection-wash: #2D4A5E;
-  --selection-ring: #94B4C1;
-  --selection-solid: #EAE0CF;
-  --glass-shadow: rgb(10 10 9 / 0.45);
-  --on-primary: #213448;
-  --white: #2B4257; /* the chip surface in Night, as in the app */
-  --black: #FFFFFF; /* titles in Night resolve to white, as in the app */
+  --ground: #203448;
+  --surface-card: #162738; /* surface/chrome in Night */
+  --ink-primary: #EADBC1;
+  --ink-secondary: #A3B6C3; /* 6.10:1 on ground, 7.27:1 on a card, 6.70:1 on selection-wash */
+  --hairline: #37536A;
+  --selection-wash: #1B2D41;
+  --selection-ring: #A3B6C3;
+  --selection-solid: #F9F0E1;
+  --glass-shadow: rgb(0 0 0 / 0.45);
+  --on-primary: #203448;
+  --white: #162738; /* the chip surface in Night, as in the app */
+  --black: #EADBC1; /* titles and small text in Night: 9.36:1 on the band, 11.15:1 on a card */
 }
 
 /* Web layout · Mobile */

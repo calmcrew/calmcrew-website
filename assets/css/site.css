@@ -39,13 +39,14 @@
   color-scheme: dark;
 }
 
-/* Small text takes --black, the app's maximum-contrast ink (3 Oct 2026): pure
-   black on Sand, white on the dark-blue bands. That covers eyebrows, leads,
-   body copy, card text, captions, links, and the header and footer links.
-   Titles are --black too (rules below); the logo keeps its own colour (p.brand
-   in the footer).
-   Day: 16.1:1 on Sand, 17.0:1 on a card. Night: 12.7:1 on the band, 10.4:1 on
-   a card. `body` lifts this above the single-class link rules further down. */
+/* Small text takes --black, the app's maximum-contrast ink: deep navy on the
+   tan Day bands, sand on the navy Night bands (Final Design C, 7 Oct 2026).
+   That covers eyebrows, leads, body copy, card text, captions, links, and the
+   header and footer links. Titles are --black too (rules below); the logo
+   keeps its own colour (p.brand in the footer).
+   Day: 9.81:1 on the ground, 13.45:1 on a card. Night: 9.36:1 on the band,
+   11.15:1 on a card. `body` lifts this above the single-class link rules
+   further down. */
 body :is(p:not(.brand), li, figcaption, label, strong, .eyebrow, .lead, .caption, .text-link, .links a, .site-nav a, .footer__col a) {
   color: var(--black);
 }
@@ -187,7 +188,7 @@ html {
 }
 
 /* Titles take the app's 3 Oct 2026 screen-title style: Newsreader ExtraBold in
-   pure black (white in Night). Card titles stay Light, as the app's list titles do,
+   --black (deep navy in Day, sand in Night). Card titles stay Light, as the app's list titles do,
    but share the colour. */
 .display,
 .heading {
@@ -556,7 +557,7 @@ html {
  * Cards
  * ------------------------------------------------------------------------- */
 .card {
-  background: var(--surface-raised);
+  background: var(--surface-card);
   border-radius: var(--radius-card);
   padding: var(--card-padding);
   color: var(--ink-secondary);
