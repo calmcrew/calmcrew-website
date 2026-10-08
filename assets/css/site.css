@@ -820,6 +820,13 @@ em {
   text-wrap: pretty;
 }
 
+/* The app's own labels ("View history", "Today") are underlined, as in Libby's 8 Oct review copy. */
+.ui-label {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
 /* ---------------------------------------------------------------------------
  * About (#about): Libby's photo (4:5) on the left, 480 | 96 | 624 at 1440 as in
  * the privacy section. The heading and the text sit beside it as one block,

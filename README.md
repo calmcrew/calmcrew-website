@@ -1,6 +1,6 @@
 # calmcrew.app
 
-The one-page website for **Calm Crew** (calmcrew.app), Libby Pickett's iPhone app and course
+The one-page website for **Calm Crew** (calmcrew.app), Libby Pickett's app and course
 for superyacht crew. Plain static HTML, CSS and a little vanilla JavaScript:
 no build step, no framework, and no requests to any other domain (fonts are
 self-hosted; there are no analytics, CDNs or embeds).
@@ -15,34 +15,31 @@ self-hosted; there are no analytics, CDNs or embeds).
   the S.O.S. tab), titles are Newsreader ExtraBold in `--black`, secondary
   buttons are the app's white chip with a 1.5px slate outline,
   inline links take the app's slate underline, and `--selection-solid` is
-  #6E97AA. Screen images carry a version suffix (now `-v9`, below) so the
+  #6E97AA. Screen images carry a version suffix (now `-v10`, below) so the
   year-long asset cache cannot serve the old ones.
-- **Phone screens (`-v9`, 8 Oct 2026).** The six phone images come from the Figma
-  page "Final Design D" (`3887:18561`), a copy of "Final Design C" in the same
-  palette. The frames are drawn in Brand v2.0's "Day · A" and "Night · A" modes:
-  - today-checkin `3887:18877`
-  - today-saved-day `3887:18671`
-  - today-saved-night `3887:18774`
-  - history-week `3887:19231`
-  - learn-index `3887:19435`
-  - learn-chapter-2 `3887:19599`
+- **Phone screens (`-v10`, 8 Oct 2026).** The six phone images come from the
+  Figma page "Final Design F" (`3943:32869`), in the same palette as "Final
+  Design C" (Brand v2.0 "Day · A" and "Night · A"):
+  - today-checkin `3943:33165`
+  - today-saved-day `3943:32969`
+  - today-saved-night `3943:33067`
+  - history-week `3943:33489`
+  - learn-index `3943:33693`
+  - learn-week-3 `3943:33857` (was learn-chapter-2: Learn is now in weeks)
 
   Each frame is copied at the 852pt iPhone viewport into the section beside
-  the Mobile frame on the website page (`3896:4664`). The copies keep the
+  the Mobile frame on the website page (`3986:4470`). The copies keep the
   frame's "Day · A" or "Night · A" mode explicitly, so they cannot fall back
   to the old palette. The dock, player and scroll edge are pinned to the
   bottom, and the scroll edge is a pure blur (fill at 1%). The copies are
   exported at 3× (1179×2556) and saved as versioned WebP and PNG. The
   website page's phone mockups (with the bezel) are made from the same
   copies.
-  - Final Design D's Today has one full-width Duty On/Off row (C's Watch row
-    is gone). Mood is drawn as
-    weather icons, ordered Storm to Calm from left to right, and Energy as
-    batteries, one bar to five. Its History is a bar chart with averages
-    ("Without practice 2.3 / With practice 2.7" in the sample data), a
-    battery scale and a Duty row. The History paragraph says "as bars …
-    with your averages", as in Libby's review copy, plus "check-ins made
-    straight after a practice kept apart from the rest".
+  - Final Design F's Today asks "I am…" (Prefer not to say, Working, Not
+    working), "I feel…" (weather icons, Storm to Calm from left to right) and
+    "My energy is…" (batteries), then shows Today's practice as a card. Its
+    History is a bar chart with averages ("Without practice 2.3 / With
+    practice 2.7" in the sample data) and a battery scale. Learn is in weeks.
   - Re-render from fresh copies whenever the designers change the source page.
     Bump the version suffix every time: `/assets` is cached for a year.
 - **Palette: Figma page "Final Design C" (7 Oct 2026).** This is `Brand v2.0`
@@ -56,6 +53,13 @@ self-hosted; there are no analytics, CDNs or embeds).
   - See tokens.css for the contrast ratios. All text is at least 5.5:1.
 - The page makes **exactly one claim**, in the `#history` section. Do not add
   outcome or benefit language, statistics or "what gets better" anywhere else.
+- **8 Oct 2026 copy: Libby's revisions PDF** ("Libby mock up Calm Crew AP
+  webpage with revisions for Pablo"). Its 24 numbered changes are applied word
+  for word, except the mockup's own disclosure at the top. The PDF stops
+  partway through About; everything after it is unchanged. Change 24
+  underlines the app's labels "View history" and "Today" in the History
+  paragraph (`.ui-label`, not links). The meta description no longer says
+  "iPhone app", to match "The app is on iPhone and Android".
 - **5 Oct 2026 copy: Libby's review PDF** ("Calm Crew Website - for
   review", printed 4 Oct). Every visible line on the page comes from it, with
   these exceptions:
@@ -307,11 +311,14 @@ card and "2 of 8 done".
       the eight weeks contain? (The code has no week or day schedule.)
 - [x] Not-yet-recorded notes: back on 5 Oct, in the review PDF's words ("The
       recordings are in production." / "The practices are being recorded now.").
-- [ ] "5 to 10 minute sessions" and "seven years of one-to-one practice"
-      (hero and About, review PDF): confirm before launch.
+- [ ] "5 to 10 minutes a day" and "seven years of one-to-one practice"
+      (hero and About, review PDFs): confirm before launch.
+- [ ] "Two taps" (hero, facts line, Today card, 8 Oct PDF): Final Design F's
+      check-in has three questions (I am…, I feel…, My energy is…).
 - [ ] Chapter 1 glosses: "neuroception" and "glimmers" as defined. OK?
-- [ ] Leadership Track: "being made for you … How it opens is still being
-      decided." The app says "Ask to join" with no way to ask.
+- [ ] Leading under pressure (Chapter 3, 8 Oct PDF): "It opens after the
+      eight-week course, by choice, and is never reported to anyone." Does the
+      app do this?
 - [ ] Founding partners: has any vessel signed? (If so, "We are looking for…"
       can become "are contributing".) Confirm "a first look at the study's
       overall findings" and "No vessel or company sees any crew member's own
@@ -319,7 +326,8 @@ card and "2 of 8 done".
 - [ ] Pilot facts: November 2026, around forty crew, six to ten vessels,
       validated measures at four points, an independent clinical advisor. All
       still current?
-- [ ] "For the pilot, the app is iPhone only." Nothing is said about later.
+- [ ] "The app is on iPhone and Android." (8 Oct PDF). Confirm Android will
+      be ready for the pilot; the TestFlight plan only covers iPhone.
 - [ ] Drop Anchor: no helpline is named or numbered until CC-52 is resolved;
       the copy says its "details are being confirmed before the pilot".
 - [ ] Privacy wording (client edit): "Anonymous. Now, and later. By design."

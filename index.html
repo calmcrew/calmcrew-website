@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Calm Crew — Steady at sea · calm within</title>
-  <meta name="description" content="Pressure training for superyacht crew: an iPhone app with a two-tap check-in and practical training by Libby Pickett. Pilot study from November 2026.">
+  <meta name="description" content="Pressure training for superyacht crew: an app with a two-tap check-in and practical training by Libby Pickett. Pilot study from November 2026.">
   <link rel="canonical" href="https://calmcrew.app/">
 
   <!-- Browser chrome colours. Meta tags cannot read CSS, so these repeat the
@@ -46,7 +46,7 @@
   <!-- /assets/* is cached for a year (netlify.toml): bump ?v= when a file changes. -->
   <link rel="stylesheet" href="assets/fonts/fonts.css?v=2026-10-07a">
   <link rel="stylesheet" href="assets/css/tokens.css?v=2026-10-07a">
-  <link rel="stylesheet" href="assets/css/site.css?v=2026-10-07a">
+  <link rel="stylesheet" href="assets/css/site.css?v=2026-10-08a">
   <!-- Not deferred on purpose: it only sets a class, then waits for the DOM. -->
   <script src="assets/js/site.js?v=2026-10-07a"></script>
 </head>
@@ -97,9 +97,9 @@
           <div class="section-head">
             <p class="eyebrow">Steady at sea · calm within</p>
             <h1 class="display" id="top-title">Pressure training for superyacht crew.</h1>
-            <p class="lead">Calm Crew is an iPhone app for the people who keep the boats running. A check-in that takes two taps, practical training by Libby Pickett, and quick resets you can use in a cabin, on watch or between guests. Built for crew who want to enjoy the job, and the life it gives them, season after season.</p>
+            <p class="lead">Calm Crew is an app for the people who keep the boats running. A check-in that takes two taps, practical training by Libby Pickett, and quiet practices you can use in a cabin, on watch or between guests, without anyone noticing. Built for crew who want to enjoy the job, and the life it gives them, season after season.</p>
           </div>
-          <p class="hero__facts">Two taps to check in · 5 to 10 minute sessions · Works offline</p>
+          <p class="hero__facts">Two taps to check in · 5 to 10 minutes a day · Works offline</p>
           <div class="actions">
             <a class="btn btn--primary" href="#contact">Join the crew waiting list</a>
             <a class="btn btn--secondary" href="#pilot">For vessels and management</a>
@@ -111,10 +111,10 @@
           <div class="phone">
             <div class="phone__frame">
               <picture>
-                <source type="image/webp" srcset="assets/img/today-checkin-v9-786.webp 786w, assets/img/today-checkin-v9-1179.webp 1179w" sizes="(max-width: 760px) 286px, (max-width: 1080px) 393px, (max-width: 1439px) calc(31.4vw - 59px), 393px">
+                <source type="image/webp" srcset="assets/img/today-checkin-v10-786.webp 786w, assets/img/today-checkin-v10-1179.webp 1179w" sizes="(max-width: 760px) 286px, (max-width: 1080px) 393px, (max-width: 1439px) calc(31.4vw - 59px), 393px">
                 <!-- The hero phone is the largest thing above the fold: load it first. -->
-                <img src="assets/img/today-checkin-v9-786.png" width="786" height="1704" loading="eager" fetchpriority="high"
-                     alt="Calm Crew’s Today screen on an iPhone, in Day mode, with sample data. Under the title “How are you now?” are five round mood buttons with weather icons, from a thunderstorm to full sun, the fourth, Steady (a sun behind a cloud), selected; five energy buttons drawn as batteries, from one bar to five, none chosen yet; and wide On and Off buttons for Duty. The header shows a 5 day streak and a gear for Settings. Below are the line “Last check-in 1 day ago. View history.”, an activity counter at 2, a player for Day 20, The long exhale, and the Today, Learn and S.O.S. tabs.">
+                <img src="assets/img/today-checkin-v10-786.png" width="786" height="1704" loading="eager" fetchpriority="high"
+                     alt="Calm Crew’s Today screen on an iPhone, in Day mode, with sample data. Under the title “How are you now?”, “I am…” offers Prefer not to say, selected, Working and Not working, with the note “Just for you and the study. Never shown to the boat, never used for rest hours.” Under “I feel…” are five mood buttons with weather icons, from a thunderstorm to full sun, the fourth, Steady (a sun behind a cloud), selected; under “My energy is…”, five batteries, from one bar to five, none chosen yet. Below are the line “Last check-in 1 day ago. View history.” and Today’s practice: Day 20 of 30, Slow breath, with a play button. The header shows a 5 day streak and a gear for Settings, and the Today, Learn and S.O.S. tabs sit at the bottom.">
               </picture>
             </div>
           </div>
@@ -133,16 +133,16 @@
             <p class="eyebrow">Your record</p>
             <h2 class="heading" id="history-title">See how your season is going.</h2>
           </div>
-          <p class="claim">Every check-in adds to your own record of the mood and energy you rate. Tap View history on Today to see it as bars by day, week, month or year, with your averages, and check-ins made straight after a practice kept apart from the rest. How many of the last seven days you checked in sits at the top of Today, and Learn shows where you are in the course. Look across the three: anything that seems to move together is a pattern, not proof of a cause.</p>
+          <p class="claim">Every check-in adds to your own record of the mood and energy you rate. Tap <span class="ui-label">View history</span> on <span class="ui-label">Today</span> to see it as bars by day, week, month or year, with your averages, and check-ins made straight after a practice kept apart from the rest. How many of the last seven days you checked in sits at the top of <span class="ui-label">Today</span>, and Learn shows where you are in the course. Look across the three: anything that seems to move together is a pattern, not proof of a cause.</p>
         </div>
 
         <figure class="shot">
           <div class="phone">
             <div class="phone__frame">
               <picture>
-                <source type="image/webp" srcset="assets/img/history-week-v9-786.webp 786w, assets/img/history-week-v9-1179.webp 1179w" sizes="(max-width: 760px) 286px, (max-width: 1080px) 393px, (max-width: 1439px) calc(31.4vw - 59px), 393px">
-                <img src="assets/img/history-week-v9-786.png" width="786" height="1704" loading="lazy" decoding="async"
-                     alt="Calm Crew’s Check-in history screen in Day mode, set to Week, with sample data for 14 to 20 September 2026. Bars show self-rated energy for each day on a scale of 1 to 5, marked with battery icons: dark for check-ins without a practice, light for check-ins made straight after a practice. The averages read 2.3 without a practice and 2.7 with one. Monday, 4 after a practice; Tuesday, 1 and 1; Wednesday, 3 without; Thursday, 3 and 3; Friday, 3 without; no check-in on Saturday; Sunday, about 1.5 without. A row under the days shows Duty, on only on Thursday. Under the chart, Energy is selected rather than Mood.">
+                <source type="image/webp" srcset="assets/img/history-week-v10-786.webp 786w, assets/img/history-week-v10-1179.webp 1179w" sizes="(max-width: 760px) 286px, (max-width: 1080px) 393px, (max-width: 1439px) calc(31.4vw - 59px), 393px">
+                <img src="assets/img/history-week-v10-786.png" width="786" height="1704" loading="lazy" decoding="async"
+                     alt="Calm Crew’s Check-in history screen in Day mode, set to Week, with sample data for 14 to 20 September 2026. Bars show self-rated energy for each day on a scale of 1 to 5, marked with battery icons: dark for check-ins without a practice, light for check-ins made straight after a practice. The averages read 2.3 without a practice and 2.7 with one. Monday, 4 after a practice; Tuesday, 1 and 1; Wednesday, 3 without; Thursday, 3 and 3; Friday, 3 without; no check-in on Saturday; Sunday, about 1.5 without. Under the chart, Energy is selected rather than Mood.">
               </picture>
             </div>
           </div>
@@ -168,17 +168,17 @@
               <div class="phone">
                 <div class="phone__frame">
                   <picture>
-                    <source type="image/webp" srcset="assets/img/today-saved-day-v9-786.webp 786w, assets/img/today-saved-day-v9-1179.webp 1179w" sizes="(max-width: 760px) 182px, 393px">
-                    <img src="assets/img/today-saved-day-v9-786.png" width="786" height="1704" loading="lazy" decoding="async"
-                         alt="The Today screen in Day mode, tan with dark type and cream buttons, with sample data: a check-in just saved, with Steady (a sun behind a cloud), the third battery and On for Duty selected, and a little confetti around them.">
+                    <source type="image/webp" srcset="assets/img/today-saved-day-v10-786.webp 786w, assets/img/today-saved-day-v10-1179.webp 1179w" sizes="(max-width: 760px) 182px, 393px">
+                    <img src="assets/img/today-saved-day-v10-786.png" width="786" height="1704" loading="lazy" decoding="async"
+                         alt="The Today screen in Day mode, tan with dark type and cream buttons, with sample data: a check-in just saved, with Working, Steady (a sun behind a cloud) and the third battery selected, and a little confetti around them.">
                   </picture>
                 </div>
               </div>
               <div class="phone">
                 <div class="phone__frame">
                   <picture>
-                    <source type="image/webp" srcset="assets/img/today-saved-night-v9-786.webp 786w, assets/img/today-saved-night-v9-1179.webp 1179w" sizes="(max-width: 760px) 182px, 393px">
-                    <img src="assets/img/today-saved-night-v9-786.png" width="786" height="1704" loading="lazy" decoding="async"
+                    <source type="image/webp" srcset="assets/img/today-saved-night-v10-786.webp 786w, assets/img/today-saved-night-v10-1179.webp 1179w" sizes="(max-width: 760px) 182px, 393px">
+                    <img src="assets/img/today-saved-night-v10-786.png" width="786" height="1704" loading="lazy" decoding="async"
                          alt="The same Today screen in Night mode, deep navy with sand type and dark buttons, sand for the selected ones, with the same sample data.">
                   </picture>
                 </div>
@@ -202,7 +202,7 @@
             </li>
             <li class="card">
               <h3 class="title">Reminders</h3>
-              <p>Only if and when you want them.</p>
+              <p>One gentle reminder a day to check in, only if you switch it on, at a time you choose.</p>
             </li>
           </ul>
         </div>
@@ -224,11 +224,11 @@
           <ul class="stack" role="list">
             <li class="card">
               <h3 class="title">Today</h3>
-              <p>One question: “How are you now?” Tap your mood, from Storm through Rough, Choppy and Steady to Calm, and your energy from Low to High. Two taps, and it is saved. Check in as often as you like.</p>
+              <p>One question: “How are you now?” Tap your mood and your energy from Low to High. Two taps, and it is saved. Check in as often as you like. Then there is your Daily practice: a few minutes of slow, easy breathing, chosen for you each day.</p>
             </li>
             <li class="card">
               <h3 class="title">Learn</h3>
-              <p>Practical training in four chapters. Each module of The Core Journey pairs a short teaching with a practice you can use the same day. The recordings are in production.</p>
+              <p>The eight-week course, opening one week at a time. Each week brings a short teaching and practices you can use the same day, on duty or in a shared cabin. The recordings are in production.</p>
             </li>
             <li class="card">
               <h3 class="title">S.O.S.</h3>
@@ -241,9 +241,9 @@
           <div class="phone">
             <div class="phone__frame">
               <picture>
-                <source type="image/webp" srcset="assets/img/today-saved-night-v9-786.webp 786w, assets/img/today-saved-night-v9-1179.webp 1179w" sizes="(max-width: 760px) 286px, (max-width: 1080px) 393px, (max-width: 1439px) calc(31.4vw - 59px), 393px">
-                <img src="assets/img/today-saved-night-v9-786.png" width="786" height="1704" loading="lazy" decoding="async"
-                     alt="The Today screen in Night mode, with sample data, a moment after a check-in: a little confetti falls around the buttons, Steady, the third battery and On for Duty are selected, and the line below reads “Last check-in 1 day ago. View history.” The header shows a 5 day streak.">
+                <source type="image/webp" srcset="assets/img/today-saved-night-v10-786.webp 786w, assets/img/today-saved-night-v10-1179.webp 1179w" sizes="(max-width: 760px) 286px, (max-width: 1080px) 393px, (max-width: 1439px) calc(31.4vw - 59px), 393px">
+                <img src="assets/img/today-saved-night-v10-786.png" width="786" height="1704" loading="lazy" decoding="async"
+                     alt="The Today screen in Night mode, with sample data, a moment after a check-in: a little confetti falls around the buttons, Working, Steady and the third battery are selected, and the line below reads “Last check-in 1 day ago. View history.” The header shows a 5 day streak.">
               </picture>
             </div>
           </div>
@@ -273,10 +273,10 @@
           <div class="section-head">
             <p class="eyebrow">S.O.S.</p>
             <h2 class="heading" id="drop-anchor-title">For the tough moments.</h2>
-            <p class="lead">The third tab is a quiet corner of the app. No streak, no settings, no alarm colours, nothing moving.</p>
+            <p class="lead">The third tab is a quiet corner of the app. No streak, no settings, nothing moving. Calm inside.</p>
           </div>
           <div class="prose">
-            <p>A few short practices to steady yourself, then routes to a person: someone on board, the bridge, and a seafarers’ helpline whose details are being confirmed before the pilot. There is a short page, too, for a crewmate helping someone else.</p>
+            <p>A few short practices to steady yourself, then routes to a person: anyone on board you trust, of any rank, the captain or the bridge, or someone ashore, such as your company’s crew contact, a seafarers’ helpline whose details are being confirmed before the pilot.</p>
             <p class="note">Calm Crew is not a crisis or emergency service. In an emergency at sea, go to the bridge. Ashore, call the local emergency number.</p>
             <p>The practices are being recorded now.</p>
           </div>
@@ -294,11 +294,11 @@
           <div class="course__text">
             <div class="section-head">
               <p class="eyebrow">The course</p>
-              <h2 class="heading" id="course-title">Four chapters. Practical from the first session.</h2>
+              <h2 class="heading" id="course-title">Four chapters. Practical from the first week.</h2>
               <p class="lead">Short teachings and practices by Libby Pickett, built around the real demands of yacht life: long hours, tight spaces, broken sleep and guests who expect the best.</p>
             </div>
             <div class="prose">
-              <p>At its centre is The Core Journey. In the pilot, it runs for eight weeks.</p>
+              <p>At its centre is the eight-week course, which opens one week at a time. Alongside it runs the Daily practice: a few minutes of slow, easy breathing each day, which carries on after the course.</p>
             </div>
           </div>
 
@@ -308,18 +308,18 @@
               <div class="phone">
                 <div class="phone__frame">
                   <picture>
-                    <source type="image/webp" srcset="assets/img/learn-index-v9-786.webp 786w, assets/img/learn-index-v9-1179.webp 1179w" sizes="(max-width: 760px) 182px, 393px">
-                    <img src="assets/img/learn-index-v9-786.png" width="786" height="1704" loading="lazy" decoding="async"
-                         alt="The Learn screen in Day mode, with sample data. Under Up next, a card for Chapter 2, Module 2, Your personal polyvagal map, 7 minutes left, with a play button. Under Your course, Chapter 1, Understand your nervous system, is marked Done. A mini player for the same module, at 3:24 of 10:00, sits above the Today, Learn and S.O.S. tabs.">
+                    <source type="image/webp" srcset="assets/img/learn-index-v10-786.webp 786w, assets/img/learn-index-v10-1179.webp 1179w" sizes="(max-width: 760px) 182px, 393px">
+                    <img src="assets/img/learn-index-v10-786.png" width="786" height="1704" loading="lazy" decoding="async"
+                         alt="The Learn screen in Day mode, with sample data. Under Up next, a card for Week 3, Practice: Five slow breaths, 1 minute, with a play button. Under Your course, Week 1, Welcome aboard, and Week 2, How your body shifts gear, are both marked Done. The Today, Learn and S.O.S. tabs sit at the bottom, with Learn selected.">
                   </picture>
                 </div>
               </div>
               <div class="phone">
                 <div class="phone__frame">
                   <picture>
-                    <source type="image/webp" srcset="assets/img/learn-chapter-2-v9-786.webp 786w, assets/img/learn-chapter-2-v9-1179.webp 1179w" sizes="(max-width: 760px) 182px, 393px">
-                    <img src="assets/img/learn-chapter-2-v9-786.png" width="786" height="1704" loading="lazy" decoding="async"
-                         alt="Chapter 2, The Core Journey, open in Learn in Day mode, with sample data: 2 of 8 done. It lists Pre-boarding, completed; Module 1, Welcome aboard, completed; and Module 2, Meet your vagus nerve, opened, 1 of 2 listened. A mini player for Your personal polyvagal map, from Chapter 2, Module 2, at 3:24 of 10:00, covers the rest of the list, above the Today, Learn and S.O.S. tabs, with Learn selected.">
+                    <source type="image/webp" srcset="assets/img/learn-week-3-v10-786.webp 786w, assets/img/learn-week-3-v10-1179.webp 1179w" sizes="(max-width: 760px) 182px, 393px">
+                    <img src="assets/img/learn-week-3-v10-786.png" width="786" height="1704" loading="lazy" decoding="async"
+                         alt="Week 3, The slow breath, open in Learn in Day mode, with sample data: 1 of 2 done. The slow breath, a 5 minute teaching (“About six breaths a minute, with the out-breath a little longer.”), is ticked as listened; Five slow breaths, a 1 minute practice (“Five rounds of the same breath, usable in a stairwell.”), is playing. Below are the Today, Learn and S.O.S. tabs, with Learn selected.">
                   </picture>
                 </div>
               </div>
@@ -330,21 +330,21 @@
 
         <ul class="cards cards--2" role="list">
           <li class="card">
-            <h3 class="title">Chapter 1<span aria-hidden="true"> · </span><span class="visually-hidden">: </span>What pressure does to your body</h3>
-            <p>How your body shifts gear under pressure, how it reads a situation before you have had time to think, and how to spot the small good moments that bring you back to steady. Two short teachings to begin with.</p>
+            <h3 class="title">Chapter 1<span aria-hidden="true"> · </span><span class="visually-hidden">: </span>Start here</h3>
+            <p>Before you join: two short teachings on what pressure does in your body, and three practices to take with you.</p>
           </li>
           <li class="card">
-            <h3 class="title">Chapter 2<span aria-hidden="true"> · </span><span class="visually-hidden">: </span>The Core Journey</h3>
+            <h3 class="title">Chapter 2<span aria-hidden="true"> · </span><span class="visually-hidden">: </span>The eight-week course</h3>
             <!-- One run of text on screen, as in Figma; still a list for screen readers. -->
-            <p>Pre-boarding, then seven modules, each a teaching with its practice: <span class="module-list" role="list"><span role="listitem">Welcome aboard</span> <span role="listitem">Your body’s built-in brake</span> <span role="listitem">Breath control on shift</span> <span role="listitem">Sleep in a world that never stops</span> <span role="listitem">Calm under pressure</span> <span role="listitem">Quick resets for small spaces</span> <span role="listitem">Your long game</span></span></p>
+            <p>Eight weeks, opening one at a time, each a short teaching with its practices: <span class="module-list" role="list"><span role="listitem">Week 1, Welcome aboard</span> <span role="listitem">Week 2, How your body shifts gear</span> <span role="listitem">Week 3, The slow breath</span> <span role="listitem">Week 4, Finding your own pace</span> <span role="listitem">Week 5, Under pressure</span> <span role="listitem">Week 6, Sleep in a world that never stops</span> <span role="listitem">Week 7, Quiet practices for small spaces</span> <span role="listitem">Week 8, Keeping it going</span></span></p>
           </li>
           <li class="card">
-            <h3 class="title">Chapter 3<span aria-hidden="true"> · </span><span class="visually-hidden">: </span>The Leadership Track</h3>
-            <p>For heads of department and captains: leading a crew through a long season, and staying sharp yourself. Six lessons, each a teaching and a practice. How it opens is still being decided.</p>
+            <h3 class="title">Chapter 3<span aria-hidden="true"> · </span><span class="visually-hidden">: </span>Leading under pressure</h3>
+            <p>For anyone who looks after people on board, from heads of department to captains. Six lessons, each a teaching and a practice. It opens after the eight-week course, by choice, and is never reported to anyone.</p>
           </li>
           <li class="card">
-            <h3 class="title">Chapter 4<span aria-hidden="true"> · </span><span class="visually-hidden">: </span>Toolkit</h3>
-            <p>Short practices in ten families, from breath and focus to rest, ready whenever you need one. Opens when you finish The Core Journey.</p>
+            <h3 class="title">Chapter 4<span aria-hidden="true"> · </span><span class="visually-hidden">: </span>Your toolkit</h3>
+            <p>Every practice you learn is kept here, ready whenever you need one. It fills week by week as you go through the course.</p>
           </li>
         </ul>
       </div>
@@ -394,7 +394,7 @@
             <h2 class="heading" id="pilot-title">A study, not a claim.</h2>
           </div>
           <div class="prose pilot__body">
-            <p>For the pilot, the app is iPhone only.</p>
+            <p>The app is on iPhone and Android. The pilot runs for about twelve and a half weeks: four quiet days of check-ins first, then the eight-week course, then four weeks of living with it.</p>
           </div>
         </div>
 
@@ -406,7 +406,7 @@
           </li>
           <li class="card">
             <h4 class="title">Captains and heads of department</h4>
-            <p>You carry the vessel’s load and your own, and the whole crew reads you for the weather. The Leadership Track is being built for you, and how it opens is still being decided. Join the waiting list to hear first.</p>
+            <p>You carry the vessel’s load and your own, and the whole crew reads you for the weather. You do the same eight weeks as everyone on board. After that, the Leading under pressure chapter is there for you, by choice.</p>
           </li>
           <li class="card">
             <h4 class="title">Vessels, fleets and management</h4>
