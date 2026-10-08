@@ -485,11 +485,14 @@ html {
   }
 }
 
-/* "For Fleets" on its own page: filled, like a selected chip in the app. */
-.site-menu > .btn[aria-current="page"] {
-  background: var(--ink-primary);
+/* "For Fleets" is a dark-blue (primary) button. On its own page it takes the
+   app's selected chip (Final Design F): steel fill, 2px ink ring, cream label.
+   The label is 4.2:1 on steel, under the 4.5:1 that body text needs. */
+.site-menu > .btn[aria-current="page"],
+.site-menu > .btn[aria-current="page"]:hover {
+  background: var(--selection-solid);
   border-color: var(--ink-primary);
-  color: var(--on-primary);
+  color: var(--white);
 }
 
 /* ---------------------------------------------------------------------------
@@ -1342,31 +1345,32 @@ body p.tip strong {
 
 .dist {
   display: grid;
-  row-gap: 10px;
+  row-gap: var(--gap-p);
   list-style: none;
   padding: 0;
 }
 
+/* Icon, bar, count. The moods show as icons only, as in the app; each name is
+   a hidden label for screen readers and the hover title. */
 .dist li {
   display: grid;
-  grid-template-columns: 96px minmax(0, 1fr) 28px;
+  grid-template-columns: 26px minmax(0, 1fr) 28px;
   align-items: center;
-  gap: 10px;
+  column-gap: var(--gap-s);
 }
 
 .dist__name {
   display: flex;
-  align-items: center;
-  gap: var(--gap-xs);
 }
 
+/* 26px, with a 1.35 stroke in the 20-unit drawing: about 1.75px, the app's line. */
 .dist__name svg {
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
   flex: none;
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.6;
+  stroke-width: 1.35;
   stroke-linecap: round;
   stroke-linejoin: round;
 }

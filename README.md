@@ -24,8 +24,10 @@ self-hosted; there are no analytics, CDNs or embeds).
     mobile Figma frame got the same order, and both Figma Privacy sections are
     in Night mode.
   - The menu: The app · The course · At sea · The pilot · About Libby, then a
-    "For Fleets" button (secondary chip; filled, with `aria-current`, on its
-    own page). Privacy is no longer in the header (the footer index keeps it).
+    "For Fleets" button: dark blue (primary) on the home page; on its own
+    page (`aria-current`) the app's selected chip, a steel fill with a 2px
+    navy ring and a cream label (4.2:1, a little under 4.5:1). Privacy is no
+    longer in the header (the footer index keeps it).
   - "Join the crew waiting list" left the header and floats: bottom-right on
     desktop and tablet, a full-width bar on a phone (`.float-cta`). site.js
     gives it the Night colours over a Night band and hides it while the
@@ -37,7 +39,9 @@ self-hosted; there are no analytics, CDNs or embeds).
     site's own menu, tokens and components. Its copy is the mock-up's, word for
     word. Differences: headings use the home page's ExtraBold (the mock-up's
     were medium); small text follows the site's rules (16px, `--black`);
-    fields have a 1.5px slate outline for contrast; the chart is static SVG
+    fields have a 1.5px slate outline for contrast; "Mood check-ins this
+    week" shows the moods as 26px icons only (names hidden for screen readers
+    and as hover titles, user's request); the chart is static SVG
     with a tooltip from `assets/js/fleets.js` (the CSP allows no inline JS or
     CSS). The site has no form back end, so the contact form's Send opens
     the visitor's own email app with the message written out to Libby; without

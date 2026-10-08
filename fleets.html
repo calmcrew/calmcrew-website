@@ -40,7 +40,7 @@
   <!-- /assets/* is cached for a year: bump ?v= when a file changes. -->
   <link rel="stylesheet" href="assets/fonts/fonts.css?v=2026-10-07a">
   <link rel="stylesheet" href="assets/css/tokens.css?v=2026-10-07a">
-  <link rel="stylesheet" href="assets/css/site.css?v=2026-10-08b">
+  <link rel="stylesheet" href="assets/css/site.css?v=2026-10-08c">
   <script src="assets/js/site.js?v=2026-10-08a"></script>
   <script src="assets/js/fleets.js?v=2026-10-08a" defer></script>
 </head>
@@ -74,7 +74,7 @@
             <li><a href="./#about">About Libby</a></li>
           </ul>
         </nav>
-        <a class="btn btn--secondary" href="fleets.html" aria-current="page">For Fleets</a>
+        <a class="btn btn--primary" href="fleets.html" aria-current="page">For Fleets</a>
       </div>
     </div>
   </header>
@@ -291,13 +291,14 @@
 
             <div class="panel">
               <h3 class="panel__title">Mood check-ins this week</h3>
-              <!-- Calm to Storm, with the app's weather icons. Bars are counts out of 17, the largest. -->
+              <!-- Calm to Storm, as the app's weather icons only. Each mood's name is kept for
+                   screen readers and as the hover title. Bars are counts out of 17, the largest. -->
               <ul class="dist" role="list">
-                <li><span class="dist__name"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="4"/><path d="M10 1.5v2M10 16.5v2M1.5 10h2M16.5 10h2M4 4l1.4 1.4M14.6 14.6L16 16M4 16l1.4-1.4M14.6 5.4L16 4"/></svg>Calm</span><span class="dist__bar" aria-hidden="true"><i class="dist__fill dist__fill--8"></i></span><span class="dist__count">8</span></li>
-                <li><span class="dist__name"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="3.2"/><path d="M8 1.5v1.2M1.5 8h1.2M3.4 3.4l.9.9M12.6 3.4l-.9.9"/><path d="M9 17h7a3 3 0 0 0 0-6 4.3 4.3 0 0 0-8 1.8A2.2 2.2 0 0 0 9 17z"/></svg>Steady</span><span class="dist__bar" aria-hidden="true"><i class="dist__fill dist__fill--17"></i></span><span class="dist__count">17</span></li>
-                <li><span class="dist__name"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 16h9a3.6 3.6 0 0 0 0-7.2 5.2 5.2 0 0 0-9.8 2A2.7 2.7 0 0 0 6 16z"/></svg>Choppy</span><span class="dist__bar" aria-hidden="true"><i class="dist__fill dist__fill--11"></i></span><span class="dist__count">11</span></li>
-                <li><span class="dist__name"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 12h9a3.4 3.4 0 0 0 0-6.8 5 5 0 0 0-9.4 1.9A2.5 2.5 0 0 0 6 12z"/><path d="M7 15l-1 3M11 15l-1 3M15 15l-1 3"/></svg>Rough</span><span class="dist__bar" aria-hidden="true"><i class="dist__fill dist__fill--4"></i></span><span class="dist__count">4</span></li>
-                <li><span class="dist__name"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 11h9a3.4 3.4 0 0 0 0-6.8 5 5 0 0 0-9.4 1.9A2.5 2.5 0 0 0 6 11z"/><path d="M11 12l-2.5 4h3l-2 3.5"/></svg>Storm</span><span class="dist__bar" aria-hidden="true"><i class="dist__fill dist__fill--1"></i></span><span class="dist__count">1</span></li>
+                <li><span class="dist__name" title="Calm"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="4"/><path d="M10 1.5v2M10 16.5v2M1.5 10h2M16.5 10h2M4 4l1.4 1.4M14.6 14.6L16 16M4 16l1.4-1.4M14.6 5.4L16 4"/></svg><span class="visually-hidden">Calm</span></span><span class="dist__bar" aria-hidden="true"><i class="dist__fill dist__fill--8"></i></span><span class="dist__count">8</span></li>
+                <li><span class="dist__name" title="Steady"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="3.2"/><path d="M8 1.5v1.2M1.5 8h1.2M3.4 3.4l.9.9M12.6 3.4l-.9.9"/><path d="M9 17h7a3 3 0 0 0 0-6 4.3 4.3 0 0 0-8 1.8A2.2 2.2 0 0 0 9 17z"/></svg><span class="visually-hidden">Steady</span></span><span class="dist__bar" aria-hidden="true"><i class="dist__fill dist__fill--17"></i></span><span class="dist__count">17</span></li>
+                <li><span class="dist__name" title="Choppy"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 16h9a3.6 3.6 0 0 0 0-7.2 5.2 5.2 0 0 0-9.8 2A2.7 2.7 0 0 0 6 16z"/></svg><span class="visually-hidden">Choppy</span></span><span class="dist__bar" aria-hidden="true"><i class="dist__fill dist__fill--11"></i></span><span class="dist__count">11</span></li>
+                <li><span class="dist__name" title="Rough"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 12h9a3.4 3.4 0 0 0 0-6.8 5 5 0 0 0-9.4 1.9A2.5 2.5 0 0 0 6 12z"/><path d="M7 15l-1 3M11 15l-1 3M15 15l-1 3"/></svg><span class="visually-hidden">Rough</span></span><span class="dist__bar" aria-hidden="true"><i class="dist__fill dist__fill--4"></i></span><span class="dist__count">4</span></li>
+                <li><span class="dist__name" title="Storm"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 11h9a3.4 3.4 0 0 0 0-6.8 5 5 0 0 0-9.4 1.9A2.5 2.5 0 0 0 6 11z"/><path d="M11 12l-2.5 4h3l-2 3.5"/></svg><span class="visually-hidden">Storm</span></span><span class="dist__bar" aria-hidden="true"><i class="dist__fill dist__fill--1"></i></span><span class="dist__count">1</span></li>
               </ul>
             </div>
           </div>
