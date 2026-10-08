@@ -25,8 +25,8 @@ self-hosted; there are no analytics, CDNs or embeds).
     in Night mode.
   - The menu: The app · The course · At sea · The pilot · About Libby, then a
     "For Fleets" button: dark blue (primary) on the home page; on its own
-    page (`aria-current`) the app's selected chip, a steel fill with a 2px
-    navy ring and a cream label (4.2:1, a little under 4.5:1). Privacy is no
+    page (`aria-current`) the secondary chip, like "For vessels and
+    management" in the hero (user, 8 Oct 2026). Privacy is no
     longer in the header (the footer index keeps it).
   - "Join the crew waiting list" left the header and floats: bottom-right on
     desktop and tablet, a full-width bar on a phone (`.float-cta`). site.js

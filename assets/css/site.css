@@ -485,15 +485,8 @@ html {
   }
 }
 
-/* "For Fleets" is a dark-blue (primary) button. On its own page it takes the
-   app's selected chip (Final Design F): steel fill, 2px ink ring, cream label.
-   The label is 4.2:1 on steel, under the 4.5:1 that body text needs. */
-.site-menu > .btn[aria-current="page"],
-.site-menu > .btn[aria-current="page"]:hover {
-  background: var(--selection-solid);
-  border-color: var(--ink-primary);
-  color: var(--white);
-}
+/* "For Fleets" is a dark-blue (primary) button; on its own page it is the
+   secondary chip (fleets.html sets btn--secondary with aria-current). */
 
 /* ---------------------------------------------------------------------------
  * Floating "Join the crew waiting list" (index.html only)
