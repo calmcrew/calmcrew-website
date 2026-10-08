@@ -16,7 +16,7 @@ self-hosted; there are no analytics, CDNs or embeds).
   the S.O.S. tab), titles are Newsreader ExtraBold in `--black`, secondary
   buttons are the app's white chip with a 1.5px slate outline,
   inline links take the app's slate underline, and `--selection-solid` is
-  #6E97AA. Screen images carry a version suffix (now `-v11`, below) so the
+  #6E97AA. Screen images carry a version suffix (now `-v12`, below) so the
   year-long asset cache cannot serve the old ones.
 - **8 Oct 2026: menu, floating button, Privacy band, fleets page.**
   - Privacy now follows The pilot (moved by hand on Figma page 10's desktop
@@ -43,7 +43,7 @@ self-hosted; there are no analytics, CDNs or embeds).
     the visitor's own email app with the message written out to Libby; without
     JavaScript the email address shows instead. The mock-up's notice said five
     wording points were still open with Libby (Part C of her change list).
-- **Phone screens (`-v11`, 8 Oct 2026).** The six phone images come from the
+- **Phone screens (`-v12`, 8 Oct 2026, evening).** The six phone images come from the
   Figma page "Final Design F" (`3943:32869`), in the same palette as "Final
   Design C" (Brand v2.0 "Day · A" and "Night · A"):
   - today-checkin `3943:33165`
@@ -54,7 +54,7 @@ self-hosted; there are no analytics, CDNs or embeds).
   - learn-week-3 `3943:33857` (was learn-chapter-2: Learn is now in weeks)
 
   Each frame is copied at the 852pt iPhone viewport into the section beside
-  the Mobile frame on the website page (`4004:4155`). The copies keep the
+  the Mobile frame on the website page (`4041:4152`). The copies keep the
   frame's "Day · A" or "Night · A" mode explicitly, so they cannot fall back
   to the old palette. The dock, player and scroll edge are pinned to the
   bottom, and the scroll edge is a pure blur (fill at 1%). The copies are
@@ -62,7 +62,8 @@ self-hosted; there are no analytics, CDNs or embeds).
   website page's phone mockups (with the bezel) are made from the same
   copies.
   - Final Design F's Today asks "I am…" (Working, Resting), "I feel…" (weather icons, Storm to Calm from left to right) and
-    "My energy is…" (batteries), then shows Today's practice as a card. Its
+    "My energy is…" (batteries), then shows Today's practice as a card ("Day
+    20", a cream play button) above "Today's activity". Its
     History is a bar chart with averages ("Without practice 2.3 / With
     practice 2.7" in the sample data) and a battery scale. Learn is in weeks.
   - Re-render from fresh copies whenever the designers change the source page.
