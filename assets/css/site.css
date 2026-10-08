@@ -1,7 +1,7 @@
 /*
  * SITE STYLES — Calm Crew one-page website
  * =============================================================================
- * Layout and components for index.html, thanks.html and 404.html.
+ * Layout and components for index.html, fleets.html and 404.html.
  * Every colour, space and type size comes from tokens.css; nothing here sets a
  * colour of its own. A Night band is `class="band-night"`: tokens.css redefines
  * the custom properties there, so the same rules below draw Day and Night.
@@ -11,6 +11,7 @@
  *   1279px and below  header collapses to the logo plus a Menu button
  *   1080px and below  side-by-side sections stack (tablet)
  *    760px and below  mobile tokens, single column (matches tokens.css)
+ *    480px and below  the fleets page's figures go to one column
  */
 
 /* ---------------------------------------------------------------------------
@@ -484,6 +485,61 @@ html {
   }
 }
 
+/* "For Fleets" on its own page: filled, like a selected chip in the app. */
+.site-menu > .btn[aria-current="page"] {
+  background: var(--ink-primary);
+  border-color: var(--ink-primary);
+  color: var(--on-primary);
+}
+
+/* ---------------------------------------------------------------------------
+ * Floating "Join the crew waiting list" (index.html only)
+ * Bottom-right on desktop and tablet; a full-width bar on a phone. site.js
+ * adds `band-night` over a Night band, so tokens.css gives it the Night
+ * colours there (sand on navy). With JavaScript it waits hidden until
+ * site.js adds `is-shown`: not while the page's own waiting-list buttons are
+ * on screen, nor on Get in touch and the footer. Without it, it just shows.
+ * The ring in the ground colour keeps it apart from a band of its own colour.
+ * ------------------------------------------------------------------------- */
+.float-cta {
+  position: fixed;
+  right: var(--gap-ml);
+  bottom: calc(var(--gap-ml) + env(safe-area-inset-bottom, 0px));
+  z-index: 10; /* under the header (20), so the open menu covers it */
+}
+
+.float-cta .btn {
+  box-shadow: 0 0 0 2px var(--ground), 0 12px 32px var(--glass-shadow);
+}
+
+.js .float-cta:not(.is-shown) {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(var(--gap-xs));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .float-cta {
+    transition: opacity 200ms ease, transform 200ms ease, visibility 200ms;
+  }
+
+  .float-cta .btn {
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
+  }
+}
+
+@media (max-width: 760px) {
+  .float-cta {
+    left: var(--page-gutter);
+    right: var(--page-gutter);
+    bottom: calc(var(--gap-s) + env(safe-area-inset-bottom, 0px));
+  }
+
+  .float-cta .btn {
+    width: 100%;
+  }
+}
+
 /* ---------------------------------------------------------------------------
  * Phone mock-ups
  * The frame is drawn in CSS: a 10px ink bezel, 64px outer radius, 54px inner
@@ -950,6 +1006,492 @@ em {
 }
 
 /* ---------------------------------------------------------------------------
+ * For yachts and fleets (fleets.html), from Libby's 8 Oct 2026 mock-up.
+ * One column of sections. Day sections that meet are split by a hairline, as
+ * in the mock-up; the case sits on a Night band.
+ * ------------------------------------------------------------------------- */
+.page-fleets main > .section:not(.band-night) + .section:not(.band-night),
+.page-fleets .site-footer {
+  border-top: 1px solid var(--hairline);
+}
+
+/* Content after a section head, a closing line, a call to action. */
+.section-body {
+  margin-top: var(--gap-l);
+}
+
+.section-close {
+  margin-top: var(--gap-l);
+  max-width: var(--measure);
+}
+
+.section-head__more {
+  margin-top: var(--gap-s);
+  max-width: var(--measure);
+}
+
+.section-cta {
+  margin-top: var(--gap-ml);
+}
+
+.source {
+  max-width: var(--measure);
+}
+
+.section-close + .source {
+  margin-top: var(--gap-m);
+}
+
+/* The case: two groups of three figures, each over a hairline. */
+.fig-groups {
+  display: grid;
+  row-gap: var(--gap-l);
+  margin-top: var(--gap-l);
+}
+
+.figs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap-ml);
+  margin-top: var(--gap-s);
+  list-style: none;
+  padding: 0;
+}
+
+.fig {
+  display: grid;
+  align-content: start;
+  row-gap: var(--gap-xs);
+  min-width: 0;
+  padding-top: var(--gap-s);
+  border-top: 1px solid var(--hairline);
+}
+
+.fig__n {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(40px, 5vw, 56px);
+  line-height: 1;
+  font-variant-numeric: lining-nums;
+  white-space: nowrap;
+}
+
+.case__notes {
+  margin-top: var(--gap-l);
+}
+
+/* Three plain columns: a title and a line each (the load, who it's for). */
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap-ml);
+  margin-top: var(--gap-l);
+  list-style: none;
+  padding: 0;
+}
+
+.columns .title {
+  margin-bottom: var(--gap-xs);
+}
+
+.quote {
+  margin-top: var(--gap-l);
+  max-width: 34ch;
+  padding-left: var(--gap-m);
+  border-left: 2px solid var(--hairline);
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: var(--title-size);
+  line-height: var(--title-line);
+}
+
+.list-lead {
+  display: grid;
+  row-gap: var(--gap-xs);
+  margin-top: var(--gap-s);
+  padding-left: 1.2em;
+  font-size: var(--lead-size);
+  line-height: var(--lead-line);
+}
+
+/* The sample dashboard: a card that stands in for the management view. */
+.dash {
+  display: grid;
+  row-gap: var(--gap-m);
+  padding: var(--card-padding);
+  background: var(--surface-card);
+  border-radius: var(--radius-card);
+  box-shadow: 0 18px 40px var(--glass-shadow);
+}
+
+.dash__top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--gap-p);
+}
+
+.dash__who {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: var(--question-size);
+  line-height: var(--question-line);
+}
+
+/* "Sample data": a label in a hairline capsule. */
+.chip {
+  padding: 4px 12px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-control);
+  font-weight: 600;
+  font-size: var(--label-size);
+  line-height: var(--label-line);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap-s);
+  list-style: none;
+  padding: 0;
+}
+
+.tile,
+.panel {
+  min-width: 0;
+  border: 1px solid var(--hairline);
+  border-radius: 20px;
+}
+
+.tile {
+  display: grid;
+  align-content: start;
+  row-gap: 4px;
+  padding: var(--gap-s) 18px;
+}
+
+/* The app's field-label style, as above its own numbers. */
+.tile__k {
+  font-weight: 600;
+  font-size: var(--label-size);
+  line-height: var(--label-line);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tile__v {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.tile__v small {
+  font-family: var(--font-sans);
+  font-size: var(--body-size);
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.tile__v svg {
+  width: 30px;
+  height: 30px;
+  flex: none;
+}
+
+/* Icon parts that are filled: the cloud covers the sun, the battery's bars. */
+.icon-cover {
+  fill: var(--surface-card);
+}
+
+.icon-fill {
+  fill: currentColor;
+  stroke: none;
+}
+
+.dash__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: var(--gap-m);
+}
+
+.panel {
+  position: relative;
+  display: grid;
+  align-content: start;
+  row-gap: var(--gap-p);
+  padding: 18px;
+}
+
+.panel__title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  list-style: none;
+  padding: 0;
+}
+
+.legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-xs);
+}
+
+.legend svg {
+  width: 28px;
+  height: 10px;
+}
+
+.chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.chart text {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  fill: var(--ink-secondary);
+}
+
+.chart__grid {
+  stroke: var(--hairline);
+  stroke-width: 1;
+}
+
+.chart__line {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart__line--mood {
+  stroke: var(--ink-primary);
+}
+
+/* Energy: steel and dashed, so the two lines differ by more than colour. */
+.chart__line--energy {
+  stroke: var(--selection-ring);
+  stroke-dasharray: 6 5;
+}
+
+.legend .chart__line--energy {
+  stroke-dasharray: 5 4;
+}
+
+.chart__dot {
+  stroke: var(--surface-card);
+  stroke-width: 2;
+}
+
+.chart__dot--mood {
+  fill: var(--ink-primary);
+}
+
+.chart__dot--energy {
+  fill: var(--selection-ring);
+}
+
+.chart .chart__end {
+  font-weight: 600;
+  fill: var(--ink-primary);
+}
+
+.chart__cross {
+  stroke: var(--ink-secondary);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.chart__hit {
+  fill: transparent;
+  cursor: crosshair;
+}
+
+.tip {
+  position: absolute;
+  z-index: 1;
+  padding: var(--gap-xs) 12px;
+  border-radius: 12px;
+  background: var(--ink-primary);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Higher than the rule for small text, so the tooltip label stays light. */
+body p.tip,
+body p.tip strong {
+  color: var(--on-primary);
+}
+
+.dist {
+  display: grid;
+  row-gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.dist li {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr) 28px;
+  align-items: center;
+  gap: 10px;
+}
+
+.dist__name {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-xs);
+}
+
+.dist__name svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dist__bar {
+  height: 14px;
+  overflow: hidden;
+  background: var(--selection-wash);
+  border-radius: var(--radius-control);
+}
+
+.dist__fill {
+  display: block;
+  height: 100%;
+  background: var(--ink-secondary);
+  border-radius: inherit;
+}
+
+/* Sample counts out of 17, the week's largest. (Classes, not inline styles:
+   the content security policy allows no inline CSS.) */
+.dist__fill--17 { width: 100%; }
+.dist__fill--11 { width: 64.71%; }
+.dist__fill--8 { width: 47.06%; }
+.dist__fill--4 { width: 23.53%; }
+.dist__fill--1 { width: 5.88%; }
+
+.dist__count {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.dash__privacy {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gap-p);
+  padding-top: var(--gap-s);
+  border-top: 1px solid var(--hairline);
+}
+
+.dash__privacy svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  margin-top: 1px;
+}
+
+/* Contact: a form on a card. It needs fleets.js (Send opens the visitor's
+   email app), so without JavaScript the plain email line shows instead. */
+.contact-form {
+  display: none;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px var(--gap-m);
+  max-width: 860px;
+  padding: var(--card-padding);
+  background: var(--surface-card);
+  border-radius: var(--radius-card);
+}
+
+.js .contact-form {
+  display: grid;
+}
+
+.js .contact-fallback {
+  display: none;
+}
+
+.field {
+  display: grid;
+  align-content: start;
+  row-gap: 6px;
+  min-width: 0;
+}
+
+.field--full,
+.form__foot,
+.form__sent {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  font-weight: 600;
+  font-size: var(--label-size);
+  line-height: var(--label-line);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.field__opt {
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Fields keep a 1.5px slate outline (the app's unselected chip), which
+   holds 3:1 against the card where a hairline would not. */
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: var(--touch-min);
+  padding: 12px 16px;
+  border: 1.5px solid var(--ink-secondary);
+  border-radius: 16px;
+  background: var(--ground);
+  color: var(--ink-primary);
+  font: inherit;
+}
+
+.field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gap-s);
+}
+
+.form__sent:empty {
+  display: none;
+}
+
+/* ---------------------------------------------------------------------------
  * Simple pages (thanks, 404)
  * ------------------------------------------------------------------------- */
 .simple {
@@ -998,8 +1540,15 @@ em {
     width: 100%;
   }
 
-  .cards--3 {
+  .cards--3,
+  .columns,
+  .dash__grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .figs,
+  .tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   /* Stacked: heading, photo, text. */
@@ -1075,10 +1624,46 @@ em {
     width: 100%;
   }
 
+  .contact-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* The chart scales down with the phone, so its labels are drawn larger,
+     and the line-end names give way to the legend above it. */
+  .chart text {
+    font-size: 20px;
+  }
+
+  .chart .chart__end {
+    display: none;
+  }
+
+  /* Two tiles to a row: a smaller number and icon keep "3.8 / 5" on a line. */
+  .tile {
+    padding: 14px;
+  }
+
+  .tile__v {
+    gap: 6px;
+    font-size: 30px;
+  }
+
+  .tile__v svg {
+    width: 24px;
+    height: 24px;
+  }
+
   /* A link that ends a block keeps its 56px target, but the empty half under
      its text adds no height: Figma ends these sections at the text. */
   .pilot .actions .text-link,
   .contact__email .text-link {
     margin-bottom: calc((var(--body-line) - var(--touch-min)) / 2);
+  }
+}
+
+/* Small phones: the case's figures in one column. */
+@media (max-width: 480px) {
+  .figs {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

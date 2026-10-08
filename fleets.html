@@ -1,0 +1,431 @@
+<!doctype html>
+<!--
+  Calm Crew — For yachts and fleets (calmcrew.app/fleets.html)
+  The second page of the site, built from Libby's mock-up of 8 Oct 2026
+  (claude.ai artifact "Calm Crew Fleets Page"), without its review notice.
+  Same tokens, components and menu as index.html; no floating waiting-list
+  button here. Day sections on Sand, the case on a Night band (see tokens.css).
+-->
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>For yachts and fleets — Calm Crew</title>
+  <meta name="description" content="Calm Crew is an app that gives crew a short, practical way to train for the pressure of the job. Pilot study open to founding partners.">
+  <link rel="canonical" href="https://calmcrew.app/fleets.html">
+
+  <!-- Same values as the Day and Night grounds in tokens.css. -->
+  <meta name="theme-color" content="#E3CDA6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#203448" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="assets/brand/favicon-v2.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon-v2.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Calm Crew">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="https://calmcrew.app/fleets.html">
+  <meta property="og:title" content="Calm Crew: pressure training for your crew">
+  <meta property="og:description" content="A short, practical way for crew to train for the pressure of the job. Pilot study open to founding partners.">
+  <meta property="og:image" content="https://calmcrew.app/assets/brand/og-image-v2.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Calm Crew logo mark and name, with the tagline “Steady at sea · calm within”, on a sand background.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preload" href="assets/fonts/newsreader-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/work-sans-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- /assets/* is cached for a year: bump ?v= when a file changes. -->
+  <link rel="stylesheet" href="assets/fonts/fonts.css?v=2026-10-07a">
+  <link rel="stylesheet" href="assets/css/tokens.css?v=2026-10-07a">
+  <link rel="stylesheet" href="assets/css/site.css?v=2026-10-08b">
+  <script src="assets/js/site.js?v=2026-10-08a"></script>
+  <script src="assets/js/fleets.js?v=2026-10-08a" defer></script>
+</head>
+<body class="page-fleets">
+  <a class="skip-link btn btn--primary" href="#main">Skip to content</a>
+
+  <!-- ===================================================================
+       Header: the same menu as index.html (its links lead back there), with
+       For Fleets marked as this page. No floating waiting-list button.
+       =================================================================== -->
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="brand" href="./">
+        <svg class="brand__mark" viewBox="0 0 70 70" fill="none" aria-hidden="true" focusable="false">
+          <path d="M50.38 13.62C46.7444 9.9825 42.1116 7.50489 37.0678 6.50058C32.0239 5.49627 26.7955 6.01037 22.0438 7.97785C17.2921 9.94533 13.2307 13.2778 10.3732 17.5538C7.51566 21.8298 5.99045 26.8571 5.99045 32C5.99045 37.1429 7.51566 42.1703 10.3732 46.4462C13.2307 50.7222 17.2921 54.0547 22.0438 56.0222C26.7955 57.9897 32.0239 58.5037 37.0678 57.4994C42.1116 56.4951 46.7444 54.0175 50.38 50.38" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+          <path d="M44.73 19.27C42.2124 16.7533 39.0051 15.0395 35.5136 14.3454C32.0221 13.6514 28.4032 14.0082 25.1145 15.3707C21.8258 16.7333 19.0149 19.0404 17.0373 22.0004C15.0597 24.9603 14.0042 28.4402 14.0042 32C14.0042 35.5598 15.0597 39.0397 17.0373 41.9997C19.0149 44.9596 21.8258 47.2667 25.1145 48.6293C28.4032 49.9918 32.0221 50.3486 35.5136 49.6546C39.0051 48.9605 42.2124 47.2468 44.73 44.73" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M39.07 24.93C37.6716 23.5312 35.8898 22.5785 33.9499 22.1924C32.01 21.8063 29.9992 22.0041 28.1717 22.7609C26.3443 23.5177 24.7823 24.7994 23.6834 26.444C22.5844 28.0885 21.9979 30.0221 21.9979 32C21.9979 33.9779 22.5844 35.9115 23.6834 37.556C24.7823 39.2006 26.3443 40.4823 28.1717 41.2391C29.9992 41.9959 32.01 42.1937 33.9499 41.8076C35.8898 41.4215 37.6716 40.4688 39.07 39.07" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="wordmark">Calm Crew</span>
+      </a>
+
+      <button class="nav-toggle btn btn--primary" type="button" aria-expanded="false" aria-controls="site-menu" hidden>Menu</button>
+
+      <div class="site-menu" id="site-menu">
+        <nav class="site-nav" aria-label="Main">
+          <ul>
+            <li><a href="./#app">The app</a></li>
+            <li><a href="./#course">The course</a></li>
+            <li><a href="./#at-sea">At sea</a></li>
+            <li><a href="./#pilot">The pilot</a></li>
+            <li><a href="./#about">About Libby</a></li>
+          </ul>
+        </nav>
+        <a class="btn btn--secondary" href="fleets.html" aria-current="page">For Fleets</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================================================================
+         Hero (Day)
+         =================================================================== -->
+    <section id="top" class="section hero" aria-labelledby="top-title">
+      <div class="container">
+        <div class="hero__copy">
+          <div class="section-head">
+            <p class="eyebrow">For yachts and fleets</p>
+            <h1 class="display" id="top-title">Pressure training for your crew.</h1>
+            <p class="lead">Calm Crew is an app that gives crew a short, practical way to train for the pressure of the job. Two taps to check in, 5 to 10 minutes a day, and it works offline, on board and in private. Built in Mallorca by Libby Pickett.</p>
+          </div>
+          <p class="hero__facts">iPhone and Android · Works offline · Pilot study open to founding partners</p>
+          <div class="actions">
+            <a class="btn btn--primary" href="#contact">Ask about founding partnership</a>
+            <a class="btn btn--secondary" href="./">See the app</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #case — The case (Night). Figures as in the mock-up, with its sources.
+         =================================================================== -->
+    <section id="case" class="section band-night" aria-labelledby="case-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">The case</p>
+          <h2 class="heading" id="case-title">Crew rarely leave because they can’t do the job.</h2>
+          <p class="lead">They leave because a season asks a great deal of them, and most have never been given any training for that side of the work. Turnover is the part of the cost you can see.</p>
+        </div>
+
+        <div class="fig-groups">
+          <div class="fig-group">
+            <h3 class="eyebrow" id="figs-cost">What turnover costs</h3>
+            <ul class="figs" role="list" aria-labelledby="figs-cost">
+              <li class="fig"><p class="fig__n">20–40%</p><p>annual crew turnover on most yachts</p></li>
+              <li class="fig"><p class="fig__n">€15,000</p><p>the minimum cost of replacing one junior crew member, rising in multiples for a head of department</p></li>
+              <li class="fig"><p class="fig__n">$21–30k</p><p>what two yachts that ran their own numbers found it cost to replace a junior crew member</p></li>
+            </ul>
+          </div>
+          <div class="fig-group">
+            <h3 class="eyebrow" id="figs-crew">What crew say</h3>
+            <ul class="figs" role="list" aria-labelledby="figs-crew">
+              <li class="fig"><p class="fig__n">1 in 5</p><p>crew reporting stress, anxiety or loneliness on board</p></li>
+              <li class="fig"><p class="fig__n">Half</p><p>have considered leaving the industry</p></li>
+              <li class="fig"><p class="fig__n">89%</p><p>have never had any mental health training</p></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="prose case__notes">
+          <p>On land, replacing a technical hire is costed at 100–150% of annual salary, and a director at over 200%.</p>
+          <p class="source">Turnover and replacement costs: Quay Group, “The true cost of crew turnover”, March 2023. Crew figures: Quay Crew and MHSS crew mental health survey, 2021, 1,019 crew across more than 50 countries.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #load — The load (Day)
+         =================================================================== -->
+    <section id="load" class="section" aria-labelledby="load-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">The load</p>
+          <h2 class="heading" id="load-title">It’s the load, not the person.</h2>
+          <p class="lead">Crew are strong, capable people. The strain comes from the shape of the work.</p>
+        </div>
+        <ul class="columns" role="list">
+          <li><h3 class="title">Constant demand</h3><p>Long days, guests who expect the best, and being on call even when you’re off.</p></li>
+          <li><h3 class="title">Broken recovery</h3><p>Short nights, shared cabins and irregular shifts make it hard to properly switch off.</p></li>
+          <li><h3 class="title">No baseline</h3><p>Months away from home, without the people and routines that usually steady you.</p></li>
+        </ul>
+        <p class="lead section-close">Calm Crew gives crew something steady they can take with them.</p>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #research — What the research says (Day)
+         =================================================================== -->
+    <section id="research" class="section" aria-labelledby="research-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">What the research says</p>
+          <h2 class="heading" id="research-title">Read the list and you’ve described a season.</h2>
+          <p class="lead">In 2022, researchers at King’s College London reviewed sixty-three studies of seafarers’ mental health and wellbeing. The risk factors they found include long working hours, night and irregular shifts, poor sleep, high job demands, long spells at sea and weak team cohesion.</p>
+        </div>
+        <p class="quote">Their conclusion was that maritime managers can take practical steps, including providing education and support.</p>
+        <p class="lead section-close">Calm Crew is that education and support, in a form crew can carry in their pocket.</p>
+        <p class="source">Brooks, S.K. and Greenberg, N. (2022). Mental health and psychological wellbeing of maritime personnel: a systematic review. BMC Psychology.</p>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #app — The app (Day)
+         =================================================================== -->
+    <section id="app" class="section" aria-labelledby="app-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">The app</p>
+          <h2 class="heading" id="app-title">A few minutes a day, and a course that builds week by week.</h2>
+        </div>
+        <ul class="cards cards--3 section-body" role="list">
+          <li class="card">
+            <h3 class="title">Today</h3>
+            <p>A two-tap check-in on mood and energy, and a Daily practice of a few minutes of slow, easy breathing.</p>
+          </li>
+          <li class="card">
+            <h3 class="title">Learn</h3>
+            <p>An eight-week course, opening one week at a time, with short teachings and practices crew can use on duty or in a shared cabin.</p>
+          </li>
+          <li class="card">
+            <h3 class="title">S.O.S.</h3>
+            <p>A quiet tab for tough moments, with short practices and routes to a person.</p>
+          </li>
+        </ul>
+        <p class="section-close">Works without signal. On iPhone and Android. <a href="./#app">See the app on the home page</a>.</p>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #dashboard — What you see (Day), with a sample management dashboard.
+         Sample data only: the numbers, the chart and the counts are made up.
+         =================================================================== -->
+    <section id="dashboard" class="section" aria-labelledby="dashboard-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">What you see</p>
+          <h2 class="heading" id="dashboard-title">A clear picture of your crew, and nobody’s private answers.</h2>
+          <p class="lead">Management sees a combined picture of how the crew are doing on energy and mood, never anyone’s own answers. Crew choose whether their check-ins count towards it, and the more of the crew who use the app, the clearer the picture becomes.</p>
+          <p class="section-head__more">Captains never see individual answers either. That privacy is built in, because crew need to trust the app before they will use it.</p>
+        </div>
+
+        <div class="dash section-body" role="group" aria-label="Sample management dashboard">
+          <div class="dash__top">
+            <div>
+              <p class="dash__who">M/Y Example</p>
+              <p>Crew picture · pilot week 6 · last updated this morning</p>
+            </div>
+            <p class="chip">Sample data</p>
+          </div>
+
+          <ul class="tiles" role="list">
+            <li class="tile">
+              <p class="tile__k">Crew taking part</p>
+              <p class="tile__v">9 <small>of 12</small></p>
+              <p>chose to share their check-ins</p>
+            </li>
+            <li class="tile">
+              <p class="tile__k">Check-ins this week</p>
+              <p class="tile__v">41</p>
+              <p>across the crew</p>
+            </li>
+            <li class="tile">
+              <p class="tile__k">Average mood</p>
+              <p class="tile__v"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M2 12h2M5 5l1.4 1.4M19 5l-1.4 1.4"/><path class="icon-cover" d="M13 27h12a5 5 0 0 0 0-10 7 7 0 0 0-13 3 3.5 3.5 0 0 0 1 7z"/></svg>3.8 <small>/ 5</small></p>
+              <p>Steady</p>
+            </li>
+            <li class="tile">
+              <p class="tile__k">Average energy</p>
+              <p class="tile__v"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="9" width="23" height="14" rx="3"/><path d="M28 14v4" stroke-linecap="round"/><rect class="icon-fill" x="6" y="12" width="4" height="8"/><rect class="icon-fill" x="11.5" y="12" width="4" height="8"/><rect class="icon-fill" x="17" y="12" width="4" height="8"/></svg>3.5 <small>/ 5</small></p>
+              <p>Mid to high</p>
+            </li>
+          </ul>
+
+          <div class="dash__grid">
+            <div class="panel panel--trend">
+              <h3 class="panel__title">Week by week</h3>
+              <ul class="legend" role="list">
+                <li><svg viewBox="0 0 28 10" aria-hidden="true" focusable="false"><line class="chart__line chart__line--mood" x1="0" y1="5" x2="28" y2="5"/></svg>Mood</li>
+                <li><svg viewBox="0 0 28 10" aria-hidden="true" focusable="false"><line class="chart__line chart__line--energy" x1="0" y1="5" x2="28" y2="5"/></svg>Energy</li>
+              </ul>
+              <div class="chart" role="img" aria-label="Average mood and energy across pilot weeks 1 to 6, mood rising from 3.2 to 3.8 and energy from 2.9 to 3.5 out of 5. Sample data.">
+                <svg viewBox="0 0 560 260" aria-hidden="true" focusable="false">
+                  <line class="chart__grid" x1="36" x2="496" y1="226" y2="226"/>
+                  <text x="26" y="230" text-anchor="end">1</text>
+                  <line class="chart__grid" x1="36" x2="496" y1="173" y2="173"/>
+                  <text x="26" y="177" text-anchor="end">2</text>
+                  <line class="chart__grid" x1="36" x2="496" y1="120" y2="120"/>
+                  <text x="26" y="124" text-anchor="end">3</text>
+                  <line class="chart__grid" x1="36" x2="496" y1="67" y2="67"/>
+                  <text x="26" y="71" text-anchor="end">4</text>
+                  <line class="chart__grid" x1="36" x2="496" y1="14" y2="14"/>
+                  <text x="26" y="18" text-anchor="end">5</text>
+                  <text x="36" y="250" text-anchor="middle">Wk 1</text>
+                  <text x="128" y="250" text-anchor="middle">Wk 2</text>
+                  <text x="220" y="250" text-anchor="middle">Wk 3</text>
+                  <text x="312" y="250" text-anchor="middle">Wk 4</text>
+                  <text x="404" y="250" text-anchor="middle">Wk 5</text>
+                  <text x="496" y="250" text-anchor="middle">Wk 6</text>
+                  <path class="chart__line chart__line--mood" d="M36 109.4 L128 98.8 L220 104.1 L312 93.5 L404 88.2 L496 77.6"/>
+                  <circle class="chart__dot chart__dot--mood" cx="496" cy="77.6" r="5"/>
+                  <text class="chart__end" x="508" y="81.6">Mood</text>
+                  <path class="chart__line chart__line--energy" d="M36 125.3 L128 120 L220 120 L312 109.4 L404 104.1 L496 93.5"/>
+                  <circle class="chart__dot chart__dot--energy" cx="496" cy="93.5" r="5"/>
+                  <text class="chart__end" x="508" y="97.5">Energy</text>
+                  <line class="chart__cross" y1="14" y2="226" x1="0" x2="0" visibility="hidden"/>
+                  <rect class="chart__hit" x="-10" y="14" width="92" height="212" data-week="1" data-mood="3.2" data-energy="2.9" data-x="36" data-y="109.4"/>
+                  <rect class="chart__hit" x="82" y="14" width="92" height="212" data-week="2" data-mood="3.4" data-energy="3.0" data-x="128" data-y="98.8"/>
+                  <rect class="chart__hit" x="174" y="14" width="92" height="212" data-week="3" data-mood="3.3" data-energy="3.0" data-x="220" data-y="104.1"/>
+                  <rect class="chart__hit" x="266" y="14" width="92" height="212" data-week="4" data-mood="3.5" data-energy="3.2" data-x="312" data-y="93.5"/>
+                  <rect class="chart__hit" x="358" y="14" width="92" height="212" data-week="5" data-mood="3.6" data-energy="3.3" data-x="404" data-y="88.2"/>
+                  <rect class="chart__hit" x="450" y="14" width="92" height="212" data-week="6" data-mood="3.8" data-energy="3.5" data-x="496" data-y="77.6"/>
+                </svg>
+              </div>
+              <!-- Filled in by fleets.js on hover or tap: "Week 3 / Mood 3.3 · Energy 3.0". -->
+              <p class="tip" aria-hidden="true" hidden></p>
+            </div>
+
+            <div class="panel">
+              <h3 class="panel__title">Mood check-ins this week</h3>
+              <!-- Calm to Storm, with the app's weather icons. Bars are counts out of 17, the largest. -->
+              <ul class="dist" role="list">
+                <li><span class="dist__name"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="4"/><path d="M10 1.5v2M10 16.5v2M1.5 10h2M16.5 10h2M4 4l1.4 1.4M14.6 14.6L16 16M4 16l1.4-1.4M14.6 5.4L16 4"/></svg>Calm</span><span class="dist__bar" aria-hidden="true"><i class="dist__fill dist__fill--8"></i></span><span class="dist__count">8</span></li>
+                <li><span class="dist__name"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="3.2"/><path d="M8 1.5v1.2M1.5 8h1.2M3.4 3.4l.9.9M12.6 3.4l-.9.9"/><path d="M9 17h7a3 3 0 0 0 0-6 4.3 4.3 0 0 0-8 1.8A2.2 2.2 0 0 0 9 17z"/></svg>Steady</span><span class="dist__bar" aria-hidden="true"><i class="dist__fill dist__fill--17"></i></span><span class="dist__count">17</span></li>
+                <li><span class="dist__name"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 16h9a3.6 3.6 0 0 0 0-7.2 5.2 5.2 0 0 0-9.8 2A2.7 2.7 0 0 0 6 16z"/></svg>Choppy</span><span class="dist__bar" aria-hidden="true"><i class="dist__fill dist__fill--11"></i></span><span class="dist__count">11</span></li>
+                <li><span class="dist__name"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 12h9a3.4 3.4 0 0 0 0-6.8 5 5 0 0 0-9.4 1.9A2.5 2.5 0 0 0 6 12z"/><path d="M7 15l-1 3M11 15l-1 3M15 15l-1 3"/></svg>Rough</span><span class="dist__bar" aria-hidden="true"><i class="dist__fill dist__fill--4"></i></span><span class="dist__count">4</span></li>
+                <li><span class="dist__name"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 11h9a3.4 3.4 0 0 0 0-6.8 5 5 0 0 0-9.4 1.9A2.5 2.5 0 0 0 6 11z"/><path d="M11 12l-2.5 4h3l-2 3.5"/></svg>Storm</span><span class="dist__bar" aria-hidden="true"><i class="dist__fill dist__fill--1"></i></span><span class="dist__count">1</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="dash__privacy"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/></svg><span>Shown only when 5 or more crew on board have chosen to share. No names, no individual answers, and nothing broken down so finely that it could point to one person.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #pilot — The pilot (Day)
+         =================================================================== -->
+    <section id="pilot" class="section" aria-labelledby="pilot-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">The pilot</p>
+          <h2 class="heading" id="pilot-title">A study, not a claim.</h2>
+          <p class="lead">The pilot runs with crew on working vessels, for about twelve and a half weeks: four quiet days of check-ins, then the eight-week course, then four weeks of living with it. We will report what we find, including anything that doesn’t change. Until then, Calm Crew makes no claims about results.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #partners — Founding partners (Day)
+         =================================================================== -->
+    <section id="partners" class="section" aria-labelledby="partners-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Founding partners</p>
+          <h2 class="heading" id="partners-title">Join the pilot.</h2>
+          <p class="lead">We are looking for a handful of yachts to join the pilot. Founding partners receive:</p>
+        </div>
+        <ul class="list-lead">
+          <li>named founding partner status</li>
+          <li>the programme at no cost for their participating crew</li>
+          <li>a first look at the study’s overall findings</li>
+        </ul>
+        <p class="section-head__more">No yacht or company sees any crew member’s own answers.</p>
+        <div class="actions section-cta">
+          <a class="btn btn--primary" href="#contact">Ask about founding partnership</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #who — Who it's for (Day)
+         =================================================================== -->
+    <section id="who" class="section" aria-labelledby="who-title">
+      <div class="container">
+        <h2 class="eyebrow" id="who-title">Who it’s for</h2>
+        <ul class="columns" role="list">
+          <li><h3 class="title">Management companies and fleets</h3><p>A practical tool to offer across your boats, with an anonymised picture of how crew are doing.</p></li>
+          <li><h3 class="title">Captains and heads of department</h3><p>You carry the vessel’s load and your own. You do the same eight weeks as your crew, and the Leading under pressure chapter follows, by choice.</p></li>
+          <li><h3 class="title">Crew agencies</h3><p>Something practical to point crew towards before they join a boat.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #about — About Libby (Day)
+         =================================================================== -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="eyebrow" id="about-title">About Libby</h2>
+          <p class="lead">Libby Pickett has spent seven years working in nervous system regulation, through one-to-one practice, group work and retreats, with yacht crew and industry people among them. She also works day to day in the superyacht industry in Mallorca, alongside shipyards, yacht managers and captains, so she sees the pressure of a season up close.</p>
+        </div>
+        <p><a class="text-link" href="./#about">More about Libby</a></p>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #contact — Get in touch (Day). The site has no form back end, so
+         Send opens the visitor's own email app with the message written out
+         to Libby (fleets.js). Nothing is collected or stored here. Without
+         JavaScript, the email address shows instead of the form.
+         =================================================================== -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Get in touch</p>
+          <h2 class="heading" id="contact-title">Talk to Libby.</h2>
+        </div>
+
+        <form class="contact-form section-body" id="enquiry" aria-labelledby="contact-title">
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-role">Role, yacht or organisation <span class="field__opt">(optional)</span></label>
+            <input id="f-role" name="role" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="f-interest">I’m interested in</label>
+            <select id="f-interest" name="interest">
+              <option>Founding partnership</option>
+              <option>The crew waiting list</option>
+              <option>The advisory board</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field field--full">
+            <label for="f-msg">Message <span class="field__opt">(optional)</span></label>
+            <textarea id="f-msg" name="message"></textarea>
+          </div>
+          <div class="form__foot">
+            <button class="btn btn--primary" type="submit">Send</button>
+            <p>Libby replies personally, usually within a couple of days.</p>
+          </div>
+          <p class="form__sent" role="status"></p>
+        </form>
+
+        <p class="contact-fallback section-body">Email Libby at <a href="mailto:libby@calmcrewcoaching.com?subject=Calm%20Crew">libby@calmcrewcoaching.com</a>. She replies personally, usually within a couple of days.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer__disclaimer">Calm Crew is a wellbeing app and training programme. It is not a medical device or an emergency service, and it does not diagnose or treat any condition. For help with your health, speak to the medic on board or a doctor. In an emergency at sea, go to the bridge. Ashore, call the local emergency number.</p>
+      <p class="eyebrow footer__legal">© 2026 Calm Crew · Libby Pickett · Mallorca</p>
+    </div>
+  </footer>
+</body>
+</html>

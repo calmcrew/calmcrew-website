@@ -1,7 +1,8 @@
 # calmcrew.app
 
-The one-page website for **Calm Crew** (calmcrew.app), Libby Pickett's app and course
-for superyacht crew. Plain static HTML, CSS and a little vanilla JavaScript:
+The website for **Calm Crew** (calmcrew.app), Libby Pickett's app and course
+for superyacht crew: a one-page site (`index.html`) and, since 8 Oct 2026, a
+second page for yachts and fleets (`fleets.html`). Plain static HTML, CSS and a little vanilla JavaScript:
 no build step, no framework, and no requests to any other domain (fonts are
 self-hosted; there are no analytics, CDNs or embeds).
 
@@ -17,6 +18,31 @@ self-hosted; there are no analytics, CDNs or embeds).
   inline links take the app's slate underline, and `--selection-solid` is
   #6E97AA. Screen images carry a version suffix (now `-v11`, below) so the
   year-long asset cache cannot serve the old ones.
+- **8 Oct 2026: menu, floating button, Privacy band, fleets page.**
+  - Privacy now follows The pilot (moved by hand on Figma page 10's desktop
+    frame) and is a Night band, so the two read as one blue section. The
+    mobile Figma frame got the same order, and both Figma Privacy sections are
+    in Night mode.
+  - The menu: The app · The course · At sea · The pilot · About Libby, then a
+    "For Fleets" button (secondary chip; filled, with `aria-current`, on its
+    own page). Privacy is no longer in the header (the footer index keeps it).
+  - "Join the crew waiting list" left the header and floats: bottom-right on
+    desktop and tablet, a full-width bar on a phone (`.float-cta`). site.js
+    gives it the Night colours over a Night band and hides it while the
+    hero's or the pilot's own waiting-list button is on screen, and on Get in
+    touch and the footer, so there is always one in reach but never two.
+    Without JavaScript it simply stays, in Day colours. Not on fleets.html.
+  - `fleets.html` is built from Libby's mock-up "Calm Crew Fleets Page"
+    (claude.ai artifact, 8 Oct 2026), without its review notice and with the
+    site's own menu, tokens and components. Its copy is the mock-up's, word for
+    word. Differences: headings use the home page's ExtraBold (the mock-up's
+    were medium); small text follows the site's rules (16px, `--black`);
+    fields have a 1.5px slate outline for contrast; the chart is static SVG
+    with a tooltip from `assets/js/fleets.js` (the CSP allows no inline JS or
+    CSS). The site has no form back end, so the contact form's Send opens
+    the visitor's own email app with the message written out to Libby; without
+    JavaScript the email address shows instead. The mock-up's notice said five
+    wording points were still open with Libby (Part C of her change list).
 - **Phone screens (`-v11`, 8 Oct 2026).** The six phone images come from the
   Figma page "Final Design F" (`3943:32869`), in the same palette as "Final
   Design C" (Brand v2.0 "Day · A" and "Night · A"):
@@ -87,6 +113,7 @@ self-hosted; there are no analytics, CDNs or embeds).
 
 ```
 index.html              the page
+fleets.html             For yachts and fleets, the second page (8 Oct 2026)
 404.html                not-found page (root-absolute paths on purpose)
 netlify.toml            headers (CSP, security, caching); keeps README.md and
                         netlify.toml from being served
@@ -94,8 +121,10 @@ robots.txt
 favicon.ico             16/32/48px, for older browsers and link-preview crawlers
 assets/css/tokens.css   design tokens: every colour, space and type size
 assets/css/site.css     layout and components (no colours of its own)
-assets/js/site.js       the Menu button only;
-                        the page works without it
+assets/js/site.js       the Menu button and the floating waiting-list
+                        button; the pages work without it
+assets/js/fleets.js     fleets.html only: the sample chart's tooltip and the
+                        contact form's hand-off to the visitor's email app
 assets/fonts/           Newsreader (one variable file, 200–800: Light 300 text,
                         ExtraBold 800 titles), Work Sans
                         (variable 400–700) and Work Sans Italic, self-hosted woff2
@@ -106,13 +135,13 @@ assets/img/             app screens: WebP 786w/1179w + PNG 786w fallback
 
 Section anchors, in page order: `#top` (Day), `#history` (Day, THE ONE
 CLAIM), `#at-sea` (Night), `#app` (Night), `#drop-anchor` (Night, the S.O.S.
-tab), `#course` (Day), `#privacy` (Day), `#pilot` (Night), `#about` (Day),
-`#contact` (Night). Order and `#pilot` copy follow the hand edits on Figma
+tab), `#course` (Day), `#pilot` (Night), `#privacy` (Night, since 8 Oct 2026),
+`#about` (Day), `#contact` (Night). Order and `#pilot` copy follow the hand edits on Figma
 page 10 (3 Oct 2026); "for easier days at sea" was left out of the Boat
 Industry Leaders card under the one-claim rule.
-The nav shows six of them (The app · The course · At sea · Privacy · The pilot
-· About Libby). Drop Anchor and History are deliberately not in the nav or the
-footer.
+The nav shows five of them (The app · The course · At sea · The pilot · About
+Libby) and the For Fleets button. Drop Anchor and History are deliberately not
+in the nav or the footer.
 
 How the page is put together:
 
@@ -298,6 +327,21 @@ card and "2 of 8 done".
       image for that reason.
 
 ### Copy to confirm with Libby
+
+- [ ] **fleets.html and the one-claim rule.** The home page makes one claim and
+      no industry statistics; the fleets page (Libby's mock-up) adds turnover
+      and crew-survey figures, the King's College review and "Calm Crew is that
+      education and support". Every figure needs its source checked, and the
+      wording needs Libby's (and ideally a reviewer's) sign-off before launch.
+- [ ] **fleets.html sample dashboard:** its sample chart shows crew mood and
+      energy rising week by week through the pilot. Even labelled "Sample
+      data", that reads as a result. Flat or mixed sample data would match
+      "Calm Crew makes no claims about results".
+- [ ] **fleets.html form:** Send opens the visitor's email app (no back end).
+      A form that sends straight to Libby needs a form service and a privacy
+      notice; decide before launch.
+- [ ] The mock-up's own notice: "Five wording points are still open with
+      Libby (Part C of the change list)." Get Part C before launch.
 
 - [x] **Tab name: S.O.S.** (decided 3 Oct 2026). The `#app` card, its lead and the
       section eyebrow say S.O.S.; the section keeps the `#drop-anchor` id.

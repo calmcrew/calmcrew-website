@@ -46,16 +46,17 @@
   <!-- /assets/* is cached for a year (netlify.toml): bump ?v= when a file changes. -->
   <link rel="stylesheet" href="assets/fonts/fonts.css?v=2026-10-07a">
   <link rel="stylesheet" href="assets/css/tokens.css?v=2026-10-07a">
-  <link rel="stylesheet" href="assets/css/site.css?v=2026-10-08a">
+  <link rel="stylesheet" href="assets/css/site.css?v=2026-10-08b">
   <!-- Not deferred on purpose: it only sets a class, then waits for the DOM. -->
-  <script src="assets/js/site.js?v=2026-10-07a"></script>
+  <script src="assets/js/site.js?v=2026-10-08a"></script>
 </head>
 <body>
   <a class="skip-link btn btn--primary" href="#main">Skip to content</a>
 
   <!-- ===================================================================
-       Header: logo, six anchors, one primary button. Collapses to a Menu
-       button below 1280px (site.js); without JS the links simply wrap.
+       Header: logo, five anchors and the For Fleets button (the same menu on
+       fleets.html). Collapses to a Menu button below 1280px (site.js); without
+       JS the links simply wrap.
        =================================================================== -->
   <header class="site-header">
     <div class="container site-header__bar">
@@ -76,15 +77,23 @@
             <li><a href="#app">The app</a></li>
             <li><a href="#course">The course</a></li>
             <li><a href="#at-sea">At sea</a></li>
-            <li><a href="#privacy">Privacy</a></li>
             <li><a href="#pilot">The pilot</a></li>
             <li><a href="#about">About Libby</a></li>
           </ul>
         </nav>
-        <a class="btn btn--primary" href="#contact">Join the crew waiting list</a>
+        <a class="btn btn--secondary" href="fleets.html">For Fleets</a>
       </div>
     </div>
   </header>
+
+  <!-- The crew waiting list, always to hand: fixed to the bottom-right corner
+       (a full-width bar on a phone). site.js gives it the colours of the band
+       behind it, and hides it while the hero's or the pilot's own waiting-list
+       button is on screen, and on Get in touch and the footer. Not on
+       fleets.html. -->
+  <div class="float-cta">
+    <a class="btn btn--primary" href="#contact">Join the crew waiting list</a>
+  </div>
 
   <main id="main">
 
@@ -351,39 +360,6 @@
     </section>
 
     <!-- ===================================================================
-         #privacy — Privacy (Day)
-         =================================================================== -->
-    <section id="privacy" class="section" aria-labelledby="privacy-title">
-      <div class="container privacy__grid">
-        <div>
-          <div class="section-head">
-            <p class="eyebrow">Privacy</p>
-            <h2 class="heading" id="privacy-title">Yours, and nobody else’s.</h2>
-          </div>
-          <p class="heading privacy__promise">Your captain never sees your answers.</p>
-          <p class="lead privacy__design">Anonymous. Now, and later. By design.</p>
-        </div>
-
-        <!-- Copy is the client's own (manual Figma edit, 1 Oct 2026). Before launch it
-             must match what the app really does: see README, launch checklist. -->
-        <ul class="cards cards--2" role="list">
-          <li class="card">
-            <h3 class="title">Anonymous</h3>
-            <p>Your name and anything that identifies you are never shared.</p>
-          </li>
-          <li class="card">
-            <h3 class="title">Your data. Your iCloud.</h3>
-            <p>You own your data. Always.</p>
-          </li>
-          <li class="card card--wide">
-            <h3 class="title title--bold">What management sees.</h3>
-            <p>A combined picture of how the whole crew is doing on <strong>energy and mood</strong>, never anyone’s own answers. The more of the crew who use the app, the clearer that picture becomes. <em>Your check-ins only count towards it if you say yes when the app asks.</em></p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ===================================================================
          #pilot — The pilot (Night). Every call to action goes to Get in touch.
          =================================================================== -->
     <section id="pilot" class="section pilot band-night" aria-labelledby="pilot-title">
@@ -419,6 +395,40 @@
           <a class="btn btn--secondary" href="#contact">Ask about founding partnership</a>
           <a class="text-link" href="#contact">Ask about the advisory board</a>
         </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         #privacy — Privacy (Night). After the pilot since 8 Oct 2026, in the same
+         Night band, so the two read as one section.
+         =================================================================== -->
+    <section id="privacy" class="section band-night" aria-labelledby="privacy-title">
+      <div class="container privacy__grid">
+        <div>
+          <div class="section-head">
+            <p class="eyebrow">Privacy</p>
+            <h2 class="heading" id="privacy-title">Yours, and nobody else’s.</h2>
+          </div>
+          <p class="heading privacy__promise">Your captain never sees your answers.</p>
+          <p class="lead privacy__design">Anonymous. Now, and later. By design.</p>
+        </div>
+
+        <!-- Copy is the client's own (manual Figma edit, 1 Oct 2026). Before launch it
+             must match what the app really does: see README, launch checklist. -->
+        <ul class="cards cards--2" role="list">
+          <li class="card">
+            <h3 class="title">Anonymous</h3>
+            <p>Your name and anything that identifies you are never shared.</p>
+          </li>
+          <li class="card">
+            <h3 class="title">Your data. Your iCloud.</h3>
+            <p>You own your data. Always.</p>
+          </li>
+          <li class="card card--wide">
+            <h3 class="title title--bold">What management sees.</h3>
+            <p>A combined picture of how the whole crew is doing on <strong>energy and mood</strong>, never anyone’s own answers. The more of the crew who use the app, the clearer that picture becomes. <em>Your check-ins only count towards it if you say yes when the app asks.</em></p>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -507,8 +517,8 @@
             <li><a href="#app">The app</a></li>
             <li><a href="#course">The course</a></li>
             <li><a href="#at-sea">At sea</a></li>
-            <li><a href="#privacy">Privacy</a></li>
             <li><a href="#pilot">The pilot</a></li>
+            <li><a href="#privacy">Privacy</a></li>
             <li><a href="#about">About Libby</a></li>
             <li><a href="#contact">Get in touch</a></li>
           </ul>
