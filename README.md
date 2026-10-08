@@ -15,9 +15,9 @@ self-hosted; there are no analytics, CDNs or embeds).
   the S.O.S. tab), titles are Newsreader ExtraBold in `--black`, secondary
   buttons are the app's white chip with a 1.5px slate outline,
   inline links take the app's slate underline, and `--selection-solid` is
-  #6E97AA. Screen images carry a version suffix (now `-v6`, below) so the
+  #6E97AA. Screen images carry a version suffix (now `-v8`, below) so the
   year-long asset cache cannot serve the old ones.
-- **Phone screens (`-v7`, 7 Oct 2026).** The six phone images come from the Figma
+- **Phone screens (`-v8`, 8 Oct 2026).** The six phone images come from the Figma
   page "Final Design C" (`3741:7182`), the same page as the palette. The
   frames are drawn in Brand v2.0's "Day · A" and "Night · A" modes:
   - today-checkin `3741:7514`
@@ -28,18 +28,22 @@ self-hosted; there are no analytics, CDNs or embeds).
   - learn-chapter-2 `3741:8252`
 
   Each frame is copied at the 852pt iPhone viewport into the section beside
-  the Mobile frame on the website page (`3771:765`). The copies keep the
+  the Mobile frame on the website page (`3870:4504`). The copies keep the
   frame's "Day · A" or "Night · A" mode explicitly, so they cannot fall back
   to the old palette. The dock, player and scroll edge are pinned to the
   bottom, and the scroll edge is a pure blur (fill at 1%). The copies are
   exported at 3× (1179×2556) and saved as versioned WebP and PNG. The
   website page's phone mockups (with the bezel) are made from the same
   copies.
-  - Final Design C's Today has Watch and Duty On/Off rows. Its History is a
-    bar chart with averages ("Without practice 2.3 / With practice 2.7" in
-    the sample data) and a Watch row. The History paragraph again says "as
-    bars … with your averages", as in Libby's review copy, plus "check-ins
-    made straight after a practice kept apart from the rest".
+  - Final Design C's Today has Watch and Duty On/Off rows. Mood is drawn as
+    weather icons, ordered Storm to Calm from left to right, and Energy as
+    batteries, one bar to five. Its History is a bar chart with averages
+    ("Without practice 2.3 / With practice 2.7" in the sample data), a
+    battery scale and a Watch row. The History paragraph says "as bars …
+    with your averages", as in Libby's review copy, plus "check-ins made
+    straight after a practice kept apart from the rest".
+  - Re-render from fresh copies whenever the designers change Final Design C.
+    Bump the version suffix every time: `/assets` is cached for a year.
 - **Palette: Figma page "Final Design C" (7 Oct 2026).** This is `Brand v2.0`
   in modes "Day · A" and "Night · A".
   - Day: tan ground #E3CDA6 and deep-navy ink #162738.
